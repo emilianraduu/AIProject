@@ -1,0 +1,12 @@
+/node_modules
+/build
+/coverage
+.env
+.DS_STORE
+._.DS_STORE
+.env.local
+npm-debug.log*
+/src/._.DS_STORE
+.idea
+package-lock.json
+_.package-lock.json
