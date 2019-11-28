@@ -3,10 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.7.0",
+    "@material-ui/icons": "^4.5.1",
+    "final-form": "^4.18.6",
     "lodash": "^4.17.15",
+    "material-design-icons": "^3.0.1",
     "react": "^16.12.0",
+    "react-device-detect": "^1.11.13",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.2.0"
+    "react-final-form": "^6.3.3",
+    "react-fontawesome": "^1.7.1",
+    "react-masonry-component": "^6.2.1",
+    "react-scripts": "3.2.0",
+    "styled-components": "^4.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
