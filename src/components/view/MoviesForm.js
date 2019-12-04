@@ -11,6 +11,7 @@ import {
 import Masonry from 'react-masonry-component'
 import MovieCard from './MovieCard'
 import HeaderMovieDetails from './HeaderMovieDetails'
+import QrReader from 'react-qr-reader'
 
 export default function MoviesForm() {
   const moviesContext = useContext(MoviesContext)
@@ -28,6 +29,11 @@ export default function MoviesForm() {
       </PageHeader>
 
       <PageContent>
+        <QrReader
+          delay={300}
+          onScan={(e)=>console.log(e)}
+          style={{ width: '100%' }}
+        />
         <MovieWrapper>
           <Masonry>
             {Search && Search.map((movie, index) =>
