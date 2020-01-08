@@ -29,11 +29,11 @@ Usage
 1. Clone the repo
 2. Open up the program
 3. Write a sentence about a movie you'd like to find
-4. Let our project do its job
+4. Let our project do its magic
 
 
 ## Requirements
-* Selectarea unor filme ca recomandări pentru utilizator, folosind o descriere în limbaj natural a unui film căutat. Folosiți datele de la https://grouplens.org/datasets/movielens/ . Ca exemplu de mesaj a utilizatorului: “I am looking for an animated comedy movie made by Studio Ghibli”. Ca sugestii de rezolvare: indexați setul de date de antrenament și transformați mesajul user-ului într-un query sau aplicați un algoritm de machine learning pe datele de antrenament având titlul filmului ca și clasificare, ulterior clasificați instanța (mesajul) user-ului.
+* Selectarea unor filme ca recomandări pentru utilizator, folosind o descriere în limbaj natural a unui film căutat. Folosiți datele de la https://grouplens.org/datasets/movielens/ . Ca exemplu de mesaj a utilizatorului: “I am looking for an animated comedy movie made by Studio Ghibli”. Ca sugestii de rezolvare: indexați setul de date de antrenament și transformați mesajul user-ului într-un query sau aplicați un algoritm de machine learning pe datele de antrenament având titlul filmului ca și clasificare, ulterior clasificați instanța (mesajul) user-ului. + some more
 
 ### Screenshots
 
