@@ -1,6 +1,6 @@
 # Best Movie Search
 
-  * Best Movie Search is arguably the best tool to use when you're looking for a movie but only remember that one brunette actress.
+  * Best Movie Search is arguably the best tool to use when you're looking for a movie but remember little about it.
 ## About / Synopsis
 
 * Artificial Intelligence @ Faculty of Computer Science Iasi
