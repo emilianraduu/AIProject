@@ -8,6 +8,7 @@ const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case FETCH_MOVIES_SUCCESS:
+      console.log(action.payload)
       return {
         ...action.payload
       };
