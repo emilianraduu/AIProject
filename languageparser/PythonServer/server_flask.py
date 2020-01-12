@@ -1,11 +1,20 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import requests
+import json
 
 url = 'https://nlp.wordgames.gr/api/analyze'
 
 app = Flask(__name__)
 CORS(app)
+
+queryElements={
+    "keywords": [],
+    "location": [],
+    "organization": [],
+    "person": []
+}
+
 
 @app.route('/', methods=['GET','POST'])
 def index():
@@ -13,7 +22,18 @@ def index():
         data = str(request.data.decode('utf-8'))
         print(data)
         res = requests.post(url, json={'text': data})
-        print()
+        
+        test=res.json()
+        #print(res.json())
+        queryElements["keywords"]=test["keywords"].split(", ")
+        queryElements["location"]=test["named_entities"]["location"]
+        queryElements["organization"]=test["named_entities"]["organization"]
+        queryElements["person"]=test["named_entities"]["person"]
+
+        print(queryElements)
+        print(len(test))
+        #print(test["keywords"].split(", "))
+
         return jsonify({"does this": res.json()}), 201
     else:
         print("test")
