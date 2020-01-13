@@ -1,35 +1,28 @@
-import { Exclude } from 'class-transformer';
+
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-import { PasswordTransformer } from './password.transformer';
+
 
 @Entity({
-  name: 'users',
+  name: 'rooms',
 })
-export class User {
+export class Rooms {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ length: 255 })
-  firstName: string;
+  capacity: number;
 
   @Column({ length: 255 })
-  lastName: string;
+  features: string;
 
   @Column({ length: 255 })
-  email: string;
+  number: number;
 
-  @Column({
-    name: 'password',
-    length: 255,
-    transformer: new PasswordTransformer(),
-  })
-  @Exclude()
-  password: string;
 }
 
-export class UserFillableFields {
-  email: string;
-  firstName: string;
-  lastName: string;
-  password: string;
+export class RoomsFillableFields {
+  id: number;
+  capacity: number;
+  features: string;
+  number: number;
 }
