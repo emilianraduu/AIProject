@@ -26,11 +26,14 @@ export class UsersService {
 
   async getByEmailAndPass(email: string, password: string) {
     const passHash = crypto.createHmac('sha256', password).digest('hex');
-    return await this.userRepository.createQueryBuilder('users')
-      .where('users.email = :email and users.password = :password')
-      .setParameter('email', email)
-      .setParameter('password', passHash)
-      .getOne();
+    console.log(email, passHash)
+    const user = await this.userRepository.createQueryBuilder('users')
+        .where('users.email = :email and users.password = :password')
+        .setParameter('email', email)
+        .setParameter('password', passHash)
+        .getOne();
+    console.log(user)
+    return user;
   }
 
   async create(
