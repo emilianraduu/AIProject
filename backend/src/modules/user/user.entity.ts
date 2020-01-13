@@ -18,14 +18,6 @@ export class User {
   @Column({ length: 255 })
   email: string;
 
-  @Column({
-    name: 'password',
-    length: 255,
-    nullable: true,
-    transformer: new PasswordTransformer(),
-  })
-  @Exclude()
-  password: string;
 
   @Column({nullable: true})
   isAdmin: boolean;
@@ -33,8 +25,14 @@ export class User {
   @BeforeInsert()
   beforeInsertActions() {
     this.isAdmin = false;
-    this.password = '';
   }
+  @Column({
+    name: 'password',
+    length: 255,
+    transformer: new PasswordTransformer(),
+  })
+  @Exclude()
+  password: string;
 
 }
 
