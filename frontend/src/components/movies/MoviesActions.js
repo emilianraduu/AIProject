@@ -6,7 +6,7 @@ export const FETCH_MOVIES = "FETCH_MOVIES";
 export const getMovies = async (moviesContext, searchWord) => {
   moviesContext.dispatch({ type: FETCH_MOVIES });
   console.log(searchWord)
-  let response = await fetch(`${API_URL}?apikey=${API_KEY}&s=${searchWord}`).then((resp)=>resp.json());
+  let response = await fetch(`${API_URL}`, {method: 'post', body: searchWord}).then((resp)=>resp.json());
   if (response) {
       moviesContext.dispatch({
         type: FETCH_MOVIES_SUCCESS,
