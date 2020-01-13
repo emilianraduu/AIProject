@@ -8,7 +8,6 @@ import { PageContent } from '../../../../styles/shared/wrapper'
 import { isMobile } from 'react-device-detect'
 import { FILE_ICON, colorPrimary, colorBlack12 } from '../../../../styles/abstract/variables'
 import FestivalCreate from '../../../Festivals/FestivalCreate'
-import { Toggle } from 'react-toggle-component'
 import { SecondaryButton, PrimaryButton } from '../../../../styles/shared/button'
 import { ProgressBar, WizzardHeader } from '../../../../styles/shared/headerWizzard'
 import { FestivalContext } from '../../../Festivals/FestivalContext'
@@ -45,14 +44,7 @@ export default function FestivalStep ({ history, match }) {
         <FormItem>
           <Label>Create new festival</Label>
           <StyledToggle>
-            <Toggle
-              name='email-toggle'
-              checked={festivalCreated}
-              width='40px'
-              height='20px'
-              borderColor={festivalCreated === true ? `${colorPrimary}` : `${colorBlack12}`}
-              onToggle={(e) => { saveTournamentWizzardStep({ step: 'festivalCreated', data: !festivalCreated, wizzardContext, tournamentType }) }}
-            />
+           
           </StyledToggle>
 
         </FormItem>

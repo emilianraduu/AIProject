@@ -20,7 +20,6 @@ import { InfiniteSelect, PickerSelect } from '../Global/Select/InfiniteSelect'
 import { DEBOUNCE_MS } from '../../config/constants'
 import { AvatarBig } from '../../styles/shared/avatar'
 import { SecondaryButton } from '../../styles/shared/button'
-import { Toggle } from 'react-toggle-component'
 import {
   ARROW_UP_ICON,
   colorBlack12,
@@ -166,19 +165,7 @@ export default function AccountForm({ user, onSubmit, type, onCountriesScrollToB
                     <FormWithToggle>
                       <Label>Email</Label>
                       <StyledToggle>
-                        <Toggle
-                          name={`email-toggle`}
-                          checked={emailToggle}
-                          width="40px"
-                          height="20px"
-                          borderColor={emailToggle === true ? `${colorPrimary}` : `${colorBlack12}`}
-                          onToggle={(e) => {
-                            if (e.target.checked) {
-
-                              setEmailToggle(true)
-                            } else setEmailToggle(false)
-                          }}
-                        />
+                       
                       </StyledToggle>
                     </FormWithToggle>
                     <Field autocomplete="off" disabled={!emailToggle} component={FieldInput} name='email' />
@@ -187,19 +174,7 @@ export default function AccountForm({ user, onSubmit, type, onCountriesScrollToB
                     <FormWithToggle>
                       <Label>Password</Label>
                       <StyledToggle>
-                        <Toggle
-                          name={`password-toggle`}
-                          checked={passwordToggle === true}
-                          width="40px"
-                          height="20px"
-                          borderColor={passwordToggle === true ? `${colorPrimary}` : `${colorBlack12}`}
-                          onToggle={(e) => {
-                            if (e.target.checked) {
-
-                              setPasswordToggle(true)
-                            } else setPasswordToggle(false)
-                          }}
-                        />
+                      
                       </StyledToggle>
                     </FormWithToggle>
                     <Field autocomplete="off" disabled={!passwordToggle} type={'password'} component={FieldInput}

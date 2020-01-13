@@ -7,7 +7,6 @@ import { FormItem, FormWithToggle, StyledToggle } from '../../../../styles/share
 import { Label } from '../../../../styles/typography/typography'
 import { FieldInput } from '../../../Global/Input/FieldInput'
 import { BoxContent } from '../../../Global/Box/styles/box'
-import { Toggle } from "react-toggle-component"
 import { PanelClear, PanelFooter } from '../../../Global/Filter/styles/filterMob'
 import { SecondaryButton } from '../../../../styles/shared/button'
 import {updateGameRules} from '../ActiveTournamentActions'
@@ -75,20 +74,7 @@ const GameRulesInput = ({name, value, labelName}) => {
         <FormWithToggle>
           <Label>{labelName}</Label>
           <StyledToggle>
-            <Toggle
-              name={`${name}-toggle`}
-              checked ={toggleChecked}
-              width="40px"
-              height="20px"
-              borderColor = {toggleChecked === true ? `${colorPrimary}` : `${colorBlack12}`}
-              onToggle = {(e) => {
-                if(e.target.checked) {
-
-                  setToggleChecked(true)
-                }
-                else setToggleChecked(false)
-              }}
-            />
+           
           </StyledToggle>
         </FormWithToggle>
         {
