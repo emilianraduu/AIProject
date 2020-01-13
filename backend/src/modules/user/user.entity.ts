@@ -34,9 +34,7 @@ export class User {
   beforeInsertActions() {
     this.isAdmin = false;
     this.password = '';
-
   }
-
 
 }
 
