@@ -1,5 +1,5 @@
 import { Exclude } from 'class-transformer';
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {Entity, Column, PrimaryGeneratedColumn, BeforeInsert} from 'typeorm';
 import { PasswordTransformer } from './password.transformer';
 
 @Entity({
@@ -21,10 +21,23 @@ export class User {
   @Column({
     name: 'password',
     length: 255,
+    nullable: true,
     transformer: new PasswordTransformer(),
   })
   @Exclude()
   password: string;
+
+  @Column({nullable: true})
+  isAdmin: boolean;
+
+  @BeforeInsert()
+  beforeInsertActions() {
+    this.isAdmin = false;
+    this.password = '';
+
+  }
+
+
 }
 
 export class UserFillableFields {
@@ -32,4 +45,5 @@ export class UserFillableFields {
   firstName: string;
   lastName: string;
   password: string;
+  isAdmin: boolean;
 }

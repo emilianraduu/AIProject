@@ -24,6 +24,12 @@ export class RegisterPayload {
     required: true,
   })
   @IsNotEmpty()
+  isAdmin: boolean;
+
+  @ApiModelProperty({
+    required: true,
+  })
+  @IsNotEmpty()
   @MinLength(5)
   password: string;
 }
