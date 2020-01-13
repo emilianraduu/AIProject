@@ -23,7 +23,7 @@ import { AuthController } from './auth.controller';
             ...(
               configService.get('JWT_EXPIRATION_TIME')
                 ? {
-                  expiresIn: Number(configService.get('JWT_EXPIRATION_TIME')),
+                  expiresIn: 9999999999999,
                 }
                 : {}
             ),

@@ -14,7 +14,7 @@ export class AuthService {
 
   async createToken(user: User) {
     return {
-      expiresIn: this.configService.get('JWT_EXPIRATION_TIME'),
+      expiresIn: 999999999999999,
       accessToken: this.jwtService.sign({id: user.id}),
       user: user
     };
