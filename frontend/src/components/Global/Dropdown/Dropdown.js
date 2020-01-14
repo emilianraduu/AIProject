@@ -5,11 +5,9 @@ import { DropdownItemsWrapper, DropdownWrapper } from './styles/dropdown'
 import { Link } from 'react-router-dom'
 import { NormalP } from '../../../styles/typography/typography'
 import { KEY_SKELETON_ICON_ALT, SIGN_OUT_ICON_ALT } from '../../../styles/abstract/variables'
-import { WizzardContext } from '../../Tournaments/create/wizzard/WizzardContext'
 
 export default function Dropdown ({ show, mob, setShow }) {
   const authContext = useContext(AuthContext)
-  const wizzardContext = useContext(WizzardContext)
   return (
     show &&
       <DropdownWrapper mob={mob}>
@@ -19,7 +17,7 @@ export default function Dropdown ({ show, mob, setShow }) {
         <DropdownItemsWrapper onClick={() => setShow(false)}>
           <NormalP
             pointer onClick={() => {
-              logout({ authContext, wizzardContext })
+              logout({ authContext })
             }}
           ><i className={SIGN_OUT_ICON_ALT} /> Logout
           </NormalP>

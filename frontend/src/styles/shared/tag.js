@@ -5,8 +5,7 @@ import {
   boxShadow
 } from '../abstract/variables'
 import { SmallPBold } from '../typography/typography'
-import { STATUS_CODES } from '../../components/Tournaments/listing/TournamentsListing'
-import { TOURNAMENT_PLAYERS_STATUS } from '../../components/Tournaments/view/players/TournamentPlayersListing'
+import { STATUS_CODES } from '../../components/Courses/listing/TournamentsListing'
 
 export const Tag = styled(SmallPBold)`
   text-transform: uppercase;
@@ -42,15 +41,6 @@ export const Tag = styled(SmallPBold)`
     style += `
   `
   }
-  TOURNAMENT_PLAYERS_STATUS.map((code) => {
-    if (status === code.name) {
-      style += `color: ${code.color};`
-      if (code.before) {
-        style += `&:before{ background-color: ${code.color || '#000'};`
-      }
-    }
-    return style
-  })
   if (space) {
     style += `
   `

@@ -20,25 +20,6 @@ import { PrimaryButton, SecondaryButton } from '../../../styles/shared/button'
 
 export function renderSwitch ({ row, prop = '', text, title, mobile, dbName, buttons, id, history }) {
   switch (prop) {
-    case 'status':
-      return (
-        <TagWrapper color={text}>
-          <Tag space desktop status={text}>
-            {
-              text
-                .replace(/([A-Z])/g, ' $1')
-                .replace(/^./, function (str) {
-                  return str.toUpperCase()
-                })
-            }
-          </Tag>
-        </TagWrapper>
-      )
-    case 'action':
-      return (
-
-        <TagWrapper color={text}><Tag space desktop status={text}>{text}</Tag></TagWrapper>
-      )
     case 'fee':
       return (
         <>

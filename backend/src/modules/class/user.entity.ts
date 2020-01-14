@@ -1,7 +1,6 @@
 import { Exclude } from 'class-transformer';
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-import
-/{ PasswordTransformer } from './password.transformer';
+import { PasswordTransformer } from './password.transformer';
 
 @Entity({
   name: 'users',

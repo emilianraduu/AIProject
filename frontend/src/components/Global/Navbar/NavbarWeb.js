@@ -12,8 +12,7 @@ export function Navbar({ location, filterClearer, role }) {
         getUserRoutes(role).map((route, index) => {
           return (
             <Link to={route.path} key={index}>
-              <WhiteLink  active={_.startsWith(location.pathname, route.path)}
-                        >
+              <WhiteLink  active={_.startsWith(location.pathname, route.path)}>
                 {route.name}
               </WhiteLink>
             </Link>

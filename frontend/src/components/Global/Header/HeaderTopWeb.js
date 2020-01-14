@@ -12,22 +12,7 @@ import { Logo } from '../../../styles/shared/logo'
 import NavbarWeb from '../Navbar/NavbarWeb'
 import AddDropdown from '../Dropdown/AddDropdown'
 import { AuthContext } from '../../Auth/AuthContext'
-import {
-  clearTournamentsFilters,
-  clearTournamentsSort
-} from '../../Tournaments/TournamentsActions'
-import { TournamentsContext } from '../../Tournaments/TournamentsContext'
-import { StaffsContext } from '../../Staff/StaffsContext'
-import { PlayersContext } from '../../Players/PlayersContext'
-import { clearStaffsFilters, clearStaffsSort } from '../../Staff/StaffsActions'
-import {
-  clearPlayersFilters,
-  clearPlayersSort
-} from '../../Players/PlayersActions'
-import {BigPGrey, BigPGreyBold, WhiteLink, WhitePLink} from "../../../styles/typography/typography";
-import _ from "lodash";
-
-export const PageTitle = 'Pokerfest'
+import {WhitePLink} from "../../../styles/typography/typography";
 
 function HeaderTop({ history, role, ...props }) {
   const authContext = useContext(AuthContext)
@@ -51,11 +36,6 @@ function HeaderTop({ history, role, ...props }) {
       }
     },)
   }
-
-  const tournamentsContext = useContext(TournamentsContext)
-  const staffsContext = useContext(StaffsContext)
-  const playersContext = useContext(PlayersContext)
-
 
 
   const wrapperRefLogout = useRef(null)
@@ -106,9 +86,6 @@ function HeaderTop({ history, role, ...props }) {
           ref={wrapperRefLogout}
         >
           <div style={{marginRight: 10}}>
-          <WhitePLink>
-            {user.firstName} {user.lastName}
-          </WhitePLink>
           </div>
           <Avatar
             pointer

@@ -75,8 +75,6 @@ export default function StaffDetailsEditForm({ onSubmit, staff, onCountriesScrol
           gender: staff.gender,
           birthDate: staff.birthDate && moment(staff.birthDate).toDate(),
           address: staff.address,
-          country: staff.country && { value: staff.country.id, label: staff.country.name },
-          citizenship: staff.citizenship && { value: staff.citizenship.id, label: staff.citizenship.name }
         }
       }
       validate={staffDetailsValidate}
@@ -115,38 +113,6 @@ export default function StaffDetailsEditForm({ onSubmit, staff, onCountriesScrol
                 placeholder='Select gender'
                 options={USER_GENDERS.map(gender => ({ value: gender, label: _.startCase(gender) }))}
                 name='gender'/>
-            </FormItem>
-
-            <FormItem>
-              <Label upper>Citizenship</Label>
-              <Field
-                component={InfiniteSelect}
-                placeholder='Select citizenship'
-                onMenuScrollToBottom={onCountriesScrollToBottom}
-                onInputChange={_.debounce((e) => {
-                  e !== '' && onCitizenshipInputChange(e)
-                }, DEBOUNCE_MS)}
-                options={_.map(countries, country => ({ value: country.id, label: country.name }))}
-                name='citizenship'
-              />
-            </FormItem>
-
-            <FormItem>
-              <Label upper>Country</Label>
-              <Field
-                component={InfiniteSelect}
-                placeholder='Select country'
-                onMenuScrollToBottom={onCountriesScrollToBottom}
-                onInputChange={_.debounce((e) => {
-                  e !== '' && onCountriesInputChange(e)
-                }, DEBOUNCE_MS)}
-                options={_.map(countries, country => ({ value: country.id, label: country.name }))}
-                name='country'/>
-            </FormItem>
-
-            <FormItem>
-              <Label upper>Address</Label>
-              <Field component={FieldInput} name='address' placeholder={'Type address'}/>
             </FormItem>
 
             <PanelFooter>

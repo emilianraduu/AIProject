@@ -1,5 +1,5 @@
 // export const API_URL = 'https://api.pokerfest.edev.xyz/api'
-export const API_URL = 'http://192.168.100.7:3000/api'
+export const API_URL = 'http://localhost:3000/api'
 // export const API_URL = 'http://10.0.0.81:8081/api'
 export const WS_URL = 'wss://api.pokerfest.edev.xyz/ws'
 export const DATETIME_FORMAT = 'DD MMMM YYYY, h:mm a'

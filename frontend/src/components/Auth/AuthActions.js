@@ -65,10 +65,7 @@ export const register = async (authContext, email, password,firstName,lastName, 
     history.push('/')
   }
 }
-export const logout = async ({ authContext, wizzardContext }) => {
-  wizzardContext.dispatch({
-    type: LOGOUT_SUCCESS
-  })
+export const logout = async ({ authContext }) => {
   authContext.dispatch({
     type: LOGOUT_SUCCESS
   })

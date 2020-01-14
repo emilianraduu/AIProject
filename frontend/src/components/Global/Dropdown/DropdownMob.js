@@ -5,11 +5,9 @@ import { AuthContext } from '../../Auth/AuthContext'
 import { logout } from '../../Auth/AuthActions'
 import { Link } from 'react-router-dom'
 import { KEY_SKELETON_ICON_ALT, SIGN_OUT_ICON_ALT, TIMES_ICON } from '../../../styles/abstract/variables'
-import { WizzardContext } from '../../Tournaments/create/wizzard/WizzardContext'
 
 export default function DropdownMob ({ showFunction, show }) {
   const authContext = useContext(AuthContext)
-  const wizzardContext = useContext(WizzardContext)
   return (
     <DropdownMobileWrapper show={show}>
       <MobileDropdownLinks>
@@ -25,7 +23,7 @@ export default function DropdownMob ({ showFunction, show }) {
             </NormalP>
           </DropdownItemsWrapper>
         </Link>
-        <DropdownItemsWrapper onClick={() => logout({ authContext, wizzardContext })}>
+        <DropdownItemsWrapper onClick={() => logout({ authContext})}>
           <i className={SIGN_OUT_ICON_ALT} />
           <NormalP>
             Logout

@@ -15,7 +15,7 @@ export const routes = [
   {
     name: 'Courses',
     path: '/courses',
-    component: lazy(() => import('../components/Tournaments/TournamentsRouter'))
+    component: lazy(() => import('../components/Courses/CoursesRouter'))
   },
   {
     name: 'Staff',
@@ -37,13 +37,6 @@ export const extraRoutes = [
   }
 ]
 
-export const accountRoute = [
-  {
-    name: 'My Account',
-    path: '/account',
-    component: lazy(() => import('../components/Account/AccountView'))
-  }
-]
 
 export default function Router() {
   const authContext = useContext(AuthContext)
@@ -101,18 +94,6 @@ export function RouterContent({ loggedIn, role }) {
               />
             )
           )
-        }
-        {
-          accountRoute.map((route, index) => (
-            <PrivateRoute
-              key={index} path={route.path}
-              allowed={!!loggedIn}
-              redirectTo='/login'
-              render={(props) => (
-                <Layout {...props} Content={route.component}/>
-              )}
-            />
-          ))
         }
         {
           extraRoutes.map((route, index) => (
