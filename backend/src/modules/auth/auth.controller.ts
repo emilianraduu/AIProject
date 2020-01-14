@@ -4,7 +4,8 @@ import { AuthGuard } from '@nestjs/passport';
 import { AuthService, LoginPayload, RegisterPayload } from './';
 import { UsersService } from './../user';
 
-@Controller('api/auth')
+
+@Controller('api')
 @ApiUseTags('authentication')
 export class AuthController {
   constructor(
@@ -20,6 +21,15 @@ export class AuthController {
     const user = await this.authService.validateUser(payload);
     return await this.authService.createToken(user);
   }
+
+  @Get('classes')
+  @ApiResponse({ status: 201, description: 'Succesfully got classes' })
+  @ApiResponse({ status: 400, description: 'Bad Request' })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
+  async getClassesByName(@Request() request): Promise<any> {
+    return request.classes;
+  }
+
 
   @Post('register')
   @ApiResponse({ status: 201, description: 'Successful Registration' })
