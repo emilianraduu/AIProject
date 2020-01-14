@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from './../config';
 import { AuthModule } from './../auth';
+import { ClassesModule } from 'modules/class';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { AuthModule } from './../auth';
       },
     }),
     ConfigModule,
+    ClassesModule,
     AuthModule,
   ],
   controllers: [

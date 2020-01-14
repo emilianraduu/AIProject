@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert } from 'typeorm';
 
 @Entity({
   name: 'classes',
@@ -30,7 +30,16 @@ export class Classes {
 
   @Column()
   no_seminars: number;
-
+  @BeforeInsert()
+  beforeInsertActions() {
+    this.description = '';
+    this.necessities = '';
+    this.available_from = new Date();
+    this.available_to = new Date();
+    this.duration = 0;
+    this.no_courses = 0;
+    this.no_seminars = 0;
+  }
 }
 
 export class ClassesFillableFields {
