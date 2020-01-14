@@ -66,6 +66,7 @@ export default function Router() {
   useEffect(() => {
     loggedIn && getUser(authContext)
   }, [loggedIn])
+  console.log(user)
   return (
     <BrowserRouter>
       <WsConnect/>

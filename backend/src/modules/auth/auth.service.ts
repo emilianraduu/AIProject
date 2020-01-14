@@ -16,12 +16,13 @@ export class AuthService {
     return {
       expiresIn: 999999999999999,
       accessToken: this.jwtService.sign({id: user.id}),
-      user: user
+      user,
     };
   }
 
   async validateUser(payload: LoginPayload): Promise<any> {
     const user = await this.userService.getByEmailAndPass(payload.email, payload.password);
+    console.log(user)
     if (!user) {
       throw new UnauthorizedException('Wrong login combination!');
     }

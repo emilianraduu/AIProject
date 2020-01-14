@@ -12,15 +12,14 @@ export const login = async (authContext, email, password, history) => {
   let response
   try {
     response = await axios({
-      url: `${API_URL}/oauth2/token`,
+      url: `${API_URL}/auth/login`,
       method: 'post',
       data: {
-        ...clientConfig,
-        username: email,
+        email: email,
         password: password
       }
     }
-    )
+    ).then(res=>console.log(res.json()))
   } catch (err) {
     authContext.dispatch({
       type: REQUEST_AUTH_TOKEN_FAILED,
@@ -28,6 +27,7 @@ export const login = async (authContext, email, password, history) => {
     })
   }
   if (response) {
+    console.log(response)
     authContext.dispatch({
       type: REQUEST_AUTH_TOKEN,
       payload: response.data

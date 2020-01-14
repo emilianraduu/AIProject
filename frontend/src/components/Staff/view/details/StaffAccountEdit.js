@@ -6,7 +6,6 @@ import { FieldInput } from '../../../Global/Input/FieldInput'
 import { PanelClear, PanelFooter } from '../../../Global/Filter/styles/filterMob'
 import { SecondaryButton } from '../../../../styles/shared/button'
 import { FieldSelect } from '../../../Global/Select/FieldSelect'
-import { Toggle } from 'react-toggle-component'
 import { colorBlack12, colorPrimary } from '../../../../styles/abstract/variables'
 import { STAFF_ROLES } from '../../create/StaffCreate'
 import _ from 'lodash'
@@ -56,18 +55,7 @@ export default function StaffAccountEdit({ onSubmit, onClose, staff }) {
               <DualFormWrapper space>
                 <BigP>Change Password</BigP>
                 <StyledToggle>
-                  <Toggle
-                    name={`-toggle`}
-                    checked={toggleChecked ? 1 : 0}
-                    width="40px"
-                    height="20px"
-                    borderColor={toggleChecked === true ? `${colorPrimary}` : `${colorBlack12}`}
-                    onToggle={(e) => {
-                      if (e.target.checked)
-                        setToggleChecked(true)
-                      else setToggleChecked(false)
-                    }}
-                  />
+                 
                 </StyledToggle>
               </DualFormWrapper>
               <PasswordChangeWrapper expand={toggleChecked}>
