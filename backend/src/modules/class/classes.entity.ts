@@ -16,34 +16,30 @@ export class Classes {
   @Column({ length: 255 })
   necessities: string;
 
-  @Column({ length: 255 })
+  @Column()
   available_from: Date;
 
-  @Column({ length: 255 })
+  @Column()
   available_to: Date;
 
-  @Column({ length: 255 })
-  length: number;
+  @Column()
+  duration: number;
 
-  @Column({ length: 255 })
+  @Column()
   no_courses: number;
 
-  @Column({ length: 255 })
+  @Column()
   no_seminars: number;
 
 }
 
 export class ClassesFillableFields {
-  email: string;
-  firstName: string;
-  lastName: string;
-  password: string;
   name: string;
   description: string;
   necessities: string;
   available_from: Date;
   available_to: Date;
-  length: number;
+  duration: number;
   no_courses: number;
   no_seminars: number;
 }
