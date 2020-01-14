@@ -243,7 +243,6 @@ const reducer = (state, action) => {
         ...state,
         activeTournament: {
           ...action.payload.tournament,
-          currentServerTime: moment(action.payload.tournament.currentServerTime).add(action.payload.currentTime.diff(state.currentTime, 'millisecond'), 'millisecond').toISOString()
         },
         loadingTournament: false
       }

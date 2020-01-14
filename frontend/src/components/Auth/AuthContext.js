@@ -22,31 +22,20 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case REQUEST_AUTH_TOKEN:
+    case GET_USER_SUCCESS:
+      console.log(action.payload)
       return {
         ...state,
-        access_token: action.payload.access_token,
-        refresh_token: action.payload.refresh_token,
-        expires_at: moment().add(action.payload.expires_in, 'second'),
-        token_type: action.payload.token_type,
+        accessToken: action.payload.accessToken,
+        expires_at: moment().add(action.payload.expiresIn, 'ms'),
         loggedIn: true,
-        errorLogin: false
+        user: action.payload.user
       }
     case LOGOUT_SUCCESS:
       return {
         ...initialState
       }
-    case REQUEST_AUTH_TOKEN_FAILED:
-      return {
-        ...state,
-        loggedIn: false,
-        errorLogin: true
-      }
-    case GET_USER_SUCCESS:
-      return {
-        ...state,
-        user: action.payload
-      }
+
     case UPDATE_USER_DETAILS_SUCCESS:
       return {
         ...state,
