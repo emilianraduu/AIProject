@@ -13,7 +13,7 @@ import AddDropdownMob from '../Dropdown/AddDropdownMob'
 import DropdownMob from '../Dropdown/DropdownMob'
 import { PLUS_ICON } from '../../../styles/abstract/variables'
 
-export const PageTitle = 'Pokerfest'
+export const PageTitle = 'AIProject'
 
 export default function HeaderTopMob ({ filterClearer }) {
   const [dropdown, setDropdown] = useState('')

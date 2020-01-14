@@ -16,8 +16,10 @@ import { ForgotPass, LinksWrapper, NewPlayer } from '../../styles/shared/links'
 import { isMobile } from 'react-device-detect'
 import { AT_ICON, KEY_SKELETON_ICON_ALT, USER_ICON } from '../../styles/abstract/variables'
 
-function LoginView ({ history, type }) {
+function RegisterView ({ history, type }) {
   const [email, setEmail] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [password, setPassword] = useState('')
   const [focus, setFocus] = useState('')
   const authContext = useContext(AuthContext)
@@ -54,6 +56,22 @@ function LoginView ({ history, type }) {
             </InputWithIcon>
           </InputWrapper>
           <InputWrapper web={!isMobile}>
+            <LabelAuth>First Name</LabelAuth>
+            <InputWithIcon focus={focus === 'First Name' && true}>
+              <Input
+                placeholder='First Name'
+                onChange={(e) => setFirstName(e.target.value)}
+                onFocus={() => {
+                  setFocus('First Name')
+                }} onBlur={(e) => {
+                  setFocus('First Name')
+                }}
+                login
+              />
+              <i className={AT_ICON} />
+            </InputWithIcon>
+          </InputWrapper>
+          <InputWrapper web={!isMobile}>
             <LabelAuth>PASSWORD</LabelAuth>
             <InputWithIcon focus={focus === 'password' && true}>
               <Input
@@ -77,11 +95,11 @@ function LoginView ({ history, type }) {
             {
               errorLogin && <LoginError>Invalid credentials</LoginError>
             }
-            <PrimaryButton top type='submit'>Login</PrimaryButton>
+            <PrimaryButton top type='submit'>Register</PrimaryButton>
           </InputWrapper>
           <LinksWrapper>
             <Link to='./'> <ForgotPass>Forgot password?</ForgotPass> </Link>
-            <Link to='./register'> <NewPlayer><b>Register.</b></NewPlayer> </Link>
+            <Link to='./'> <NewPlayer><b>Register.</b></NewPlayer> </Link>
           </LinksWrapper>
         </LoginForm>
 
@@ -90,4 +108,4 @@ function LoginView ({ history, type }) {
   )
 }
 
-export default withRouter(LoginView)
+export default withRouter(RegisterView)
