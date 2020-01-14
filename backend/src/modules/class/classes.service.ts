@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 import { Classes, ClassesFillableFields } from './classes.entity';
+import { ClassesPayload } from 'modules/auth/classes.payload';
 
 @Injectable()
 export class ClassesService {
@@ -16,6 +17,9 @@ export class ClassesService {
     return this.classesRepository.findOne(id);
   }
 
+  async getAll(){
+    return this.classesRepository.query('SELECT * FROM classes');
+  }  
   async getByName(name: string) {
     return await this.classesRepository.createQueryBuilder('classes')
       .where('classes.name = :name')
@@ -25,7 +29,7 @@ export class ClassesService {
 
 
   async create(
-    payload: ClassesFillableFields,
+    payload: ClassesPayload,
   ) {
     const classes = await this.getByName(payload.name);
 

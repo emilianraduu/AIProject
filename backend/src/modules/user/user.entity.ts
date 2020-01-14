@@ -18,7 +18,6 @@ export class User {
   @Column({ length: 255 })
   email: string;
 
-
   @Column({nullable: true})
   isAdmin: boolean;
 

@@ -9,13 +9,13 @@ export class Rooms {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ length: 255 })
+  @Column()
   capacity: number;
 
   @Column({ length: 255 })
   features: string;
 
-  @Column({ length: 255 })
+  @Column()
   number: number;
 
 }
