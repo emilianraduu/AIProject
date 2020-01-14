@@ -13,7 +13,7 @@ export function Navbar({ location, filterClearer, role }) {
           return (
             <Link to={route.path} key={index}>
               <WhiteLink  active={_.startsWith(location.pathname, route.path)}
-                         onClick={() => filterClearer({ path: route.path })}>
+                        >
                 {route.name}
               </WhiteLink>
             </Link>

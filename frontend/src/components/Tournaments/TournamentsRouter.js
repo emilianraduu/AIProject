@@ -6,24 +6,18 @@ import { PrivateRoute } from '../Global/PrivateRoute'
 
 export const tournamentRoutes = [
   {
-    name: 'Tournaments',
-    path: '/tournaments/create',
+    name: 'Courses',
+    path: '/courses/create',
     component: lazy(() => import('./create/wizzard/WizzardRouter'))
   },
   {
-    name: 'Cash Games',
-    exact: true,
-    path: '/cashgames/create',
-    component: lazy(() => import('./create/TournamentCreate'))
-  },
-  {
-    name: 'Tournament',
-    path: '/tournaments/:tournamentId',
+    name: 'Courses',
+    path: '/courses/:tournamentId',
     component: lazy(() => import('./view/TournamentRouter'))
   },
   {
-    name: 'Tournaments',
-    path: '/tournaments',
+    name: 'Courses',
+    path: '/courses',
     exact: true,
     component: lazy(() => import('./listing/TournamentsListing'))
   }

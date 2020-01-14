@@ -24,6 +24,8 @@ import {
   clearPlayersFilters,
   clearPlayersSort
 } from '../../Players/PlayersActions'
+import {BigPGrey, BigPGreyBold, WhiteLink, WhitePLink} from "../../../styles/typography/typography";
+import _ from "lodash";
 
 export const PageTitle = 'Pokerfest'
 
@@ -47,36 +49,14 @@ function HeaderTop({ history, role, ...props }) {
       return () => {
         document.removeEventListener('click', handleClickOutside)
       }
-    })
+    },)
   }
 
   const tournamentsContext = useContext(TournamentsContext)
   const staffsContext = useContext(StaffsContext)
   const playersContext = useContext(PlayersContext)
 
-  const filterClearer = ({ path }) => {
-    switch (path) {
-      case '/tournaments':
-        clearTournamentsFilters(tournamentsContext)
-        clearTournamentsSort(tournamentsContext)
-        break
-      case '/cashgames':
-        clearTournamentsFilters(tournamentsContext)
-        clearTournamentsSort(tournamentsContext)
-        break
-      case '/staff':
-        clearStaffsFilters(staffsContext)
-        clearStaffsSort(staffsContext)
-        break
-      case '/players':
-        clearPlayersFilters(playersContext)
-        clearPlayersSort(playersContext)
-        break
-      default:
-        clearTournamentsFilters(tournamentsContext)
-        clearTournamentsSort(tournamentsContext)
-    }
-  }
+
 
   const wrapperRefLogout = useRef(null)
   const wrapperRefAdd = useRef(null)
@@ -101,14 +81,13 @@ function HeaderTop({ history, role, ...props }) {
   //     history.push('/users/create')
   //   }
   // }
-  console.log(props)
   return (
     <HeaderTopWrapper>
-      <Logo web onClick={() => filterClearer('')}>
-        <Link to='/'>{PageTitle}</Link>
+      <Logo web>
+        <Link to='/'>AIProject</Link>
       </Logo>
       <HeaderTopLeft>
-        <NavbarWeb filterClearer={filterClearer} role={role}/>
+        <NavbarWeb/>
       </HeaderTopLeft>
       <HeaderTopRight>
         <div
@@ -123,12 +102,16 @@ function HeaderTop({ history, role, ...props }) {
           <AddDropdown show={addDropdown} showFunction={setAddDropdown}/>
         </div>
         <div
-          style={{ position: 'relative', display: 'flex', flexFlow: 'column' }}
+          style={{ position: 'relative', display: 'flex', flexFlow: 'row' }}
           ref={wrapperRefLogout}
         >
+          <div style={{marginRight: 10}}>
+          <WhitePLink>
+            {user.firstName} {user.lastName}
+          </WhitePLink>
+          </div>
           <Avatar
             pointer
-            url={user && user.profileImage && user.profileImage.url}
             onClick={() => {
               setDropdown(!dropdown)
             }}

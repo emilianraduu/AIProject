@@ -23,13 +23,18 @@ const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case GET_USER_SUCCESS:
-      console.log(action.payload)
       return {
+        ...state,
+        user: action.payload
+      }
+    case REQUEST_AUTH_TOKEN:
+      return{
         ...state,
         accessToken: action.payload.accessToken,
         expires_at: moment().add(action.payload.expiresIn, 'ms'),
+
         loggedIn: true,
-        user: action.payload.user
+
       }
     case LOGOUT_SUCCESS:
       return {

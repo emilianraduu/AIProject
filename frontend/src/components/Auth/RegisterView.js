@@ -4,7 +4,7 @@ import {
   WrapperAuth, PageContent
 } from '../../styles/shared/wrapper'
 import { AvatarAuth } from '../../styles/shared/avatar'
-import { login } from './AuthActions'
+import { register } from './AuthActions'
 import { PageTitle } from '../Global/Header/HeaderTopMob'
 import { AuthContext } from './AuthContext'
 import { LabelAuth } from '../../styles/typography/typography'
@@ -25,7 +25,7 @@ function RegisterView ({ history, type }) {
   const authContext = useContext(AuthContext)
   const onSubmit = async (e) => {
     e.preventDefault()
-    login(authContext, email, password, history)
+    register(authContext, email, password,firstName,lastName, history)
   }
   const { errorLogin } = authContext.state
   return (
@@ -37,7 +37,39 @@ function RegisterView ({ history, type }) {
         </Logo>
         <LabelAuth center>Login</LabelAuth>
         <AvatarAuth><i className={USER_ICON} /></AvatarAuth>
-        <LoginForm type={type} onSubmit={onSubmit}>
+        <LoginForm type={'web'} onSubmit={onSubmit} web>
+          <InputWrapper web={!isMobile}>
+            <LabelAuth>First Name</LabelAuth>
+            <InputWithIcon focus={focus === 'First Name' && true}>
+              <Input
+                  placeholder='First Name'
+                  onChange={(e) => setFirstName(e.target.value)}
+                  onFocus={() => {
+                    setFocus('First Name')
+                  }} onBlur={(e) => {
+                setFocus('First Name')
+              }}
+                  login
+              />
+              <i className={AT_ICON} />
+            </InputWithIcon>
+          </InputWrapper>
+          <InputWrapper web={!isMobile}>
+            <LabelAuth>Last Name</LabelAuth>
+            <InputWithIcon focus={focus === 'First Name' && true}>
+              <Input
+                  placeholder='Last Name'
+                  onChange={(e) => setLastName(e.target.value)}
+                  onFocus={() => {
+                    setFocus('Last Name')
+                  }} onBlur={(e) => {
+                setFocus('Last Name')
+              }}
+                  login
+              />
+              <i className={AT_ICON} />
+            </InputWithIcon>
+          </InputWrapper>
           <InputWrapper web={!isMobile}>
             <LabelAuth>EMAIL</LabelAuth>
             <InputWithIcon focus={focus === 'email' && true}>
@@ -55,22 +87,7 @@ function RegisterView ({ history, type }) {
               <i className={AT_ICON} />
             </InputWithIcon>
           </InputWrapper>
-          <InputWrapper web={!isMobile}>
-            <LabelAuth>First Name</LabelAuth>
-            <InputWithIcon focus={focus === 'First Name' && true}>
-              <Input
-                placeholder='First Name'
-                onChange={(e) => setFirstName(e.target.value)}
-                onFocus={() => {
-                  setFocus('First Name')
-                }} onBlur={(e) => {
-                  setFocus('First Name')
-                }}
-                login
-              />
-              <i className={AT_ICON} />
-            </InputWithIcon>
-          </InputWrapper>
+
           <InputWrapper web={!isMobile}>
             <LabelAuth>PASSWORD</LabelAuth>
             <InputWithIcon focus={focus === 'password' && true}>
@@ -98,8 +115,7 @@ function RegisterView ({ history, type }) {
             <PrimaryButton top type='submit'>Register</PrimaryButton>
           </InputWrapper>
           <LinksWrapper>
-            <Link to='./'> <ForgotPass>Forgot password?</ForgotPass> </Link>
-            <Link to='./'> <NewPlayer><b>Register.</b></NewPlayer> </Link>
+            <Link to='./'> <NewPlayer><b>Already have an account?</b></NewPlayer> </Link>
           </LinksWrapper>
         </LoginForm>
 

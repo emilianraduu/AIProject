@@ -28,18 +28,44 @@ export const login = async (authContext, email, password, history) => {
   }
   if (response) {
     authContext.dispatch({
-      type: GET_USER_SUCCESS,
+      type: REQUEST_AUTH_TOKEN,
+      payload: response.data
+    })
+    history.push('/')
+  }
+}
+
+
+export const register = async (authContext, email, password,firstName,lastName, history) => {
+  let response
+  try {
+    response = await axios({
+          url: `${API_URL}/register`,
+          method: 'post',
+          data: {
+            email: email,
+            password: password,
+            firstName: firstName,
+            lastName: lastName,
+            isAdmin: false
+          }
+        }
+    ).then(res=>res)
+  } catch (err) {
+    authContext.dispatch({
+      // type: REQUEST_AUTH_TOKEN_FAILED,
+      // payload: err.response
+    })
+  }
+  if (response) {
+    authContext.dispatch({
+      type: 'REGISTER_USER_SUCCESS',
       payload: response.data
     })
     history.push('/')
   }
 }
 export const logout = async ({ authContext, wizzardContext }) => {
-  await makeAuthRequest({
-    url: `${API_URL}/oauth2/logout`,
-    method: 'post'
-  }
-  )(authContext)
   wizzardContext.dispatch({
     type: LOGOUT_SUCCESS
   })
@@ -49,7 +75,7 @@ export const logout = async ({ authContext, wizzardContext }) => {
 }
 export const getUser = async (authContext) => {
   const response = await makeAuthRequest({
-    url: `${API_URL}/users/me`,
+    url: `${API_URL}/me`,
     method: 'get'
   })(authContext)
   if (response && response.data) {

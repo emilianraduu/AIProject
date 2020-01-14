@@ -236,18 +236,7 @@ function TournamentsListing ({ match }) {
   const clearFilters = () => clearTournamentsFilters(tournamentsContext)
   const removeFilter = (filterKey) => removeTournamentsFilter(tournamentsContext, filterKey)
   const { festivals } = festivalContext.state
-  useEffect(() => {
-    const timer = setTimeout(() => getTournaments({
-      authContext,
-      tournamentsContext,
-      page: pagination.page,
-      filters,
-      sort,
-      type: URL_TO_TYPE[match.path]
-    }), DEBOUNCE_MS)
-    fetchFestivals({ authContext, festivalContext })
-    return () => clearTimeout(timer)
-  }, [pagination.page, filters, sort])
+  useEffect(()=>fetchFestivals({ authContext, festivalContext }),[])
   return (
     <>
       <BrowserView>

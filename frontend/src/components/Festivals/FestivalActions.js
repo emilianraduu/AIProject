@@ -6,18 +6,8 @@ export const FETCH_FESTIVALS_SUCCESS = 'FETCH_FESTIVALS_SUCCESS'
 export const fetchFestivals = async ({ authContext, festivalContext, search = '', page = 1 }) => {
   const { dispatch } = festivalContext
   // const { page, sort, filters } = festivalContext.state
-  const queryParams = {
-    page,
-    AND: search !== '' ? {
-      'festival.name': [
-        'like',
-     `%${search}%`
-      ]
-    } : {}
-  }
-  const query = stringifyQuery(queryParams)
   const response = await makeAuthRequest({
-    url: `${API_URL}/festivals?${query}`,
+    url: `${API_URL}/classes`,
     method: 'get'
   })(authContext)
   response && dispatch({

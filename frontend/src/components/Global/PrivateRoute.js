@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect, Route } from 'react-router-dom'
 
-export const PrivateRoute = ({ component: Component, redirectTo = 'login', render, allowed = true, type = 'tournaments', ...rest }) => (
+export const PrivateRoute = ({ component: Component, redirectTo = 'login', render, allowed = true, type = 'courses', ...rest }) => (
   <Route
     {...rest}
     render={props =>

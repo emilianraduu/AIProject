@@ -13,35 +13,15 @@ import getUserRoutes from './UserRoutes'
 
 export const routes = [
   {
-    name: 'Tournaments',
-    path: '/tournaments',
+    name: 'Courses',
+    path: '/courses',
     component: lazy(() => import('../components/Tournaments/TournamentsRouter'))
-  },
-  {
-    name: 'Cash Games',
-    path: '/cashgames',
-    component: lazy(() => import('../components/CashGames/CashGamesRouter'))
   },
   {
     name: 'Staff',
     path: '/staff',
     component: lazy(() => import('../components/Staff/StaffsRouter'))
   },
-  {
-    name: 'Users',
-    path: '/users',
-    component: lazy(() => import('../components/Users/UsersRouter'))
-  },
-  {
-    name: 'Archive',
-    path: '/archive',
-    component: lazy(() => import('../components/Tournaments/TournamentsRouter'))
-  },
-  {
-    name: 'Statistics',
-    path: '/statistics',
-    component: lazy(() => import('../components/Statistics/StatisticsRouter'))
-  }
 ]
 
 export const extraRoutes = [
@@ -71,7 +51,6 @@ export default function Router() {
   useEffect(() => {
     loggedIn && getUser(authContext)
   }, [loggedIn])
-  console.log(user)
   return (
     <BrowserRouter>
       <WsConnect/>
@@ -80,7 +59,7 @@ export default function Router() {
             <>
               <BrowserView>
                 <HeaderWeb role={user && user.role}/>
-                <RouterContent loggedIn={loggedIn} role={user && user.role}/>
+                <RouterContent loggedIn={loggedIn} />
               </BrowserView>
               {/* to do - on mobile a screen that shows a message that this website isnt available on mobile */}
               {/*<MobileView>*/}
@@ -140,7 +119,7 @@ export function RouterContent({ loggedIn, role }) {
             <PrivateRoute
               key={index} path={route.path}
               allowed={!loggedIn}
-              redirectTo={role === 'register' ? '/users' : '/tournaments'}
+              redirectTo={'/courses'}
               render={(props) => (
                 <LayoutAuth {...props} Content={route.component}/>
 
