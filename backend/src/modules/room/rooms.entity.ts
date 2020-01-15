@@ -15,7 +15,7 @@ export class Rooms {
   @Column({ length: 255 })
   features: string;
 
-  @Column({ length: 4 })
+  @Column({ length: 255 })
   number: string;
 
   @BeforeInsert()
@@ -29,4 +29,5 @@ export class RoomsFillableFields {
   capacity: number;
   features: string;
   number: string;
+  id: number;
 }

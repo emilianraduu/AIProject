@@ -59,4 +59,5 @@ export class ClassesFillableFields {
     no_courses: number;
     no_seminars: number;
     user: User;
+    id_class: number;
 }
