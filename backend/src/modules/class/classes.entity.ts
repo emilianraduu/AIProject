@@ -1,11 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert, OneToOne, JoinColumn } from 'typeorm';
+import { User } from 'modules/user';
 
 @Entity({
   name: 'classes',
 })
 export class Classes {
   @PrimaryGeneratedColumn()
-  id: number;
+  id_class: number;
 
   @Column({ length: 255 })
   name: string;
@@ -30,6 +31,12 @@ export class Classes {
 
   @Column()
   no_seminars: number;
+
+  @OneToOne(type => User)
+  @JoinColumn()
+  id: User;
+
+
   @BeforeInsert()
   beforeInsertActions() {
     this.description = '';

@@ -5,3 +5,5 @@ export * from './jwt.strategy';
 export * from './auth.module';
 export * from './auth.controller';
 export * from './jwt-guard';
+export * from './classes.payload';
+export * from './rooms.payload';

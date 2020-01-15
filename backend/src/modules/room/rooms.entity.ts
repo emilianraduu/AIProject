@@ -1,5 +1,5 @@
 
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert } from 'typeorm';
 
 
 @Entity({
@@ -15,14 +15,18 @@ export class Rooms {
   @Column({ length: 255 })
   features: string;
 
-  @Column()
-  number: number;
+  @Column({ length: 4 })
+  number: string;
 
+  @BeforeInsert()
+  beforeInsertActions() {
+    this.capacity = 0
+    this.features = ''
+  }
 }
 
 export class RoomsFillableFields {
-  id: number;
   capacity: number;
   features: string;
-  number: number;
+  number: string;
 }
