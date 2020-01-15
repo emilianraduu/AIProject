@@ -1,17 +1,15 @@
 import React, {useContext} from 'react'
-import Paginator from '../../Global/Paginator/Paginator'
 import _ from 'lodash'
 import Table from '../../Global/Table/Table'
 import {PageContent, PageWrapperLeft} from '../../../styles/shared/wrapper'
 import {TOURNAMENT_LISTING_HEADERS} from './CoursesListing'
 import {withRouter} from 'react-router-dom'
 import EmptyData from '../../Global/EmptyData/EmptyData'
-import {Loader} from '../../Global/InfiniteScroll'
 import moment from 'moment-timezone'
 import {DATE_FORMAT} from "../../../config/constants";
 import {AuthContext} from "../../Auth/AuthContext";
 
-function CoursesListingWeb({courses, pagination, handlePagination, direction, orderBy, handleSort, loading}) {
+function CoursesListingWeb({courses}) {
     const countFestivals = 0
     const widthPercents = ['15', '15', '15', '15', '15', '15', '15']
     const authContext = useContext(AuthContext)
@@ -36,7 +34,6 @@ function CoursesListingWeb({courses, pagination, handlePagination, direction, or
                                 if (user.isAdmin) {
                                     row.teacher = `${course.user.firstName} ${course.user.lastName}`
                                 }
-
                                 data.push(row)
                             })
                         }
@@ -45,22 +42,12 @@ function CoursesListingWeb({courses, pagination, handlePagination, direction, or
                                 data={data}
                                 noHeader={countFestivals > 1}
                                 widthPercents={widthPercents}
-                                direction={direction}
-                                orderBy={orderBy}
-                                handleSort={handleSort}
                             />
-                            {
-                                pagination.pageCount > 1 &&
-                                <Paginator pagination={pagination} handlePagination={handlePagination}/>
-                            }
                         </>)
                 }
                 {
-                    !courses &&
+                    !courses || courses.length === 0 &&
                     <EmptyData data={'No courses added.'}/>
-                }
-                {
-                    loading && <Loader/>
                 }
             </PageWrapperLeft>
         </PageContent>

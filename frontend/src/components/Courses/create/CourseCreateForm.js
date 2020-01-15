@@ -1,19 +1,14 @@
 import React from 'react'
 import {BoxContent, BoxHeader, BoxWrapper, HeaderWithIcon} from '../../Global/Box/styles/box'
 import {BigPGreyBold, Label} from '../../../styles/typography/typography'
-import {
-    DualBoxWrapper,
-    FormItem,
-    StaffFormFooter,
-    StaffFormWrapper
-} from '../../../styles/shared/form'
+import {DualBoxWrapper, FormItem, StaffFormFooter, StaffFormWrapper} from '../../../styles/shared/form'
 import {Field, Form} from 'react-final-form'
 import {FieldInput} from '../../Global/Input/FieldInput'
 import {FieldSelect} from '../../Global/Select/FieldSelect'
 import {SecondaryButton} from '../../../styles/shared/button'
 import {FILE_ICON} from '../../../styles/abstract/variables'
 
-export default function CourseCrateForm({onSubmit, teachers}) {
+export default function CourseCreateForm({onSubmit, teachers}) {
     return (
         <Form
             onSubmit={onSubmit}
@@ -26,7 +21,7 @@ export default function CourseCrateForm({onSubmit, teachers}) {
                         errors.name = 'Course name should be >5'
                     }
                 }
-                if(!user){
+                if (!user) {
                     errors.user = 'Select teacher'
                 }
                 return errors

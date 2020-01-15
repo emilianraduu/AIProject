@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { API_URL, clientConfig } from '../../config/constants'
 import { makeAuthRequest } from '../../helpers/requestHelpers'
-import { showSuccess } from '../Global/Toast'
 
 export const REQUEST_AUTH_TOKEN = 'REQUEST_AUTH_TOKEN'
 export const REQUEST_AUTH_TOKEN_FAILED = 'REQUEST_AUTH_TOKEN_FAILED'
@@ -53,8 +52,8 @@ export const register = async (authContext, email, password,firstName,lastName, 
     ).then(res=>res)
   } catch (err) {
     authContext.dispatch({
-      // type: REQUEST_AUTH_TOKEN_FAILED,
-      // payload: err.response
+      type: REQUEST_AUTH_TOKEN_FAILED,
+      payload: err.response
     })
   }
   if (response) {

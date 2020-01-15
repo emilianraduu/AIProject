@@ -9,48 +9,13 @@ import EmptyData from '../../Global/EmptyData/EmptyData'
 import {Loader} from '../../Global/InfiniteScroll'
 import moment from 'moment-timezone'
 import {DATE_FORMAT, DATETIME_FORMAT} from "../../../config/constants";
-function RoomsListingWeb({courses, pagination, handlePagination, direction, orderBy, handleSort, loading}) {
-    const countFestivals = 0
-    const widthPercents = ['15', '15', '15', '15', '15', '15', '15']
-    const data = []
+function RoomsListingWeb({rooms, loading}) {
     return (
         <PageContent type='web' flex>
             <PageWrapperLeft tournamentListing>
                 {
-                    courses && courses.length !== 0 && (
-                        <>{
-                            _.map(courses, (course) => {
-                                const row = {
-                                    name: course.name && course.name,
-                                    description: course.description,
-                                    available_from: course && moment(course.available_from).format(DATE_FORMAT),
-                                    available_to: course && moment(course.available_to).format(DATE_FORMAT),
-                                    duration: course.duration,
-                                    no_courses: course && course.no_courses,
-                                    no_seminars: course&&course.no_seminars,
-                                    link: `/courses/${course.id_class}`
-                                }
-                                data.push(row)
-                            })
-                        }
-                            <Table
-                                headers={TOURNAMENT_LISTING_HEADERS}
-                                data={data}
-                                noHeader={countFestivals > 1}
-                                widthPercents={widthPercents}
-                                direction={direction}
-                                orderBy={orderBy}
-                                handleSort={handleSort}
-                            />
-                            {
-                                pagination.pageCount > 1 &&
-                                <Paginator pagination={pagination} handlePagination={handlePagination}/>
-                            }
-                        </>)
-                }
-                {
-                    courses && courses.length === 0 &&
-                    <EmptyData data={'There aren\'t any results.'}/>
+                    !rooms || rooms.length === 0 &&
+                    <EmptyData data={'There aren\'t any rooms.'}/>
                 }
                 {
                     loading && <Loader/>

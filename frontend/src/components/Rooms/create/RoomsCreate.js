@@ -1,13 +1,11 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useContext} from 'react'
 import {withRouter} from 'react-router-dom'
 import {StaffsContext} from '../../Timetable/StaffsContext'
 import {AuthContext} from '../../Auth/AuthContext'
 import {createCourse} from '../../Timetable/StaffsActions'
 import {BrowserView} from 'react-device-detect'
-import RoomsCreateWeb from './RoomsCreateWeb'
-import {getUsers} from "../../Auth/AuthActions";
-
-export const STAFF_ROLES = ['dealer', 'floorTurnee', 'floorCashGame', 'press', 'register', 'registerManager', 'director']
+import {PageContent} from "../../../styles/shared/wrapper";
+import RoomsCrateForm from "./RoomsCrateForm";
 
 function RoomsCreate({history}) {
     const authContext = useContext(AuthContext)
@@ -20,19 +18,15 @@ function RoomsCreate({history}) {
             data: values
         })
     }
-    const {users} = authContext.state
-    useEffect(() => {
-        getUsers({authContext})
-    }, [])
-
 
     return (
         <>
             <BrowserView>
-                <RoomsCreateWeb
-                    onSubmit={onSubmit}
-                    users={users}
-                />
+                <PageContent type={'web'} flex>
+                    <RoomsCrateForm
+                        onSubmit={onSubmit}
+                        type={'web'}/>
+                </PageContent>
             </BrowserView>
         </>
 

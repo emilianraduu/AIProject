@@ -1,12 +1,12 @@
 import React, { lazy, useEffect, useContext } from 'react'
-import { AuthContext } from '../../Auth/AuthContext'
+import { AuthContext } from '../Auth/AuthContext'
 
 import { Switch } from 'react-router-dom'
-import { PrivateRoute } from '../../Global/PrivateRoute'
+import { PrivateRoute } from '../Global/PrivateRoute'
 import { getCourse } from './ActiveCourseActions'
 import { ActiveCourseContext } from './ActiveCourseContext'
 
-export const tournamentRoutes = [
+export const courseRoutes = [
   {
     name: 'Details',
     path: `/courses/:id`,
@@ -19,15 +19,15 @@ export default function CourseRouter ({ match }) {
   const authContext = useContext(AuthContext)
   const { loggedIn } = authContext.state
   const tournamentsContext = useContext(ActiveCourseContext)
-  const { tournamentId } = match.params
+  const { courseId } = match.params
   useEffect(() => {
-    loggedIn && getCourse(authContext, tournamentsContext, tournamentId)
-  }, [tournamentId])
+    loggedIn && getCourse(authContext, tournamentsContext, courseId)
+  }, [courseId])
   return (
     <>
       <Switch>
         {
-          tournamentRoutes.map((route, index) => (
+          courseRoutes.map((route, index) => (
             <PrivateRoute
               key={index} path={route.path}
               allowed={!!loggedIn}

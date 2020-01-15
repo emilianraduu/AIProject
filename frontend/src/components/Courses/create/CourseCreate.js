@@ -1,11 +1,12 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useContext, useEffect} from 'react'
 import {withRouter} from 'react-router-dom'
 import {StaffsContext} from '../../Timetable/StaffsContext'
 import {AuthContext} from '../../Auth/AuthContext'
 import {createCourse} from '../../Timetable/StaffsActions'
 import {BrowserView} from 'react-device-detect'
-import CourseCreateWeb from './CourseCreateWeb'
 import {getUsers} from "../../Auth/AuthActions";
+import {PageContent} from "../../../styles/shared/wrapper";
+import CourseCreateForm from "./CourseCreateForm";
 
 export const STAFF_ROLES = ['dealer', 'floorTurnee', 'floorCashGame', 'press', 'register', 'registerManager', 'director']
 
@@ -29,10 +30,12 @@ function CourseCreate({history}) {
     return (
         <>
             <BrowserView>
-                <CourseCreateWeb
-                    onSubmit={onSubmit}
-                    users={users}
-                />
+                <PageContent type={'web'} flex>
+                    <CourseCreateForm
+                        onSubmit={onSubmit}
+                        teachers={users}
+                        type={'web'}/>
+                </PageContent>
             </BrowserView>
         </>
 

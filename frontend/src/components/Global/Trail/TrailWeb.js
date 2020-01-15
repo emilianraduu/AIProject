@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { TrailWrapper, TrailILink, TrailIcon, TrailItem } from './styles/trailWeb'
 import { withRouter, Link } from 'react-router-dom'
 import { getBreadcrumbs } from '../../../helpers/breadcrumbsGenerator'
-import { ActiveCourseContext } from '../../Courses/view/ActiveCourseContext'
+import { ActiveCourseContext } from '../../Courses/ActiveCourseContext'
 import { ActiveStaffContext } from '../../Timetable/view/ActiveStaffContext'
 import { ANGLE_RIGHT_ICON_B } from '../../../styles/abstract/variables'
 

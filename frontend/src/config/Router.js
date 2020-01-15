@@ -32,7 +32,7 @@ export const extraRoutes = [
   {
     name: 'Login',
     path: '/login',
-    component: lazy(() => import('../components/Auth/Login'))
+    component: lazy(() => import('../components/Auth/LoginView'))
   },
   {
     name: 'Register',

@@ -64,6 +64,15 @@ export const SecondaryButtonDiv = styled.div`
   border-radius: 100px;
   cursor: pointer;
   ${({ full }) => full && `width:100%; margin-top: ${spacingO3};`}
+    ${({remove})=>remove && `width: 100px; background-color: ${colorFail};
+        background: none;
+        border:none;
+    color: ${colorFail};
+    &:hover{
+      background: ${colorFail80};
+      color: white;
+    }`}
+
 `
 
 export const SecondaryButton = styled(Button)`

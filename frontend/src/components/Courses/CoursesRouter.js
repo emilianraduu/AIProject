@@ -12,8 +12,8 @@ export const tournamentRoutes = [
   },
   {
     name: 'Courses',
-    path: '/courses/:tournamentId',
-    component: lazy(() => import('./view/CourseRouter'))
+    path: '/courses/:id',
+    component: lazy(() => import('./CourseRouter'))
   },
   {
     name: 'Courses',

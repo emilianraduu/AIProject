@@ -1,14 +1,5 @@
 import React from 'react'
-import {
-    CHANGE_TOURNAMENTS_PAGE,
-    FETCH_TOURNAMENTS_SUCCESS,
-    CHANGE_TOURNAMENTS_SORT,
-    APPLY_TOURNAMENTS_FILTER,
-    CLEAR_TOURNAMENTS_FILTERS,
-    REMOVE_TOURNAMENTS_FILTER,
-    REMOVE_TOURNAMENTS_SORT,
-    FETCH_TOURNAMENTS
-} from './RoomsActions'
+import {CHANGE_TOURNAMENTS_PAGE, FETCH_TOURNAMENTS, FETCH_TOURNAMENTS_SUCCESS} from './RoomsActions'
 
 const initialState = {
     pagination: {
@@ -31,10 +22,10 @@ const reducer = (state, action) => {
                 loading: true,
             }
         case FETCH_TOURNAMENTS_SUCCESS:
-          console.log(action.payload)
+            console.log(action.payload)
             return {
                 ...state,
-                courses: action.payload.data,
+                rooms: action.payload.data,
                 loading: false,
             }
         case CHANGE_TOURNAMENTS_PAGE:
@@ -45,58 +36,6 @@ const reducer = (state, action) => {
                     page: action.payload.page
                 },
                 // loading: true
-            }
-        case APPLY_TOURNAMENTS_FILTER:
-            return {
-                ...state,
-                pagination: {
-                    ...initialState.pagination
-                },
-                tournaments: {},
-                loading: true,
-                filters: {
-                    ...state.filters,
-                    [action.payload.name]: [action.payload.operator, action.payload.value]
-                }
-            }
-        case REMOVE_TOURNAMENTS_SORT:
-            return {
-                ...state,
-                sort: initialState.sort
-            }
-        case CHANGE_TOURNAMENTS_SORT:
-            return {
-                ...state,
-                loading: true,
-                pagination: {
-                    ...initialState.pagination
-                },
-                tournaments: {},
-                sort: action.payload
-            }
-        case CLEAR_TOURNAMENTS_FILTERS:
-            return {
-                ...state,
-                loading: true,
-                pagination: {
-                    ...initialState.pagination
-                },
-                tournaments: {},
-                filters: {}
-            }
-        case REMOVE_TOURNAMENTS_FILTER:
-            let newFilters = {
-                ...state.filters
-            }
-            delete newFilters[action.payload]
-            return {
-                ...state,
-                loading: true,
-                pagination: {
-                    ...initialState.pagination
-                },
-                tournaments: {},
-                filters: {...newFilters}
             }
         default:
             return state

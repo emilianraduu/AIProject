@@ -10,7 +10,7 @@ import { tournamentRoutes } from '../TournamentRouter'
 import SubmenuWeb from '../../../Global/Navbar/SubmenuWeb'
 import { DATETIME_FORMAT } from '../../../../config/constants'
 import TournamentEditModal from './TournamentEditModal'
-import { ActiveTournamentContext } from '../ActiveTournamentContext'
+import { ActiveCourseContext } from '../ActiveCourseContext'
 import { makeTournamentVisible } from '../../RoomsActions'
 import { sortByKey } from '../../../../helpers/sortHelpers'
 import {
@@ -255,7 +255,7 @@ export const tableData = ({ tournament, type }) => {
 
 function TournamentDetails({ match, history, type }) {
   const [modalType, setModalType] = useState({ value: null, icon: '', title: '' })
-  const tournamentsContext = useContext(ActiveTournamentContext)
+  const tournamentsContext = useContext(ActiveCourseContext)
   const authContext = useContext(AuthContext)
   const { activeTournament: tournament } = tournamentsContext.state
   const { tournamentId } = match.params

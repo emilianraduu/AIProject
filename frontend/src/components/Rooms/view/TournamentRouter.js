@@ -4,7 +4,7 @@ import { AuthContext } from '../../Auth/AuthContext'
 import { Switch } from 'react-router-dom'
 import { PrivateRoute } from '../../Global/PrivateRoute'
 import { getTournament } from '../view/ActiveTournamentActions'
-import { ActiveTournamentContext } from './ActiveTournamentContext'
+import { ActiveCourseContext } from './ActiveCourseContext'
 
 export const tournamentRoutes = (type) => [
   {
@@ -24,7 +24,7 @@ export const extraTourRoutes = extraTournamentRoutes(type)
 export default function TournamentRouter ({ match }) {
   const authContext = useContext(AuthContext)
   const { loggedIn } = authContext.state
-  const tournamentsContext = useContext(ActiveTournamentContext)
+  const tournamentsContext = useContext(ActiveCourseContext)
   const { tournamentId } = match.params
   useEffect(() => {
     loggedIn && getTournament(authContext, tournamentsContext, tournamentId)
