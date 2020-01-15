@@ -12,22 +12,21 @@ export const login = async (authContext, email, password, history) => {
   let response
   try {
     response = await axios({
-      url: `${API_URL}/auth/login`,
+      url: `${API_URL}/login`,
       method: 'post',
       data: {
         email: email,
         password: password
       }
     }
-    ).then(res=>console.log(res.json()))
+    ).then(res=>res)
   } catch (err) {
     authContext.dispatch({
       type: REQUEST_AUTH_TOKEN_FAILED,
-      payload: err.response.data
+      payload: err.response
     })
   }
   if (response) {
-    console.log(response)
     authContext.dispatch({
       type: REQUEST_AUTH_TOKEN,
       payload: response.data
@@ -35,22 +34,45 @@ export const login = async (authContext, email, password, history) => {
     history.push('/')
   }
 }
-export const logout = async ({ authContext, wizzardContext }) => {
-  await makeAuthRequest({
-    url: `${API_URL}/oauth2/logout`,
-    method: 'post'
+
+
+export const register = async (authContext, email, password,firstName,lastName, history) => {
+  let response
+  try {
+    response = await axios({
+          url: `${API_URL}/register`,
+          method: 'post',
+          data: {
+            email: email,
+            password: password,
+            firstName: firstName,
+            lastName: lastName,
+            isAdmin: false
+          }
+        }
+    ).then(res=>res)
+  } catch (err) {
+    authContext.dispatch({
+      // type: REQUEST_AUTH_TOKEN_FAILED,
+      // payload: err.response
+    })
   }
-  )(authContext)
-  wizzardContext.dispatch({
-    type: LOGOUT_SUCCESS
-  })
+  if (response) {
+    authContext.dispatch({
+      type: 'REGISTER_USER_SUCCESS',
+      payload: response.data
+    })
+    history.push('/')
+  }
+}
+export const logout = async ({ authContext }) => {
   authContext.dispatch({
     type: LOGOUT_SUCCESS
   })
 }
 export const getUser = async (authContext) => {
   const response = await makeAuthRequest({
-    url: `${API_URL}/users/me`,
+    url: `${API_URL}/me`,
     method: 'get'
   })(authContext)
   if (response && response.data) {

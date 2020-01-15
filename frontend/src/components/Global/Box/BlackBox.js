@@ -12,14 +12,11 @@ import { BigP, BigPBold, NormalP, WhitePLink } from '../../../styles/typography/
 import { Link } from 'react-router-dom'
 import { PLAY_ICON } from '../../../styles/abstract/variables'
 import { SecondaryButton } from '../../../styles/shared/button'
-import { ActivePlayerContext } from '../../Players/view/ActivePlayerContext'
 import { AuthContext } from '../../Auth/AuthContext'
-import { deletePlayer, unbustPlayer } from '../../Players/view/ActivePlayerActions'
 import { confirmAlert } from 'react-confirm-alert' // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import { sortByKey } from '../../../helpers/sortHelpers' //
 export default function BlackBox({ info }) {
-  const playersContext = useContext(ActivePlayerContext)
   const authContext = useContext(AuthContext)
   var minutes = Math.floor(parseInt(info.secondsPlayed) / 60)
   var seconds = parseInt(info.secondsPlayed) - minutes * 60
@@ -106,13 +103,7 @@ export default function BlackBox({ info }) {
           </Link>
           {
             info.status === 'bust' &&
-            <SecondaryButton type={'button'} rightMargin
-                             onClick={() => unbustPlayer({
-                               authContext,
-                               playersContext,
-                               playerId: info.id,
-                               userId: info.userId
-                             })}>
+            <SecondaryButton type={'button'} rightMargin>
               UNBUST
             </SecondaryButton>
           }
@@ -127,12 +118,6 @@ export default function BlackBox({ info }) {
                                buttons: [
                                  {
                                    label: 'Ok',
-                                   onClick: () => deletePlayer({
-                                     authContext,
-                                     playersContext,
-                                     playerId: info.id,
-                                     userId: info.userId
-                                   })
                                  },
                                  {
                                    label: 'Cancel',

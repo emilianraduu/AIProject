@@ -13,35 +13,15 @@ import getUserRoutes from './UserRoutes'
 
 export const routes = [
   {
-    name: 'Tournaments',
-    path: '/tournaments',
-    component: lazy(() => import('../components/Tournaments/TournamentsRouter'))
-  },
-  {
-    name: 'Cash Games',
-    path: '/cashgames',
-    component: lazy(() => import('../components/CashGames/CashGamesRouter'))
+    name: 'Courses',
+    path: '/courses',
+    component: lazy(() => import('../components/Courses/CoursesRouter'))
   },
   {
     name: 'Staff',
     path: '/staff',
     component: lazy(() => import('../components/Staff/StaffsRouter'))
   },
-  {
-    name: 'Users',
-    path: '/users',
-    component: lazy(() => import('../components/Users/UsersRouter'))
-  },
-  {
-    name: 'Archive',
-    path: '/archive',
-    component: lazy(() => import('../components/Tournaments/TournamentsRouter'))
-  },
-  {
-    name: 'Statistics',
-    path: '/statistics',
-    component: lazy(() => import('../components/Statistics/StatisticsRouter'))
-  }
 ]
 
 export const extraRoutes = [
@@ -49,16 +29,14 @@ export const extraRoutes = [
     name: 'Login',
     path: '/login',
     component: lazy(() => import('../components/Auth/Login'))
+  },
+  {
+    name: 'Register',
+    path: '/register',
+    component: lazy(() => import('../components/Auth/RegisterView'))
   }
 ]
 
-export const accountRoute = [
-  {
-    name: 'My Account',
-    path: '/account',
-    component: lazy(() => import('../components/Account/AccountView'))
-  }
-]
 
 export default function Router() {
   const authContext = useContext(AuthContext)
@@ -66,7 +44,6 @@ export default function Router() {
   useEffect(() => {
     loggedIn && getUser(authContext)
   }, [loggedIn])
-  console.log(user)
   return (
     <BrowserRouter>
       <WsConnect/>
@@ -75,7 +52,7 @@ export default function Router() {
             <>
               <BrowserView>
                 <HeaderWeb role={user && user.role}/>
-                <RouterContent loggedIn={loggedIn} role={user && user.role}/>
+                <RouterContent loggedIn={loggedIn} />
               </BrowserView>
               {/* to do - on mobile a screen that shows a message that this website isnt available on mobile */}
               {/*<MobileView>*/}
@@ -119,23 +96,11 @@ export function RouterContent({ loggedIn, role }) {
           )
         }
         {
-          accountRoute.map((route, index) => (
-            <PrivateRoute
-              key={index} path={route.path}
-              allowed={!!loggedIn}
-              redirectTo='/login'
-              render={(props) => (
-                <Layout {...props} Content={route.component}/>
-              )}
-            />
-          ))
-        }
-        {
           extraRoutes.map((route, index) => (
             <PrivateRoute
               key={index} path={route.path}
               allowed={!loggedIn}
-              redirectTo={role === 'register' ? '/users' : '/tournaments'}
+              redirectTo={'/courses'}
               render={(props) => (
                 <LayoutAuth {...props} Content={route.component}/>
 

@@ -98,33 +98,6 @@ export default function StaffCreateForm({ onSubmit,pagination, onCountriesScroll
                         name='gender'/>
                     </FormItem>
                   </DualFormWrapper>
-                  <DualFormWrapper mobile={type === 'mobile'}>
-                    <FormItem>
-                      <Label>Citizenship</Label>
-                      <Field
-                        component={type==='web' ? InfiniteSelect : MobileInfiniteSelect}
-                        placeholder='Search'
-                        title={'Select citizenship'}
-                        pagination={pagination}
-                        handlePagination={onCountriesScrollToBottom}
-                        onInputChange={_.debounce(onCitizenshipInputChange, DEBOUNCE_MS)}
-                        options={countries.map(country => ({ value: country.id, label: country.code }))}
-                        name='citizenship'
-                      />
-                    </FormItem>
-                    <FormItem>
-                      <Label>Country</Label>
-                      <Field
-                        component={InfiniteSelect}
-                        placeholder='Select country'
-                        onMenuScrollToBottom={onCountriesScrollToBottom}
-                        pagination={pagination}
-                        handlePagination={onCountriesScrollToBottom}
-                        onInputChange={_.debounce(onCountriesInputChange, DEBOUNCE_MS)}
-                        options={countries.map(country => ({ value: country.id, label: country.name }))}
-                        name='country'/>
-                    </FormItem>
-                  </DualFormWrapper>
                   <FormItem>
                     <Label>Address</Label>
                     <Field component={FieldInput} name='address' placeholder={'Type address'}/>

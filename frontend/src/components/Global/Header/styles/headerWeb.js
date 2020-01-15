@@ -16,8 +16,6 @@ export const HeaderWrapper = styled.div`
 `
 
 export const HeaderImage = styled.div`
-  background: url(${headerBG});
-  background-size: contain;
   z-index: -1;
   background-repeat: no-repeat;
   position: absolute;
