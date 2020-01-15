@@ -52,6 +52,7 @@ export default function CourseCrateForm({onSubmit, teachers, type}) {
                                     </FormItem>
                                 </BoxContent>
                             </BoxWrapper>
+                            
                         </DualBoxWrapper>
                         <StaffFormFooter>
                             <FormItem style={{width: 'fit-content'}}>
