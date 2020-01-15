@@ -1,50 +1,50 @@
-import { Exclude } from 'class-transformer';
-import {Entity, Column, PrimaryGeneratedColumn, BeforeInsert, OneToMany} from 'typeorm';
-import { PasswordTransformer } from './password.transformer';
+import {Exclude} from 'class-transformer';
+import {BeforeInsert, Column, Entity, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
+import {PasswordTransformer} from './password.transformer';
 import {Classes} from '../class/classes.entity';
 
 @Entity({
-  name: 'users',
+    name: 'users',
 })
 export class User {
-  @PrimaryGeneratedColumn()
-  id: number;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-  @Column({ length: 255 })
-  firstName: string;
+    @Column({length: 255})
+    firstName: string;
 
-  @Column({ length: 255 })
-  lastName: string;
+    @Column({length: 255})
+    lastName: string;
 
-  @Column({ length: 255 })
-  email: string;
+    @Column({length: 255})
+    email: string;
 
-  @Column({nullable: true})
-  isAdmin: boolean;
+    @Column({nullable: true})
+    isAdmin: boolean;
 
-  @OneToMany(type => Classes, classes => classes.user)
-  classes: Classes[];
+    @OneToMany(type => Classes, classes => classes.user) // note: we will create author property in the Photo class below
+    classes: Classes[];
 
-  @BeforeInsert()
-  beforeInsertActions() {
-    this.isAdmin = false;
-  }
-  @Column({
-    name: 'password',
-    length: 255,
-    transformer: new PasswordTransformer(),
-  })
+    @BeforeInsert()
+    beforeInsertActions() {
+        this.isAdmin = false;
+    }
 
+    @Column({
+        name: 'password',
+        length: 255,
+        transformer: new PasswordTransformer(),
+    })
 
-  @Exclude()
-  password: string;
+    @Exclude()
+    password: string;
 
 }
 
 export class UserFillableFields {
-  email: string;
-  firstName: string;
-  lastName: string;
-  password: string;
-  isAdmin: boolean;
+    email: string;
+    firstName: string;
+    lastName: string;
+    password: string;
+    isAdmin: boolean;
 }

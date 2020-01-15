@@ -1,10 +1,10 @@
-import { Injectable, NotAcceptableException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import {Injectable, NotAcceptableException} from '@nestjs/common';
+import {InjectRepository} from '@nestjs/typeorm';
+import {Repository} from 'typeorm';
 
-import { Classes } from './classes.entity';
-import { ClassesPayload } from 'modules/auth/classes.payload';
-import { User } from 'modules/user';
+import {Classes} from './classes.entity';
+import {ClassesPayload} from 'modules/auth/classes.payload';
+import {User} from 'modules/user';
 
 @Injectable()
 export class ClassesService {
@@ -25,6 +25,11 @@ export class ClassesService {
         return this.classesRepository.query('SELECT * FROM classes');
     }
 
+    async getByUser(id: number) {
+        const user = await this.userRepository.findOne(id);
+        return this.classesRepository.find({where: { userId: user}});
+    }
+
     async getByName(name: string) {
         return await this.classesRepository.createQueryBuilder('classes')
             .where('classes.name = :name')
@@ -39,26 +44,19 @@ export class ClassesService {
     async create(
         payload: ClassesPayload,
     ) {
-
         const classes = await this.getByName(payload.name);
-
         if (classes) {
             throw new NotAcceptableException(
                 'This class has already been added.',
             );
         }
 
-        const course = await this.classesRepository.create(payload)
+        const course = await this.classesRepository.create(payload);
+        const user = await this.userRepository.findOne({where: {id: payload.user}});
 
-        const user = await this.userRepository.findOne({ where: { id: payload.user } });
+        course.user = user;
 
-        if (Array.isArray(user.classes)) {
-            user.classes.push(course);
-        } else {
-            user.classes = [course];
-        }
-
-        await this.userRepository.save(user);
+        await this.classesRepository.save(course);
 
         return course;
 
