@@ -2,10 +2,9 @@ import { Injectable, NotAcceptableException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { Classes, ClassesFillableFields } from './classes.entity';
+import { Classes } from './classes.entity';
 import { ClassesPayload } from 'modules/auth/classes.payload';
-import { updateExpression } from '@babel/types';
-import { User, UsersService } from 'modules/user';
+import { User } from 'modules/user';
 
 @Injectable()
 export class ClassesService {
@@ -14,7 +13,7 @@ export class ClassesService {
         @InjectRepository(Classes)
         private readonly classesRepository: Repository<Classes>,
         @InjectRepository(User)
-        private readonly userRepository: Repository<UsersService>,
+        private readonly userRepository: Repository<User>,
     ) {
     }
 
@@ -49,11 +48,9 @@ export class ClassesService {
             );
         }
 
-        const course = await this.classesRepository.save(
-            this.classesRepository.create(payload),
-        );
+        const course = await this.classesRepository.create(payload)
 
-        const user = await this.userRepository.findOne({ where: { id: payload.userId } });
+        const user = await this.userRepository.findOne({ where: { id: payload.user } });
 
         if (Array.isArray(user.classes)) {
             user.classes.push(course);

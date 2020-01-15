@@ -7,7 +7,6 @@ import {User, UserFillableFields} from './user.entity';
 
 @Injectable()
 export class UsersService {
-
     constructor(
         @InjectRepository(User)
         private readonly userRepository: Repository<User>,

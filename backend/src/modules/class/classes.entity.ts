@@ -35,7 +35,6 @@ export class Classes {
     @ManyToOne(type => User, user => user.classes)
     user: User
 
-
     @BeforeInsert()
     beforeInsertActions() {
         this.description = '';
