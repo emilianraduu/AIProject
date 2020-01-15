@@ -22,6 +22,9 @@ export class User {
   @Column({nullable: true})
   isAdmin: boolean;
 
+  @OneToMany(type => Classes, classes => classes.user)
+  classes: Classes[];
+
   @BeforeInsert()
   beforeInsertActions() {
     this.isAdmin = false;

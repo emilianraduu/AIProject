@@ -74,7 +74,7 @@ export class AuthController {
   @ApiResponse({ status: 400, description: 'Bad Request' })
   @ApiResponse({ status: 401, description: 'Unauthorized' })
   async createClass(@Body() payload: ClassesPayload): Promise<any> {
-    return await this.classesService.create(payload);
+    return this.classesService.create(payload);
   }
 
   @ApiBearerAuth()

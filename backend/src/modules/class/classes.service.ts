@@ -1,10 +1,11 @@
-import {Injectable, NotAcceptableException} from '@nestjs/common';
-import {InjectRepository} from '@nestjs/typeorm';
-import {Repository} from 'typeorm';
+import { Injectable, NotAcceptableException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
-import {Classes, ClassesFillableFields} from './classes.entity';
-import {ClassesPayload} from 'modules/auth/classes.payload';
-import {updateExpression} from '@babel/types';
+import { Classes, ClassesFillableFields } from './classes.entity';
+import { ClassesPayload } from 'modules/auth/classes.payload';
+import { updateExpression } from '@babel/types';
+import { User, UsersService } from 'modules/user';
 
 @Injectable()
 export class ClassesService {
@@ -12,6 +13,8 @@ export class ClassesService {
     constructor(
         @InjectRepository(Classes)
         private readonly classesRepository: Repository<Classes>,
+        @InjectRepository(User)
+        private readonly userRepository: Repository<UsersService>,
     ) {
     }
 
@@ -37,6 +40,7 @@ export class ClassesService {
     async create(
         payload: ClassesPayload,
     ) {
+
         const classes = await this.getByName(payload.name);
 
         if (classes) {
@@ -45,9 +49,22 @@ export class ClassesService {
             );
         }
 
-        return await this.classesRepository.save(
+        const course = await this.classesRepository.save(
             this.classesRepository.create(payload),
         );
+
+        const user = await this.userRepository.findOne({ where: { id: payload.userId } });
+
+        if (Array.isArray(user.classes)) {
+            user.classes.push(course);
+        } else {
+            user.classes = [course];
+        }
+
+        await this.userRepository.save(user);
+
+        return course;
+
     }
 
     async remove(
