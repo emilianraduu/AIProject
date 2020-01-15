@@ -78,7 +78,8 @@ export class AuthController {
   @ApiResponse({ status: 400, description: 'Bad Request' })
   @ApiResponse({ status: 401, description: 'Unauthorized' })
   async getClassesByName(@Request() request): Promise<any> {
-    return await this.classesService.getAll();
+    const classes = await this.classesService.getAll();
+    return classes;
   }
 
   @ApiBearerAuth()

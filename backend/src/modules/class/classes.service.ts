@@ -4,7 +4,7 @@ import {Repository} from 'typeorm';
 
 import {Classes} from './classes.entity';
 import {ClassesPayload} from 'modules/auth/classes.payload';
-import {User} from 'modules/user';
+import {User, UsersService} from 'modules/user';
 
 @Injectable()
 export class ClassesService {
@@ -22,7 +22,7 @@ export class ClassesService {
     }
 
     async getAll() {
-        return this.classesRepository.query('SELECT * FROM classes');
+        const classes = await this.classesRepository.find({});
     }
 
     async getByUser(id: number) {
