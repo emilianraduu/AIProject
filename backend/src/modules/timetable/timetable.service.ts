@@ -14,12 +14,8 @@ export class TimetableService {
     ) {
     }
 
-    async get(id: number) {
-        return this.timetableRepository.findOne(id);
-    }
-
     async getAll() {
-        return this.timetableRepository.query('SELECT firstName, lastName,id FROM users WHERE isAdmin = 0');
+        return this.timetableRepository.query('SELECT firstName, lastName, id FROM users WHERE isAdmin = 0');
     }
 
     async getByEmail(email: string) {
