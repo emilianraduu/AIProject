@@ -9,5 +9,9 @@ export class ClassesPayload {
   @IsNotEmpty()
   @MinLength(5)
   name: string;
+  
+  @IsNotEmpty()
+  user: User;
 
+  
 }

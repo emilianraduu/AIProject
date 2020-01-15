@@ -1,12 +1,14 @@
-import { Controller, Body, Post, UseGuards, Get, Request, Put, Delete } from '@nestjs/common';
+import { Controller, Body, Post, UseGuards, Get, Request, Put, Delete, Param } from '@nestjs/common';
 import { ApiResponse, ApiUseTags, ApiBearerAuth } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService, LoginPayload, RegisterPayload } from './';
 import { ClassesPayload } from './classes.payload';
 import { RoomsPayload } from './rooms.payload';
-import {UsersService} from '../user';
-import {ClassesService} from '../class/classes.service';
-import {RoomsService} from '../room/rooms.service';
+import { UsersService } from '../user';
+import { ClassesService } from '../class/classes.service';
+import { RoomsService } from '../room/rooms.service';
+import { Classes, ClassesFillableFields } from 'modules/class/classes.entity';
+import { RoomsFillableFields } from 'modules/room/rooms.entity';
 
 @Controller('api')
 @ApiUseTags('authentication')
@@ -49,12 +51,24 @@ export class AuthController {
 
   @ApiBearerAuth()
   @UseGuards(AuthGuard())
-  @Get('rooms/remove')
+  @Delete('rooms/remove/:id')
   @ApiResponse({ status: 201, description: 'Succesfully removed' })
   @ApiResponse({ status: 400, description: 'Bad Request' })
   @ApiResponse({ status: 401, description: 'Unauthorized' })
-  async removeRoom(@Body() payload: RoomsPayload): Promise<any> {
-    return await this.roomsService.remove(payload);
+  async removeRoom(@Param('id') id): Promise<any> {
+    const someclass = await this.roomsService.get(Number(id));
+    return await this.roomsService.remove(someclass);
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(AuthGuard())
+  @Put('rooms/update/:id')
+  @ApiResponse({ status: 201, description: 'Succesfully updated' })
+  @ApiResponse({ status: 400, description: 'Bad Request' })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
+  async updateRoom(@Param('id') id, @Body() payload: RoomsFillableFields): Promise<any> {
+    payload.id = Number(id);
+    return this.roomsService.update(payload);
   }
 
   @ApiBearerAuth()
@@ -74,27 +88,30 @@ export class AuthController {
   @ApiResponse({ status: 400, description: 'Bad Request' })
   @ApiResponse({ status: 401, description: 'Unauthorized' })
   async createClass(@Body() payload: ClassesPayload): Promise<any> {
-    return await this.classesService.create(payload);
+    return this.classesService.create(payload);
   }
 
   @ApiBearerAuth()
   @UseGuards(AuthGuard())
-  @Delete('classes/remove')
+  @Delete('classes/remove/:id_class')
   @ApiResponse({ status: 201, description: 'Succesfully removed' })
   @ApiResponse({ status: 400, description: 'Bad Request' })
   @ApiResponse({ status: 401, description: 'Unauthorized' })
-  async removeClass(@Body() payload: ClassesPayload): Promise<any> {
-    return await this.classesService.remove(payload);
+  async removeClass(@Param('id_class') id_class): Promise<any> {
+    const someclass = await this.classesService.get(Number(id_class));
+    return await this.classesService.remove(someclass);
   }
+
 
   @ApiBearerAuth()
   @UseGuards(AuthGuard())
-  @Put('classes/update')
+  @Put('classes/update/:id_class')
   @ApiResponse({ status: 201, description: 'Succesfully updated' })
   @ApiResponse({ status: 400, description: 'Bad Request' })
   @ApiResponse({ status: 401, description: 'Unauthorized' })
-  async updateClass(@Body() payload: ClassesPayload): Promise<any> {
-    return await this.classesService.update(payload);
+  async updateClass(@Param('id_class') id_class, @Body() payload: ClassesFillableFields): Promise<any> {
+    payload.id_class = Number(id_class);
+    return this.classesService.update(payload);
   }
 
   @Post('login')

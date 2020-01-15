@@ -17,6 +17,11 @@ export const routes = [
     component: lazy(() => import('../components/Courses/CoursesRouter'))
   },
   {
+    name: 'Rooms',
+    path: '/rooms',
+    component: lazy(() => import('../components/Rooms/RoomsRouter'))
+  },
+  {
     name: 'Timetable',
     path: '/Timetable',
     component: lazy(() => import('../components/Timetable/StaffsRouter'))

@@ -33,7 +33,7 @@ export class Classes {
     no_seminars: number;
 
     @ManyToOne(type => User, user => user.classes)
-    teacher: User;
+    user: User
 
     @BeforeInsert()
     beforeInsertActions() {
@@ -56,4 +56,6 @@ export class ClassesFillableFields {
     duration: number;
     no_courses: number;
     no_seminars: number;
+    user: User;
+    id_class: number;
 }

@@ -1,10 +1,10 @@
-import {Injectable, NotAcceptableException} from '@nestjs/common';
-import {InjectRepository} from '@nestjs/typeorm';
-import {Repository} from 'typeorm';
+import { Injectable, NotAcceptableException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
-import {Classes, ClassesFillableFields} from './classes.entity';
-import {ClassesPayload} from 'modules/auth/classes.payload';
-import {updateExpression} from '@babel/types';
+import { Classes } from './classes.entity';
+import { ClassesPayload } from 'modules/auth/classes.payload';
+import { User } from 'modules/user';
 
 @Injectable()
 export class ClassesService {
@@ -12,6 +12,8 @@ export class ClassesService {
     constructor(
         @InjectRepository(Classes)
         private readonly classesRepository: Repository<Classes>,
+        @InjectRepository(User)
+        private readonly userRepository: Repository<User>,
     ) {
     }
 
@@ -20,7 +22,7 @@ export class ClassesService {
     }
 
     async getAll() {
-        return this.classesRepository.query('SELECT * FROM classes c JOIN users u ON c.idId = u.id WHERE u.isAdmin=0');
+        return this.classesRepository.query('SELECT * FROM classes');
     }
 
     async getByName(name: string) {
@@ -37,6 +39,7 @@ export class ClassesService {
     async create(
         payload: ClassesPayload,
     ) {
+
         const classes = await this.getByName(payload.name);
 
         if (classes) {
@@ -45,9 +48,20 @@ export class ClassesService {
             );
         }
 
-        return await this.classesRepository.save(
-            this.classesRepository.create(payload),
-        );
+        const course = await this.classesRepository.create(payload)
+
+        const user = await this.userRepository.findOne({ where: { id: payload.user } });
+
+        if (Array.isArray(user.classes)) {
+            user.classes.push(course);
+        } else {
+            user.classes = [course];
+        }
+
+        await this.userRepository.save(user);
+
+        return course;
+
     }
 
     async remove(
