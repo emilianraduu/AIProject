@@ -32,8 +32,6 @@ export class User {
     transformer: new PasswordTransformer(),
   })
 
-  @OneToMany(type => Classes, photo => photo.teacher)
-  classes: Classes[];
 
   @Exclude()
   password: string;

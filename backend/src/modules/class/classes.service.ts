@@ -20,7 +20,7 @@ export class ClassesService {
     }
 
     async getAll() {
-        return this.classesRepository.query('SELECT * FROM classes c JOIN users u ON c.idId = u.id WHERE u.isAdmin=0');
+        return this.classesRepository.query('SELECT * FROM classes');
     }
 
     async getByName(name: string) {

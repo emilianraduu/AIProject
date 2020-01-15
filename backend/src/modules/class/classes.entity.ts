@@ -32,8 +32,6 @@ export class Classes {
     @Column()
     no_seminars: number;
 
-    @ManyToOne(type => User, user => user.classes)
-    teacher: User;
 
     @BeforeInsert()
     beforeInsertActions() {
