@@ -4,7 +4,6 @@
 .env
 .DS_STORE
 ._.DS_STORE
-.env.local
 npm-debug.log*
 /src/._.DS_STORE
 .idea
