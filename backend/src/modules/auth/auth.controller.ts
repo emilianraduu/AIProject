@@ -30,13 +30,14 @@ export class AuthController {
     return await this.roomsService.getAll();
   }
 
-
-  @Get('users')
-  @ApiResponse({ status: 201, description: 'Succesfully got users' })
+  @ApiBearerAuth()
+  @UseGuards(AuthGuard())
+  @Get('rooms/:id')
+  @ApiResponse({ status: 201, description: 'Succesfully got room at id :id' })
   @ApiResponse({ status: 400, description: 'Bad Request' })
   @ApiResponse({ status: 401, description: 'Unauthorized' })
-  async getUsers(@Request() request): Promise<any> {
-    return await this.userService.getAll();
+  async getRoomById(@Param('id') id): Promise<any> {
+    return await this.roomsService.get(id);
   }
 
   @ApiBearerAuth()
@@ -83,6 +84,16 @@ export class AuthController {
 
   @ApiBearerAuth()
   @UseGuards(AuthGuard())
+  @Get('classes/:id_class')
+  @ApiResponse({ status: 201, description: 'Succesfully got class at id :id_class' })
+  @ApiResponse({ status: 400, description: 'Bad Request' })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
+  async getClassById(@Param('id_class') id_class): Promise<any> {
+    return await this.classesService.get(id_class);
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(AuthGuard())
   @Post('classes/create')
   @ApiResponse({ status: 200, description: 'Succesfully created' })
   @ApiResponse({ status: 400, description: 'Bad Request' })
@@ -114,6 +125,15 @@ export class AuthController {
     return this.classesService.update(payload);
   }
 
+
+  @Get('users')
+  @ApiResponse({ status: 201, description: 'Succesfully got users' })
+  @ApiResponse({ status: 400, description: 'Bad Request' })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
+  async getUsers(@Request() request): Promise<any> {
+    return await this.userService.getAll();
+  }
+
   @Post('login')
   @ApiResponse({ status: 201, description: 'Successful Login' })
   @ApiResponse({ status: 400, description: 'Bad Request' })
@@ -140,4 +160,6 @@ export class AuthController {
   async getLoggedInUser(@Request() request): Promise<any> {
     return request.user;
   }
+
+  
 }
