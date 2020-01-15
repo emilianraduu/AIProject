@@ -5,18 +5,18 @@ import moment from 'moment'
 
 export const FETCH_TOURNAMENT = 'FETCH_TOURNAMENT'
 export const FETCH_TOURNAMENT_SUCCESS = 'FETCH_TOURNAMENT_SUCCESS'
-export const getTournament = async (authContext, tournamentsContext, tournamentId = '') => {
+export const getCourse = async (authContext, tournamentsContext, id = '') => {
   tournamentsContext.dispatch({
     type: FETCH_TOURNAMENT,
     payload: { currentTime: moment() }
   })
   const response = await makeAuthRequest({
-    url: `${API_URL}/tournaments/${tournamentId}`,
+    url: `${API_URL}/courses/${id}`,
     method: 'get'
   })(authContext)
   response && tournamentsContext.dispatch({
     type: FETCH_TOURNAMENT_SUCCESS,
-    payload: { tournament: response.data, tournamentId, currentTime: moment() }
+    payload: { tournament: response.data, id, currentTime: moment() }
   })
 
 }

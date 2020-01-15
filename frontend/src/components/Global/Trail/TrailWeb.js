@@ -2,12 +2,12 @@ import React, { useContext } from 'react'
 import { TrailWrapper, TrailILink, TrailIcon, TrailItem } from './styles/trailWeb'
 import { withRouter, Link } from 'react-router-dom'
 import { getBreadcrumbs } from '../../../helpers/breadcrumbsGenerator'
-import { ActiveTournamentContext } from '../../Courses/view/ActiveTournamentContext'
+import { ActiveCourseContext } from '../../Courses/view/ActiveCourseContext'
 import { ActiveStaffContext } from '../../Timetable/view/ActiveStaffContext'
 import { ANGLE_RIGHT_ICON_B } from '../../../styles/abstract/variables'
 
 function TrailWeb({ location }) {
-  const tournamentsContext = useContext(ActiveTournamentContext)
+  const tournamentsContext = useContext(ActiveCourseContext)
   const staffsContext = useContext(ActiveStaffContext)
   const uuidToName = {
     tournaments: {

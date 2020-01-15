@@ -1,5 +1,3 @@
-// export const API_URL = 'https://api.pokerfest.edev.xyz/api'
-//export const API_URL = 'http://localhost:3000/api'
 export const API_URL = 'http://localhost:3000/api'
 export const DATETIME_FORMAT = 'DD MMMM YYYY, h:mm a'
 export const DATE_FORMAT = 'MMMM, YYYY'

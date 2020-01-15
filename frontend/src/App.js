@@ -7,7 +7,7 @@ import { StaffsContextProvider } from './components/Timetable/StaffsContext'
 import { AuthContextProvider } from './components/Auth/AuthContext'
 import { ToastContainer } from 'react-toastify'
 import 'react-datepicker/dist/react-datepicker.css'
-import { ActiveTournamentContextProvider } from './components/Courses/view/ActiveTournamentContext'
+import { ActiveTournamentContextProvider } from './components/Courses/view/ActiveCourseContext'
 import { ActiveStaffContextProvider } from './components/Timetable/view/ActiveStaffContext'
 
 function App () {

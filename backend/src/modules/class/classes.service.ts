@@ -4,7 +4,7 @@ import {Repository} from 'typeorm';
 
 import {Classes} from './classes.entity';
 import {ClassesPayload} from 'modules/auth/classes.payload';
-import {User, UsersService} from 'modules/user';
+import {User} from 'modules/user';
 
 @Injectable()
 export class ClassesService {
@@ -22,12 +22,15 @@ export class ClassesService {
     }
 
     async getAll() {
-        const classes = await this.classesRepository.find({});
+        const classes = await this.classesRepository.createQueryBuilder('classes')
+            .leftJoinAndSelect('classes.user', 'user')
+            .getMany();
+        return classes;
     }
 
     async getByUser(id: number) {
         const user = await this.userRepository.findOne(id);
-        return this.classesRepository.find({where: { userId: user}});
+        return this.classesRepository.find({where: {userId: user}});
     }
 
     async getByName(name: string) {

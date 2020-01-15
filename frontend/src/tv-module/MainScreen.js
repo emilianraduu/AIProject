@@ -10,9 +10,9 @@ import moment from 'moment'
 import pokerfestLogo from '../assets/pokerfest_logo.png'
 import ipcLogo from '../assets/ipc_bucharest.png'
 import ace from '../assets/ace_card.svg'
-import { ActiveTournamentContext } from '../components/Courses/view/ActiveTournamentContext'
+import { ActiveCourseContext } from '../components/Courses/view/ActiveCourseContext'
 import { relative } from 'path'
-import { getTournament } from '../components/Courses/view/ActiveTournamentActions'
+import { getCourse } from '../components/Courses/view/ActiveCourseActions'
 import { AuthContext } from '../components/Auth/AuthContext'
 import { TopBar, VerticalSeparator } from './styles'
 import { BigP, BigPBold, BigPGreyBold } from '../styles/typography/typography'
@@ -172,14 +172,14 @@ export default function (props) {
   const [nextLevelIn, setNextLevelIn] = useState(0)
   const [nextPauseIn, setNextPauseIn] = useState(0)
   // const { activeTournament: tournament } = useContext(
-  //   ActiveTournamentContext
+  //   ActiveCourseContext
   // ).state;
   const authContext = useContext(AuthContext)
-  const tournamentsContext = useContext(ActiveTournamentContext)
+  const tournamentsContext = useContext(ActiveCourseContext)
   const { currTime, successTime } = tournamentsContext.state
   const { activeTournament: tournament, loadingTournament } = tournamentsContext.state
   const fetchTournament = tournament => {
-    getTournament(authContext, tournamentsContext, tournament.id)
+    getCourse(authContext, tournamentsContext, tournament.id)
   }
   if (!tournament || !tournament.id) {
     return null

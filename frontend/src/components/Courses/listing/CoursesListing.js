@@ -1,10 +1,12 @@
-import React, {useEffect, useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import {CoursesContext} from '../CoursesContext'
 import {
     applyTournamentsFilter,
     changeTournamentsPage,
-    changeTournamentsSort, clearTournamentsFilters,
-    getTournaments, removeTournamentsFilter
+    changeTournamentsSort,
+    clearTournamentsFilters,
+    getTournaments,
+    removeTournamentsFilter
 } from '../CoursesActions'
 import {BrowserView} from 'react-device-detect'
 import CoursesListingWeb from './CoursesListingWeb'
@@ -16,10 +18,7 @@ export const TOURNAMENT_LISTING_HEADERS = [
         name: 'name',
         dbName: 'class.name',
     },
-    {
-        name: 'description',
-        dbName: 'class.description',
-    },
+
     {
         name: 'available_from',
         dbName: 'class.available_from',
@@ -47,6 +46,15 @@ export const TYPE_TO_URL = {}
 
 function CoursesListing({match}) {
     const authContext = useContext(AuthContext)
+    const {user} = authContext.state
+    if (user.isAdmin) {
+        if(!TOURNAMENT_LISTING_HEADERS.find((t)=>t.name === 'teacher')) {
+            TOURNAMENT_LISTING_HEADERS.push({
+                name: 'teacher',
+                dbName: 'user.teacher',
+            },)
+        }
+    }
     const tournamentsContext = useContext(CoursesContext)
     const {pagination, courses, filters, sort, loading} = tournamentsContext.state
     const [orderBy, direction] = sort
@@ -67,7 +75,7 @@ function CoursesListing({match}) {
                     match={match}
                     loading={loading}
                     type={TYPE_TO_URL[URL_TO_TYPE[match.path]]}
-                    courses={courses}
+                    courses={user.isAdmin ? courses : user.classes}
                     pagination={pagination}
                     handlePagination={handlePagination}
                     handleFilter={handleFilter}

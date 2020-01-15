@@ -25,11 +25,6 @@ export class User {
     @OneToMany(type => Classes, classes => classes.user) // note: we will create author property in the Photo class below
     classes: Classes[];
 
-    @BeforeInsert()
-    beforeInsertActions() {
-        this.isAdmin = false;
-    }
-
     @Column({
         name: 'password',
         length: 255,
