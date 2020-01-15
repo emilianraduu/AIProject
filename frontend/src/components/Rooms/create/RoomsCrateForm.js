@@ -13,7 +13,7 @@ import {FieldSelect} from '../../Global/Select/FieldSelect'
 import {SecondaryButton} from '../../../styles/shared/button'
 import {FILE_ICON} from '../../../styles/abstract/variables'
 
-export default function RoomsCrateForm({onSubmit, teachers}) {
+export default function CourseCrateForm({onSubmit, teachers}) {
     return (
         <Form
             onSubmit={onSubmit}

@@ -6,11 +6,11 @@ import TournamentViewWeb from './TournamentDetailsWeb'
 import TournamentViewMobile from './TournamentDetailsMobile'
 import { withRouter } from 'react-router-dom'
 import TrailMob from '../../../Global/Trail/TrailMob'
-import { tournamentRoutes } from '../TournamentRouter'
+import { tournamentRoutes } from '../CourseRouter'
 import SubmenuWeb from '../../../Global/Navbar/SubmenuWeb'
 import { DATETIME_FORMAT } from '../../../../config/constants'
 import TournamentEditModal from './TournamentEditModal'
-import { ActiveTournamentContext } from '../ActiveTournamentContext'
+import { ActiveCourseContext } from '../ActiveCourseContext'
 import { makeTournamentVisible } from '../../CoursesActions'
 import { sortByKey } from '../../../../helpers/sortHelpers'
 import {
@@ -23,7 +23,7 @@ import {
   TV_ICON
 } from '../../../../styles/abstract/variables'
 import { AuthContext } from '../../../Auth/AuthContext'
-import { updateTournament } from '../ActiveTournamentActions'
+import { updateTournament } from '../ActiveCourseActions'
 
 export const CASHGAME_TYPE = 'cashgames'
 export const CASHGAME_TITLE = 'cashGame'
@@ -255,7 +255,7 @@ export const tableData = ({ tournament, type }) => {
 
 function TournamentDetails({ match, history, type }) {
   const [modalType, setModalType] = useState({ value: null, icon: '', title: '' })
-  const tournamentsContext = useContext(ActiveTournamentContext)
+  const tournamentsContext = useContext(ActiveCourseContext)
   const authContext = useContext(AuthContext)
   const { activeTournament: tournament } = tournamentsContext.state
   const { tournamentId } = match.params

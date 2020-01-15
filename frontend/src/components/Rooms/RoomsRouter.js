@@ -6,24 +6,24 @@ import { PrivateRoute } from '../Global/PrivateRoute'
 
 export const tournamentRoutes = [
   {
-    name: 'Rooms',
-    path: '/rooms/create',
+    name: 'Courses',
+    path: '/courses/create',
     component: lazy(() => import('./create/RoomsCreate'))
   },
   {
-    name: 'Rooms',
-    path: '/rooms/:tournamentId',
+    name: 'Courses',
+    path: '/courses/:tournamentId',
     component: lazy(() => import('./view/TournamentRouter'))
   },
   {
-    name: 'Rooms',
-    path: '/rooms',
+    name: 'Courses',
+    path: '/courses',
     exact: true,
     component: lazy(() => import('./listing/RoomsListing'))
   }
 
 ]
-export default function RoomsRouter () {
+export default function CoursesRouter () {
   const authContext = useContext(AuthContext)
   const { loggedIn } = authContext.state
   return (

@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom'
-import RoomsCreateWeb from './RoomsCreateWeb'
+import CourseCreateWeb from './RoomsCreateWeb'
 import {createCourse} from "../../../Timetable/StaffsActions";
 import {AuthContext} from "../../../Auth/AuthContext";
 import {StaffsContext} from "../../../Timetable/StaffsContext";
 
 export const STAFF_ROLES = ['dealer', 'floorTurnee', 'floorCashGame', 'press', 'register', 'registerManager', 'director']
 
-function RoomsCreate({ history }) {
+function CourseCreate({ history }) {
   const authContext = useContext(AuthContext)
   const staffsContext = useContext(StaffsContext)
   const onSubmit = (values) => {
@@ -28,7 +28,7 @@ function RoomsCreate({ history }) {
 
   return (
     <>
-        <RoomsCreateWeb
+        <CourseCreateWeb
           onSubmit={onSubmit}
         />
     </>
@@ -36,4 +36,4 @@ function RoomsCreate({ history }) {
   )
 }
 
-export default withRouter(RoomsCreate)
+export default withRouter(CourseCreate)

@@ -74,12 +74,18 @@ function HeaderTop({ history, role, ...props }) {
           style={{ position: 'relative', display: 'flex', flexFlow: 'column' }}
           ref={wrapperRefAdd}
         >
+          {
+            user.isAdmin &&
+            <>
           <ButtonMain
             onClick={dropDownAction}
           >
             Add new
           </ButtonMain>
+
           <AddDropdown show={addDropdown} showFunction={setAddDropdown}/>
+          </>
+          }
         </div>
         <div
           style={{ position: 'relative', display: 'flex', flexFlow: 'row' }}

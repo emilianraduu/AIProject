@@ -1,4 +1,5 @@
 import React, {useEffect, useContext} from 'react'
+import {CoursesContext} from '../RoomsContext'
 import {
     applyTournamentsFilter,
     changeTournamentsPage,
@@ -6,10 +7,9 @@ import {
     getTournaments, removeTournamentsFilter
 } from '../RoomsActions'
 import {BrowserView} from 'react-device-detect'
-import RoomsListingWeb from './RoomsListingWeb'
+import CoursesListingWeb from './RoomsListingWeb'
 import {AuthContext} from '../../Auth/AuthContext'
 import {withRouter} from 'react-router-dom'
-import { RoomsContext } from '../RoomsContext'
 
 export const TOURNAMENT_LISTING_HEADERS = [
     {
@@ -45,18 +45,40 @@ export const TOURNAMENT_LISTING_HEADERS = [
 export const URL_TO_TYPE = {}
 export const TYPE_TO_URL = {}
 
-function RoomsListing({match}) {
+function CoursesListing({match}) {
     const authContext = useContext(AuthContext)
-    const tournamentsContext = useContext(RoomsContext)
-    console.log(tournamentsContext)
-    
+    const tournamentsContext = useContext(CoursesContext)
+    const {pagination, courses, filters, sort, loading} = tournamentsContext.state
+    const [orderBy, direction] = sort
+    const handlePagination = page => changeTournamentsPage(tournamentsContext, page)
+    const handleFilter = filter => applyTournamentsFilter(tournamentsContext, filter)
+    const handleSort = sort => changeTournamentsSort(tournamentsContext, sort)
+    const clearFilters = () => clearTournamentsFilters(tournamentsContext)
+    const removeFilter = (filterKey) => removeTournamentsFilter(tournamentsContext, filterKey)
+    useEffect(() => {
+        getTournaments({authContext, tournamentsContext})
+    }, [])
     return (
         <>
             <BrowserView>
-       
+                <CoursesListingWeb
+                    direction={direction}
+                    orderBy={orderBy}
+                    match={match}
+                    loading={loading}
+                    type={TYPE_TO_URL[URL_TO_TYPE[match.path]]}
+                    courses={courses}
+                    pagination={pagination}
+                    handlePagination={handlePagination}
+                    handleFilter={handleFilter}
+                    removeFilter={removeFilter}
+                    clearFilters={clearFilters}
+                    filters={filters}
+                    handleSort={handleSort}
+                />
             </BrowserView>
         </>
     )
 }
 
-export default withRouter(RoomsListing)
+export default withRouter(CoursesListing)

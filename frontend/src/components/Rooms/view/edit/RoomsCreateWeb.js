@@ -1,12 +1,12 @@
 import { PageContent } from '../../../../styles/shared/wrapper'
 import React from 'react'
-import RoomsCrateForm from './RoomsCrateForm'
+import CourseCrateForm from './RoomsCrateForm'
 
-export default function RoomsCreateWeb({ onSubmit, onCountriesScrollToBottom, onCitizenshipInputChange, countries, onCountriesInputChange, setProfilePicture }) {
+export default function CourseCreateWeb({ onSubmit, onCountriesScrollToBottom, onCitizenshipInputChange, countries, onCountriesInputChange, setProfilePicture }) {
   return (
 
     <PageContent type={'web'} flex>
-      <RoomsCrateForm
+      <CourseCrateForm
         onCitizenshipInputChange={onCitizenshipInputChange}
         onSubmit={onSubmit}
         countries={countries}

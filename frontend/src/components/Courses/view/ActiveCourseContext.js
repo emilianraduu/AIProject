@@ -46,7 +46,7 @@ import {
   TOURNAMENT_PLAYER_DELETE_TABLE_SUCCESS,
   DELETE_TABLE_SUCCESS, FETCH_TOURNAMENT_WAITING_LIST, FETCH_TOURNAMENT_WAITING_LIST_SUCCESS, UPDATE_ADJUSTED_SUCCESS,
   FETCH_TOURNAMENT, GET_TOURNAMENT_TABLES_SUCCESS
-} from './ActiveTournamentActions'
+} from './ActiveCourseActions'
 import _ from 'lodash'
 import moment from 'moment'
 
@@ -665,17 +665,17 @@ const reducer = (state, action) => {
   }
 }
 
-const ActiveTournamentContext = React.createContext()
+const ActiveCourseContext = React.createContext()
 
 function ActiveTournamentContextProvider(props) {
   const [state, dispatch] = React.useReducer(reducer, initialState)
   return (
-    <ActiveTournamentContext.Provider value={{ state, dispatch }}>
+    <ActiveCourseContext.Provider value={{ state, dispatch }}>
       {props.children}
-    </ActiveTournamentContext.Provider>
+    </ActiveCourseContext.Provider>
   )
 }
 
-const ActiveTournamentContextConsumer = ActiveTournamentContext.Consumer
+const ActiveTournamentContextConsumer = ActiveCourseContext.Consumer
 
-export { ActiveTournamentContext, ActiveTournamentContextProvider, ActiveTournamentContextConsumer }
+export { ActiveCourseContext, ActiveTournamentContextProvider, ActiveTournamentContextConsumer }

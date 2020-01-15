@@ -4,12 +4,12 @@ import {StaffsContext} from '../../Timetable/StaffsContext'
 import {AuthContext} from '../../Auth/AuthContext'
 import {createCourse} from '../../Timetable/StaffsActions'
 import {BrowserView} from 'react-device-detect'
-import RoomsCreateWeb from './RoomsCreateWeb'
+import CourseCreateWeb from './RoomsCreateWeb'
 import {getUsers} from "../../Auth/AuthActions";
 
 export const STAFF_ROLES = ['dealer', 'floorTurnee', 'floorCashGame', 'press', 'register', 'registerManager', 'director']
 
-function RoomsCreate({history}) {
+function CourseCreate({history}) {
     const authContext = useContext(AuthContext)
     const staffsContext = useContext(StaffsContext)
     const onSubmit = (values) => {
@@ -29,7 +29,7 @@ function RoomsCreate({history}) {
     return (
         <>
             <BrowserView>
-                <RoomsCreateWeb
+                <CourseCreateWeb
                     onSubmit={onSubmit}
                     users={users}
                 />
@@ -39,4 +39,4 @@ function RoomsCreate({history}) {
     )
 }
 
-export default withRouter(RoomsCreate)
+export default withRouter(CourseCreate)

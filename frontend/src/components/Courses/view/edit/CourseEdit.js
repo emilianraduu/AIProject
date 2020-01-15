@@ -4,27 +4,26 @@ import CourseCreateWeb from './CourseCreateWeb'
 import {createCourse} from "../../../Timetable/StaffsActions";
 import {AuthContext} from "../../../Auth/AuthContext";
 import {StaffsContext} from "../../../Timetable/StaffsContext";
+import {ActiveStaffContext} from "../../../Timetable/view/ActiveStaffContext";
 
 export const STAFF_ROLES = ['dealer', 'floorTurnee', 'floorCashGame', 'press', 'register', 'registerManager', 'director']
 
-function CourseCreate({ history }) {
+function CourseEdit({ history, match }) {
   const authContext = useContext(AuthContext)
-  const staffsContext = useContext(StaffsContext)
+  const courseContext = useContext(ActiveStaffContext)
   const onSubmit = (values) => {
-    createCourse({
-      authContext,
-      staffsContext,
-      history,
-      data: values
-    })
+    // updateCourse({
+    //   authContext,
+    //   staffsContext,
+    //   history,
+    //   data: values
+    // })
   }
 
   useEffect(()=>{
-
+    // getCourse({authContext, courseContext, id:match.params.id })
   })
 
-  useEffect(() => {
-  }, [])
 
   return (
     <>
@@ -36,4 +35,4 @@ function CourseCreate({ history }) {
   )
 }
 
-export default withRouter(CourseCreate)
+export default withRouter(CourseEdit)
