@@ -103,17 +103,17 @@ const reducer = (state, action) => {
     }
 }
 
-const RoomsContext = React.createContext()
+const CoursesContext = React.createContext()
 
-function RoomsContextProvider(props) {
+function TournamentsContextProvider(props) {
     const [state, dispatch] = React.useReducer(reducer, initialState)
     return (
-        <RoomsContext.Provider value={{state, dispatch}}>
+        <CoursesContext.Provider value={{state, dispatch}}>
             {props.children}
-        </RoomsContext.Provider>
+        </CoursesContext.Provider>
     )
 }
 
-const RoomsContextConsumer = RoomsContext.Consumer
+const TournamentsContextConsumer = CoursesContext.Consumer
 
-export {RoomsContext, RoomsContextProvider, RoomsContextConsumer}
+export {CoursesContext, TournamentsContextProvider, TournamentsContextConsumer}

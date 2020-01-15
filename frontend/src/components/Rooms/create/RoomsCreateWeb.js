@@ -1,12 +1,12 @@
 import { PageContent } from '../../../styles/shared/wrapper'
 import React from 'react'
-import RoomsCrateForm from './RoomsCrateForm'
+import CourseCrateForm from './RoomsCrateForm'
 
-export default function RoomsCreateWeb({ onSubmit, users }) {
+export default function CourseCreateWeb({ onSubmit, users }) {
   return (
 
     <PageContent type={'web'} flex>
-      <RoomsCrateForm
+      <CourseCrateForm
         onSubmit={onSubmit}
         teachers={users}
         type={'web'}/>

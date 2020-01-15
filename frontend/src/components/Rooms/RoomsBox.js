@@ -5,7 +5,7 @@ import { DATETIME_FORMAT } from '../../config/constants'
 import Box from '../Global/Box/Box'
 import { CASHGAME_TITLE, CASHGAME_TYPE } from './view/details/TournamentDetails'
 
-export default function RoomsBox({ data, match, type }) {
+export default function CoursesBox({ data, match, type }) {
   return (
     <Box
       header={{ title: [data.name], subTitle: [data.festival && data.festival.name] }}

@@ -22,7 +22,7 @@ export const getTournaments = async ({ authContext, tournamentsContext, page = 1
     AND: { ...filters, type: ['=', type] }
   }
   const response = await makeAuthRequest({
-    url: `${API_URL}/rooms`,
+    url: `${API_URL}/classes`,
     method: 'get'
   })(authContext)
   if (response) {

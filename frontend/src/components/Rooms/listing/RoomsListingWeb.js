@@ -9,7 +9,7 @@ import EmptyData from '../../Global/EmptyData/EmptyData'
 import {Loader} from '../../Global/InfiniteScroll'
 import moment from 'moment-timezone'
 import {DATE_FORMAT, DATETIME_FORMAT} from "../../../config/constants";
-function RoomsListingWeb({courses, pagination, handlePagination, direction, orderBy, handleSort, loading}) {
+function CoursesListingWeb({courses, pagination, handlePagination, direction, orderBy, handleSort, loading}) {
     const countFestivals = 0
     const widthPercents = ['15', '15', '15', '15', '15', '15', '15']
     const data = []
@@ -60,4 +60,4 @@ function RoomsListingWeb({courses, pagination, handlePagination, direction, orde
     )
 }
 
-export default withRouter(RoomsListingWeb)
+export default withRouter(CoursesListingWeb)

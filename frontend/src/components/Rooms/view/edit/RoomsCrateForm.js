@@ -14,7 +14,7 @@ import {SecondaryButton} from '../../../../styles/shared/button'
 import {FILE_ICON} from '../../../../styles/abstract/variables'
 import 'react-html5-camera-photo/build/css/index.css'
 
-export default function RoomsCrateForm({onSubmit, teachers, type}) {
+export default function CourseCrateForm({onSubmit, teachers, type}) {
     return (
         <Form
             onSubmit={onSubmit}
