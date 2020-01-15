@@ -8,11 +8,13 @@ import {ClassesModule} from '../class/classes.module';
 import {UserModule} from '../user';
 import {RoomsModule} from '../room/rooms.module';
 import {ConfigModule, ConfigService} from '../config';
+import { TimetableModule } from 'modules/timetable';
 
 @Module({
   imports: [
     UserModule,
     ClassesModule,
+    TimetableModule,
     RoomsModule,
     ConfigModule,
     PassportModule.register({ defaultStrategy: 'jwt' }),
