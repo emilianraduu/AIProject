@@ -12,4 +12,6 @@ export class ClassesPayload {
   
   @IsNotEmpty()
   user: User;
+
+  
 }

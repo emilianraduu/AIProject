@@ -45,6 +45,10 @@ export class RoomsService {
     );
   }
 
+  async update(payload: RoomsPayload) {
+    return this.roomsRepository.save(payload);
+}
+
   async remove(
     payload: RoomsPayload,
   ) {
