@@ -27,13 +27,15 @@
 Usage
 
 1. Clone the repo
-2. Open up the program
-3. Register as a new user 
-* wip
+2. Start the server
+3. Run the application
+4. Make an account
+5. Fill the forms 
+6. Have your data sorted in your timetable
 
 
 ## Requirements
-* wip
+* IDE, browser 
 
 ### Screenshots
 
@@ -41,14 +43,16 @@ Usage
 
 ### Features
 
-* Organises classes on the schedule
+* Organises courses on the schedule
 * Spreads the classes on the schedule by their constraints
 
 ### Content
 
-* Modules and UML
-* One required database containing movie titles, ratings, genres, tags
-* One external database containing the same information
+* Code organised into modules
+* API
+* frontend
+* backend
+
 
 ## Resources (Documentation and other links)
 
@@ -64,5 +68,5 @@ Libraries and external APIs:
 
 [Licence Here](-)
 
-## About Best Movie Search
+## About Web Interface for Schedule Configuration
 More information is available at [wip](here).
