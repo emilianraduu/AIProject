@@ -12,28 +12,28 @@ export class Classes {
     @Column({length: 255})
     name: string;
 
-    @Column({length: 255})
+    @Column({length: 255, nullable: true})
     description: string;
 
-    @Column({length: 255})
+    @Column({length: 255, nullable: true})
     necessities: string;
 
-    @Column({length: 255})
+    @Column({length: 255, nullable: true})
     dayoftheweek: string;
 
-    @Column()
+    @Column({nullable: true})
     available_from: number;
 
-    @Column()
+    @Column({nullable: true})
     available_to: number;
 
-    @Column()
+    @Column({nullable: true})
     duration: number;
 
-    @Column()
+    @Column({nullable: true})
     no_courses: number;
 
-    @Column()
+    @Column({nullable: true})
     no_seminars: number;
 
     @ManyToOne(type => User, user => user.classes, {
