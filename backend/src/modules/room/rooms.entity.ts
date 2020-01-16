@@ -18,11 +18,6 @@ export class Rooms {
   @Column({ length: 255 })
   number: string;
 
-  @BeforeInsert()
-  beforeInsertActions() {
-    this.capacity = 0
-    this.features = ''
-  }
 }
 
 export class RoomsFillableFields {
