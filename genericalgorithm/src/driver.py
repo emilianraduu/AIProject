@@ -11,19 +11,17 @@ CROSSOVER_RATE            = 0.9
 TOURNAMENT_SELECTION_SIZE = 3
 NUMB_OF_ELITE_SCHEDULES   = 1
 
-def run():
+def run(info):
   global SCHEDULE_NUMBER, CLASS_NO
-
   from data import Data
   from genetic_algorithm import GeneticAlgorithm
   from population import Population
 
   generation_number = 0
-  data = Data()
+  data = Data(Data=info)
   _genetic_algorithm = GeneticAlgorithm(data=data)
   _population = Population(size=POPULATION_SIZE, data=data).sort_by_fitness()
 
-  print_data(data=data)
   print
   print
 
@@ -37,6 +35,7 @@ def run():
     print_population_schedules(population=_population, generation_number=generation_number)
     print_schedule_as_table(data=data, schedule=_population.schedules[0], generation=generation_number)
 
+  return _population.schedules[0]
 if __name__ == '__main__' and __package__ is None:
   sys.path.insert(0, path.dirname(path.abspath(__file__)))
-  run()
+  run({})

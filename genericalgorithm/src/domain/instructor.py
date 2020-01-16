@@ -6,6 +6,9 @@ class Instructor(object):
   def __str__(self):
     return self.name
   
+  def __getitem__(self):
+    return self
+  
   def __eq__(self, other):
     if isinstance(other, Instructor):
       return self.id == other.id

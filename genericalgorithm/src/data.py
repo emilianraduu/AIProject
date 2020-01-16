@@ -6,56 +6,60 @@ from domain import (
   MeetingTime,
   Room
 )
+import json
 
 class Data(object):
-  def __init__(self):
-    self.rooms = None
-    self.instructors = None
-    self.courses = None
-    self.depts = None
-    self.meeting_times = None
+  def __init__(self, Data):
+    self.data = json.loads(Data)
+    self.rooms = []
+    self.instructors = []
+    self.courses = []
+    self.depts = []
+    self.meeting_times = []
     self.number_of_classes = None
-
     self.initialize()
   
   def initialize(self):
     # create rooms
-    room1 = Room(number="C2", seating_capacity=25)
-    room2 = Room(number="C3", seating_capacity=45)
-    room3 = Room(number="C4", seating_capacity=35)
-    self.rooms = [room1, room2, room3]
+    print('AICI')
+    rooms =  self.data["rooms"]
+    courses =  self.data["courses"]
+    teachers =  self.data["teachers"]
+    depts =  self.data["depts"]
+    meeting_times =  self.data["times"]
 
-    # create meeting times
-    meeting_time1 = MeetingTime(id="MT1", time="MWF 09:00 - 10:00")
-    meeting_time2 = MeetingTime(id="MT2", time="MWF 10:00 - 11:00")
-    meeting_time3 = MeetingTime(id="MT3", time="TTH 09:00 - 10:00")
-    meeting_time4 = MeetingTime(id="MT4", time="TTH 10:00 - 11:00")
+    for i in rooms:
+      room = Room(number = i["number"], seating_capacity=i["capacity"])
+      self.rooms.append(room)
 
-    self.meeting_times = [
-      meeting_time1, 
-      meeting_time2, 
-      meeting_time3, 
-      meeting_time4
-    ]
+    for i in meeting_times:
+      time = MeetingTime(id = i["id"], time=i["time"])
+      self.meeting_times.append(time)
 
-    # creating instructors
-    instructor1 = Instructor(id="I1", name="Lenuta Alboaiei")
-    instructor2 = Instructor(id="I2", name="Corina Forascu")
-    instructor3 = Instructor(id="I3", name="Alex Moruz")
-    instructor4 = Instructor(id="I4", name="Diana Trandabat")
 
-    self.instructors = [instructor1, instructor2, instructor3, instructor4]
+    for i in teachers:
+      teacher = Instructor(id = i["id"], name=i["firstName"])
+      self.instructors.append(teacher)
 
-    # create courses
-    course1 = Course(number="C1", name="Graphs Algorithms", max_number_of_students=25, instructors=[instructor1, instructor2])
-    course2 = Course(number="C2", name="Machine Learning", max_number_of_students=35, instructors=[instructor1, instructor2, instructor3])
-    course3 = Course(number="C3", name="Databases", max_number_of_students=25, instructors=[instructor1, instructor2])
-    course4 = Course(number="C4", name="Python", max_number_of_students=30, instructors=[instructor3, instructor4])
-    course5 = Course(number="C5", name="Java", max_number_of_students=35, instructors=[instructor4])
-    course6 = Course(number="C6", name="Math", max_number_of_students=45, instructors=[instructor1, instructor3])
-    course7 = Course(number="C7", name="Computer Networks", max_number_of_students=45, instructors=[instructor2, instructor4])
+    for i in courses:
+      instructors = []
+      # for j in self.instructors:
+      #   if j["id"]==i["user"]["id"]:
+      #     instructors.append(j)
+      course = Course(number=i["id_class"], name=i["name"], max_number_of_students=25, instructors=[self.instructors[0]])
+      self.courses.append(course)
+    
 
-    self.courses = [course1, course2, course3, course4, course5, course6, course7]
+    # # create courses
+    # course1 = Course(number="C1", name="Graphs Algorithms", max_number_of_students=25, instructors=[instructor1, instructor2])
+    # course2 = Course(number="C2", name="Machine Learning", max_number_of_students=35, instructors=[instructor1, instructor2, instructor3])
+    # course3 = Course(number="C3", name="Databases", max_number_of_students=25, instructors=[instructor1, instructor2])
+    # course4 = Course(number="C4", name="Python", max_number_of_students=30, instructors=[instructor3, instructor4])
+    # course5 = Course(number="C5", name="Java", max_number_of_students=35, instructors=[instructor4])
+    # course6 = Course(number="C6", name="Math", max_number_of_students=45, instructors=[instructor1, instructor3])
+    # course7 = Course(number="C7", name="Computer Networks", max_number_of_students=45, instructors=[instructor2, instructor4])
+
+    # self.courses = [course1, course2, course3, course4, course5, course6, course7]
 
     # create departments
     department1 = Department(name="Year 1", courses=[course1, course3])

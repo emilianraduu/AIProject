@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom'
 import {AuthContext} from "../../Auth/AuthContext";
 import {PageContent} from "../../../styles/shared/wrapper";
 import CourseCrateForm from "./RoomsEditForm";
-import {getRooms, updateRoom} from "../ActiveRoomActions";
+import {getRoom, updateRoom} from "../ActiveRoomActions";
 import {ActiveRoomContext} from "../ActiveRoomContext";
 
 
@@ -16,7 +16,7 @@ function RoomEdit({history, match}) {
     }
 
     useEffect(() => {
-      getRooms({roomsContext, authContext})
+      getRoom({roomsContext, authContext})
     }, [])
 
     return (

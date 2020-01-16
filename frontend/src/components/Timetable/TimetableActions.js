@@ -1,4 +1,4 @@
-import {API_URL} from '../../config/constants'
+import {API_URL, GA_URL} from '../../config/constants'
 import {makeAuthRequest, stringifyQuery} from '../../helpers/requestHelpers'
 import {showSuccess} from '../Global/Toast'
 
@@ -54,6 +54,42 @@ export const createTimetable = async ({authContext, timetableContext, data, hist
     } else {
         timetableContext.dispatch({
             type: CREATE_TIMETABLE_FAIL,
+            payload: {loading: false}
+        })
+    }
+}
+
+export const ASSIGN_TIMETABLE = 'ASSIGN_TIMETABLE'
+export const ASSIGN_TIMETABLE_SUCCESS = 'ASSIGN_TIMETABLE_SUCCESS'
+export const ASSIGN_TIMETABLE_FAIL = 'ASSIGN_TIMETABLE_FAIL'
+
+export const assignTimetable = async ({authContext, timetableContext, history, courses, users, events, times, depts, rooms}) => {
+    timetableContext.dispatch({
+        type: ASSIGN_TIMETABLE,
+        payload: {loading: true}
+    })
+    const response = await makeAuthRequest({
+        url: `${GA_URL}`,
+        method: 'post',
+        data: {
+            courses,
+            teachers: users,
+            events,
+            times,
+            depts,
+            rooms
+        }
+    })(authContext)
+    if (response) {
+        timetableContext.dispatch({
+            type: ASSIGN_TIMETABLE_SUCCESS,
+            payload: {data: response.data, loading: false}
+        })
+        showSuccess('Timetable assigned!')
+        history.push('/timetable')
+    } else {
+        timetableContext.dispatch({
+            type: ASSIGN_TIMETABLE_FAIL,
             payload: {loading: false}
         })
     }

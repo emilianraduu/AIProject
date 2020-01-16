@@ -92,7 +92,7 @@ def print_schedule_as_table(data, schedule, generation):
     "Dept",
     "Course (number, max # of students)",
     "Room (capacity)",
-    "Instructor (Id)",
+    "Teacher",
     "Meeting Time"
   ]
 
