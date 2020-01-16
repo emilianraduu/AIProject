@@ -20,9 +20,9 @@ class Data(object):
   
   def initialize(self):
     # create rooms
-    room1 = Room(number="R1", seating_capacity=25)
-    room2 = Room(number="R2", seating_capacity=45)
-    room3 = Room(number="R3", seating_capacity=35)
+    room1 = Room(number="C2", seating_capacity=25)
+    room2 = Room(number="C3", seating_capacity=45)
+    room3 = Room(number="C4", seating_capacity=35)
     self.rooms = [room1, room2, room3]
 
     # create meeting times
@@ -39,28 +39,28 @@ class Data(object):
     ]
 
     # creating instructors
-    instructor1 = Instructor(id="I1", name="ALGO teacher")
-    instructor2 = Instructor(id="I2", name="IS teacher")
-    instructor3 = Instructor(id="I3", name="DBMS teacher")
-    instructor4 = Instructor(id="I4", name="CI teacher")
+    instructor1 = Instructor(id="I1", name="Lenuta Alboaiei")
+    instructor2 = Instructor(id="I2", name="Corina Forascu")
+    instructor3 = Instructor(id="I3", name="Alex Moruz")
+    instructor4 = Instructor(id="I4", name="Diana Trandabat")
 
     self.instructors = [instructor1, instructor2, instructor3, instructor4]
 
     # create courses
-    course1 = Course(number="C1", name="ALGO", max_number_of_students=25, instructors=[instructor1, instructor2])
-    course2 = Course(number="C2", name="IS", max_number_of_students=35, instructors=[instructor1, instructor2, instructor3])
-    course3 = Course(number="C3", name="DBMS", max_number_of_students=25, instructors=[instructor1, instructor2])
-    course4 = Course(number="C4", name="CI", max_number_of_students=30, instructors=[instructor3, instructor4])
-    course5 = Course(number="C5", name="AI", max_number_of_students=35, instructors=[instructor4])
-    course6 = Course(number="C6", name="DATA_MINING", max_number_of_students=45, instructors=[instructor1, instructor3])
-    course7 = Course(number="C7", name="NETWORKS", max_number_of_students=45, instructors=[instructor2, instructor4])
+    course1 = Course(number="C1", name="Graphs Algorithms", max_number_of_students=25, instructors=[instructor1, instructor2])
+    course2 = Course(number="C2", name="Machine Learning", max_number_of_students=35, instructors=[instructor1, instructor2, instructor3])
+    course3 = Course(number="C3", name="Databases", max_number_of_students=25, instructors=[instructor1, instructor2])
+    course4 = Course(number="C4", name="Python", max_number_of_students=30, instructors=[instructor3, instructor4])
+    course5 = Course(number="C5", name="Java", max_number_of_students=35, instructors=[instructor4])
+    course6 = Course(number="C6", name="Math", max_number_of_students=45, instructors=[instructor1, instructor3])
+    course7 = Course(number="C7", name="Computer Networks", max_number_of_students=45, instructors=[instructor2, instructor4])
 
     self.courses = [course1, course2, course3, course4, course5, course6, course7]
 
     # create departments
-    department1 = Department(name="MSC", courses=[course1, course3])
-    department2 = Department(name="MCA", courses=[course2, course4, course5])
-    department3 = Department(name="BSC", courses=[course6, course7])
+    department1 = Department(name="Year 1", courses=[course1, course3])
+    department2 = Department(name="Year 2", courses=[course2, course4, course5])
+    department3 = Department(name="Year 3", courses=[course6, course7])
 
     self.depts = [department1, department2, department3]
 
