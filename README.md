@@ -1,14 +1,14 @@
-# Best Movie Search
+# Web interface for schedule configuration.
 
-  * Best Movie Search is arguably the best tool to use when you're looking for a movie but remember little about it.
+  *Best way to get a schedule full of classes organised.
 ## About / Synopsis
 
 * Artificial Intelligence @ Faculty of Computer Science Iasi
-* Project status: wip
+* Project status: Finished
 
 ## Table of contents
 
-> * [Best Movie Search](#best-movie-search)
+> * [Web Interface for Schedule Configuration.](#web-interface-for-schedule-configuration.)
 >   * [About / Synopsis](#about--synopsis)
 >   * [Table of contents](#table-of-contents)
 >   * [Usage](#usage)
@@ -20,7 +20,7 @@
 >   * [Resources (Documentation and other links)](#resources-documentation-and-other-links)
 >   * [Contributing](#contributing)
 >   * [License](#license)
->   * [About Best Movie Search](#about-best-movie-search)
+>   * [About Web Interface for Schedule Configuration](#about-web-interface-for-schedule-configuration)
 
 ## Usage
 
@@ -28,12 +28,12 @@ Usage
 
 1. Clone the repo
 2. Open up the program
-3. Write a sentence about a movie you'd like to find
-4. Let our project do its magic
+3. Register as a new user 
+* wip
 
 
 ## Requirements
-* Selectarea unor filme ca recomandări pentru utilizator, folosind o descriere în limbaj natural a unui film căutat. Folosiți datele de la https://grouplens.org/datasets/movielens/ . Ca exemplu de mesaj a utilizatorului: “I am looking for an animated comedy movie made by Studio Ghibli”. Ca sugestii de rezolvare: indexați setul de date de antrenament și transformați mesajul user-ului într-un query sau aplicați un algoritm de machine learning pe datele de antrenament având titlul filmului ca și clasificare, ulterior clasificați instanța (mesajul) user-ului. + some more
+* wip
 
 ### Screenshots
 
@@ -41,8 +41,8 @@ Usage
 
 ### Features
 
-* Search for movies you're not sure the title of
-* Narrow down results by using things you know about said movie
+* Organises classes on the schedule
+* Spreads the classes on the schedule by their constraints
 
 ### Content
 
