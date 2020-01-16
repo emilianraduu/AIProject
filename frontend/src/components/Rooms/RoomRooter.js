@@ -1,40 +1,35 @@
-import React, {lazy, useContext} from 'react'
+import React, {lazy, useContext, useEffect} from 'react'
 import {AuthContext} from '../Auth/AuthContext'
 
 import {Switch} from 'react-router-dom'
 import {PrivateRoute} from '../Global/PrivateRoute'
+import {getTournament} from './ActiveRoomActions'
+import {ActiveRoomContext} from './ActiveRoomContext'
 
-export const tournamentRoutes = [
+export const roomRootes = [
     {
         name: 'Rooms',
-        path: '/rooms/create',
-        component: lazy(() => import('./create/RoomsCreate'))
-    },
-    {
-        name: 'Rooms',
-        path: '/rooms/edit/:id',
-        component: lazy(() => import('./RoomRooter'))
-    },
-    {
-        name: 'Rooms',
-        path: '/rooms',
-        exact: true,
-        component: lazy(() => import('./listing/RoomsListing'))
+        path: `/rooms/:id`,
+        component: lazy(() => import('./edit/RoomsCreate'))
     }
-
 ]
-export default function CoursesRouter() {
+
+
+export default function RoomRooter({match}) {
     const authContext = useContext(AuthContext)
     const {loggedIn} = authContext.state
+    const roomContext = useContext(ActiveRoomContext)
+    const {id} = match.params
+    useEffect(() => {
+        // loggedIn && getTournament(authContext, tournamentsContext, id)
+    }, [id])
     return (
         <>
             <Switch>
-
                 {
-                    tournamentRoutes.map((route, index) => (
+                    roomRootes.map((route, index) => (
                             <PrivateRoute
                                 key={index} path={route.path}
-                                exact={route.exact}
                                 allowed={!!loggedIn}
                                 redirectTo='/login'
                                 component={route.component}
@@ -44,6 +39,5 @@ export default function CoursesRouter() {
                 }
             </Switch>
         </>
-
     )
 }

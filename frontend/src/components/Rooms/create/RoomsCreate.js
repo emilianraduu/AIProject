@@ -1,22 +1,22 @@
 import React, {useContext} from 'react'
 import {withRouter} from 'react-router-dom'
-import {StaffsContext} from '../../Timetable/StaffsContext'
 import {AuthContext} from '../../Auth/AuthContext'
-import {createCourse} from '../../Timetable/StaffsActions'
 import {BrowserView} from 'react-device-detect'
 import {PageContent} from "../../../styles/shared/wrapper";
-import RoomsCrateForm from "./RoomsCrateForm";
+import RoomsCrateForm from "./RoomsCreateForm";
+import {createRoom} from "../RoomsActions";
+import {RoomsContext} from "../RoomsContext";
+
 
 function RoomsCreate({history}) {
     const authContext = useContext(AuthContext)
-    const staffsContext = useContext(StaffsContext)
-    const onSubmit = (values) => {
-        createCourse({
-            authContext,
-            staffsContext,
-            history,
-            data: values
-        })
+    const roomsContext = useContext(RoomsContext)
+    const onSubmit = ({capacity, features, number}) => {
+        let data = {}
+        data.capacity = Number(capacity)
+        data.features = features
+        data.number = number
+        createRoom({authContext,roomsContext, data, history})
     }
 
     return (

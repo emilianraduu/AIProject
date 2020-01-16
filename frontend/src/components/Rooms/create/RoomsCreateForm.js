@@ -8,23 +8,11 @@ import {FieldSelect} from '../../Global/Select/FieldSelect'
 import {SecondaryButton} from '../../../styles/shared/button'
 import {FILE_ICON} from '../../../styles/abstract/variables'
 
-export default function RoomsCrateForm({onSubmit, teachers}) {
+export default function RoomsCreateForm({onSubmit, teachers}) {
     return (
         <Form
             onSubmit={onSubmit}
             validate={({name, user}) => {
-                const errors = {}
-                if (!name) {
-                    errors.name = 'Insert course name'
-                } else {
-                    if (name.length < 5) {
-                        errors.name = 'Course name should be >5'
-                    }
-                }
-                if (!user) {
-                    errors.user = 'Select teacher'
-                }
-                return errors
             }}
             render={({handleSubmit, pristine, invalid}) => (
                 <form onSubmit={handleSubmit}>
@@ -34,21 +22,21 @@ export default function RoomsCrateForm({onSubmit, teachers}) {
                                 <BoxHeader>
                                     <HeaderWithIcon flex>
                                         <i className={FILE_ICON}/>
-                                        <BigPGreyBold>Create course</BigPGreyBold>
+                                        <BigPGreyBold>Create room</BigPGreyBold>
                                     </HeaderWithIcon>
                                 </BoxHeader>
                                 <BoxContent>
                                     <FormItem>
-                                        <Label>Course name</Label>
-                                        <Field component={FieldInput} name='name' placeholder={'Type course name'}/>
+                                        <Label>Room name</Label>
+                                        <Field component={FieldInput} name='number' placeholder={'Type room name'}/>
                                     </FormItem>
                                     <FormItem>
-                                        <Label>Teacher</Label>
-                                        <Field component={FieldSelect} options={teachers && teachers.map((teacher) => ({
-                                            value: teacher.id,
-                                            label: `${teacher.firstName} ${teacher.lastName}`
-                                        }))} name='user'
-                                               placeholder={'Select teacher'}/>
+                                        <Label>Capacity</Label>
+                                        <Field component={FieldInput} name='capacity' placeholder={'Type room capacity'}/>
+                                    </FormItem>
+                                    <FormItem>
+                                        <Label>Features</Label>
+                                        <Field component={FieldInput} name='features' placeholder={'Type room features'}/>
                                     </FormItem>
                                 </BoxContent>
                             </BoxWrapper>

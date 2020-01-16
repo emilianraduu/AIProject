@@ -50,4 +50,5 @@ export class TimetableFillableFields {
   thursday_availability_to: Date;
   friday_availability_from: Date;
   friday_availability_to: Date;
+  id: number;
 }

@@ -1,5 +1,5 @@
 import React, {useContext, useEffect} from 'react'
-import {StaffsContext} from '../StaffsContext'
+import {TimetableContext} from '../TimetableContext'
 import {
   applyStaffsFilter,
   changeStaffsPage,
@@ -7,7 +7,7 @@ import {
   clearStaffsFilters,
   getStaffs,
   removeStaffsFilter
-} from '../StaffsActions'
+} from '../TimetableActions'
 import {BrowserView} from 'react-device-detect'
 import StaffsListingWeb from './StaffsListingWeb'
 import {AuthContext} from '../../Auth/AuthContext'
@@ -37,38 +37,11 @@ export const STAFFS_LISTING_HEADERS = [
 ];
 export const STAFFS_FILTER_HEADERS = [];
 export default function StaffsListing() {
-    const authContext = useContext(AuthContext);
-    const staffsContext = useContext(StaffsContext);
-    const {pagination, staffs, filters, sort, loading} = staffsContext.state;
-    const handlePagination = page => changeStaffsPage(staffsContext, page);
-    const [orderBy, direction] = sort;
-    const handleFilter = filter => applyStaffsFilter(staffsContext, filter);
-    const handleSort = sort => changeStaffsSort(staffsContext, sort);
-    const clearFilters = () => clearStaffsFilters(staffsContext);
-    const removeFilter = (filterKey) => removeStaffsFilter(staffsContext, filterKey);
-
-    useEffect(() => {
-        const timer = setTimeout(() => getStaffs(authContext, staffsContext, pagination.page, filters, sort), DEBOUNCE_MS);
-        return () => clearTimeout(timer)
-    }, [pagination.page, filters, sort]);
 
     return (
         <>
             <BrowserView>
                 <StaffsListingWeb
-                    staffs={staffs[pagination.page]}
-                    loading={loading}
-                    pagination={pagination}
-                    handlePagination={handlePagination}
-                    direction={direction}
-                    orderBy={orderBy}
-                    fields={STAFFS_LISTING_HEADERS}
-                    filters={filters}
-                    filterFields={STAFFS_FILTER_HEADERS}
-                    handleFilter={handleFilter}
-                    clearFilters={clearFilters}
-                    removeFilter={removeFilter}
-                    handleSort={handleSort}
                 />
             </BrowserView>
         </>

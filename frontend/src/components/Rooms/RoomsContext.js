@@ -1,41 +1,20 @@
 import React from 'react'
-import {CHANGE_TOURNAMENTS_PAGE, FETCH_TOURNAMENTS, FETCH_TOURNAMENTS_SUCCESS} from './RoomsActions'
+import {FETCH_ROOMS, FETCH_ROOMS_SUCCESS} from './RoomsActions'
 
-const initialState = {
-    pagination: {
-        page: 1,
-        pageSize: 10
-    },
-    tournaments: {},
-    loading: true,
-    filters: {
-        // dateTime: ['>=', '2019-08-08']
-    },
-    sort: ['dateTime', 'DESC']
-}
+const initialState = {}
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case FETCH_TOURNAMENTS:
+        case FETCH_ROOMS:
             return {
                 ...state,
                 loading: true,
             }
-        case FETCH_TOURNAMENTS_SUCCESS:
-            console.log(action.payload)
+        case FETCH_ROOMS_SUCCESS:
             return {
                 ...state,
                 rooms: action.payload.data,
                 loading: false,
-            }
-        case CHANGE_TOURNAMENTS_PAGE:
-            return {
-                ...state,
-                pagination: {
-                    ...state.pagination,
-                    page: action.payload.page
-                },
-                // loading: true
             }
         default:
             return state

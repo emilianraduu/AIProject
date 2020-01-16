@@ -1,25 +1,24 @@
 import React from 'react'
-import {
-    FETCH_TOURNAMENTS_SUCCESS,
-    FETCH_TOURNAMENTS
-} from './CoursesActions'
+import {CREATE_COURSE_SUCCESS, FETCH_COURSES, FETCH_COURSES_SUCCESS} from './CoursesActions'
 
-const initialState = {
-
-}
+const initialState = {}
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case FETCH_TOURNAMENTS:
+        case FETCH_COURSES:
             return {
                 ...state,
                 loading: true,
             }
-        case FETCH_TOURNAMENTS_SUCCESS:
+        case FETCH_COURSES_SUCCESS:
             return {
                 ...state,
                 courses: action.payload.data,
                 loading: false,
+            }
+        case CREATE_COURSE_SUCCESS:
+            return {
+                ...state,
             }
         default:
             return state

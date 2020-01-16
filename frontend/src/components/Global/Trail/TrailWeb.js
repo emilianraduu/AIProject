@@ -3,28 +3,17 @@ import { TrailWrapper, TrailILink, TrailIcon, TrailItem } from './styles/trailWe
 import { withRouter, Link } from 'react-router-dom'
 import { getBreadcrumbs } from '../../../helpers/breadcrumbsGenerator'
 import { ActiveCourseContext } from '../../Courses/ActiveCourseContext'
-import { ActiveStaffContext } from '../../Timetable/view/ActiveStaffContext'
 import { ANGLE_RIGHT_ICON_B } from '../../../styles/abstract/variables'
 
 function TrailWeb({ location }) {
-  const tournamentsContext = useContext(ActiveCourseContext)
-  const staffsContext = useContext(ActiveStaffContext)
+  const courseContext = useContext(ActiveCourseContext)
   const uuidToName = {
-    tournaments: {
-      source: tournamentsContext.state,
-      sourceProperty: 'activeTournament',
+    course: {
+      source: courseContext.state,
+      sourceProperty: 'activeCourse',
       properties: ['name']
     },
-    cashgames: {
-      source: tournamentsContext.state,
-      sourceProperty: 'activeTournament',
-      properties: ['name']
-    },
-    staff: {
-      source: staffsContext.state,
-      sourceProperty: 'activeStaff',
-      properties: ['firstName', 'lastName']
-    }
+
   }
   const { pathname } = location
   const breadcrumbs = getBreadcrumbs(pathname, uuidToName)

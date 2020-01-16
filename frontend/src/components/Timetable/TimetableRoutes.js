@@ -12,17 +12,12 @@ export const staffRoutes = [
     component: lazy(() => import('../Courses/create/CourseCreate'))
   },
   {
-    name: 'Timetable Edit',
-    path: '/timetable/edit',
-    component: lazy(() => import('./view/StaffRouter'))
-  },
-  {
     name: 'Timetable',
     path: '/timetable',
     component: lazy(() => import('./listing/TimetableListing'))
   }
 ]
-export default function StaffsRouter() {
+export default function TimetableRoutes() {
   const authContext = useContext(AuthContext)
   const { loggedIn } = authContext.state
   return (

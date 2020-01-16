@@ -1,20 +1,20 @@
 import React from 'react'
-import {BoxContent, BoxHeader, BoxWrapper, HeaderWithIcon} from '../../../Global/Box/styles/box'
-import {BigPGreyBold, Label} from '../../../../styles/typography/typography'
+import {BoxContent, BoxHeader, BoxWrapper, HeaderWithIcon} from '../../Global/Box/styles/box'
+import {BigPGreyBold, Label} from '../../../styles/typography/typography'
 import {
     DualBoxWrapper,
     FormItem,
     StaffFormFooter,
     StaffFormWrapper
-} from '../../../../styles/shared/form'
+} from '../../../styles/shared/form'
 import {Field, Form} from 'react-final-form'
-import {FieldInput} from '../../../Global/Input/FieldInput'
-import {FieldSelect} from '../../../Global/Select/FieldSelect'
-import {SecondaryButton} from '../../../../styles/shared/button'
-import {FILE_ICON} from '../../../../styles/abstract/variables'
+import {FieldInput} from '../../Global/Input/FieldInput'
+import {FieldSelect} from '../../Global/Select/FieldSelect'
+import {SecondaryButton} from '../../../styles/shared/button'
+import {FILE_ICON} from '../../../styles/abstract/variables'
 import 'react-html5-camera-photo/build/css/index.css'
 
-export default function RoomsCrateForm({onSubmit, teachers, type}) {
+export default function RoomsEditForm({onSubmit, teachers, type}) {
     return (
         <Form
             onSubmit={onSubmit}

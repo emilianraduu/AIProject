@@ -1,18 +1,18 @@
 import React, {useContext, useEffect} from 'react'
 import {withRouter} from 'react-router-dom'
-import {StaffsContext} from '../../Timetable/StaffsContext'
+import {TimetableContext} from '../../Timetable/TimetableContext'
 import {AuthContext} from '../../Auth/AuthContext'
-import {createCourse} from '../../Timetable/StaffsActions'
 import {BrowserView} from 'react-device-detect'
 import {getUsers} from "../../Auth/AuthActions";
 import {PageContent} from "../../../styles/shared/wrapper";
 import CourseCreateForm from "./CourseCreateForm";
+import {createCourse} from "../CoursesActions";
 
 export const STAFF_ROLES = ['dealer', 'floorTurnee', 'floorCashGame', 'press', 'register', 'registerManager', 'director']
 
 function CourseCreate({history}) {
     const authContext = useContext(AuthContext)
-    const staffsContext = useContext(StaffsContext)
+    const staffsContext = useContext(TimetableContext)
     const onSubmit = (values) => {
         createCourse({
             authContext,

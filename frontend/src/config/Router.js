@@ -5,10 +5,8 @@ import LayoutAuth from '../components/Layout/LayoutAuth'
 import { AuthContext } from '../components/Auth/AuthContext'
 import { PrivateRoute } from '../components/Global/PrivateRoute'
 import { getUser } from '../components/Auth/AuthActions'
-import { BrowserView, MobileView } from 'react-device-detect'
+import { BrowserView } from 'react-device-detect'
 import HeaderWeb from '../components/Global/Header/HeaderWeb'
-import HeaderMob from '../components/Global/Header/HeaderMob'
-import getUserRoutes from './UserRoutes'
 
 export const routes = [
   {
@@ -23,8 +21,8 @@ export const routes = [
   },
   {
     name: 'Timetable',
-    path: '/Timetable',
-    component: lazy(() => import('../components/Timetable/StaffsRouter'))
+    path: '/timetable',
+    component: lazy(() => import('../components/Timetable/TimetableRoutes'))
   },
 ]
 
@@ -57,11 +55,6 @@ export default function Router() {
                 <HeaderWeb role={user && user.role}/>
                 <RouterContent loggedIn={loggedIn} />
               </BrowserView>
-              {/* to do - on mobile a screen that shows a message that this website isnt available on mobile */}
-              {/*<MobileView>*/}
-              {/*  <HeaderMob/>*/}
-              {/*  <RouterContent loggedIn={loggedIn} role={user && user.role}/>*/}
-              {/*</MobileView>*/}
             </>)
           :
           (
@@ -69,10 +62,6 @@ export default function Router() {
               <BrowserView>
                 <RouterContent loggedIn={loggedIn} role={user && user.role}/>
               </BrowserView>
-              {/* to do - on mobile a screen that shows a message that this website isnt available on mobile */}
-              {/*<MobileView>*/}
-              {/*  <RouterContent loggedIn={loggedIn} role={user && user.role}/>*/}
-              {/*</MobileView>*/}
             </>)
       }
 
@@ -81,12 +70,11 @@ export default function Router() {
 }
 
 export function RouterContent({ loggedIn, role }) {
-  let selectedRoutesByRole = getUserRoutes(role)
   return (
     <Suspense fallback={<div/>}>
       <Switch>
         {
-          selectedRoutesByRole.map((route, index) => (
+          routes.map((route, index) => (
               <PrivateRoute
                 key={index} path={route.path}
                 allowed={!!loggedIn}

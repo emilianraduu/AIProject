@@ -18,6 +18,7 @@ export const BoxWrapper = styled.div`
   box-shadow: ${boxShadow};
   border-radius: ${radiusX2};
   margin-bottom: 10px;
+  margin-right: 10px;
   &:nth-child(n+2){
   }
   ${({ blackBox }) => blackBox && `

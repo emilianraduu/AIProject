@@ -14,8 +14,12 @@ export class TimetableService {
     ) {
     }
 
-    async getAll() {
-        return this.timetableRepository.query('SELECT firstName, lastName, id FROM users WHERE isAdmin = 0');
+    async get(id: number) {
+        return this.timetableRepository.findOne(id);
+      }
+
+    async getOne() {
+        return this.timetableRepository.findOne();
     }
 
     async getByEmail(email: string) {
@@ -37,10 +41,22 @@ export class TimetableService {
 
     async create(
         payload: TimetableFillableFields,
-    ) {
-
+      ) {
+        
         return await this.timetableRepository.save(
-            this.timetableRepository.create(payload),
+          this.timetableRepository.create(payload),
         );
+      }
+    
+      async update(payload: TimetableFillableFields) {
+        return this.timetableRepository.save(payload);
     }
+    
+      async remove(
+        payload: TimetableFillableFields,
+      ) {
+        return await this.timetableRepository.delete(payload);
+      }
+    
+    
 }

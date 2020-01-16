@@ -9,11 +9,11 @@ import {FILE_ICON} from '../../../styles/abstract/variables'
 import {FieldDateAndTimePicker} from "../../Global/DatePickers/FieldDateAndTimePicker";
 import {deleteCourse} from "../ActiveCourseActions";
 import {AuthContext} from "../../Auth/AuthContext";
-import {ActiveCourseContext} from "../../Rooms/view/ActiveCourseContext";
+import {ActiveRoomContext} from "../../Rooms/ActiveRoomContext";
 
 export default function CourseEditForm({course, onSubmit, type, history}) {
     const authContext = useContext(AuthContext)
-    const coursesContext = useContext(ActiveCourseContext)
+    const coursesContext = useContext(ActiveRoomContext)
     const {user} = authContext.state
     return (
         <Form

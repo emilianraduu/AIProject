@@ -37,7 +37,7 @@ const reducer = (state, action) => {
 
 const ActiveCourseContext = React.createContext()
 
-function ActiveTournamentContextProvider(props) {
+function ActiveCourseContextProvider(props) {
     const [state, dispatch] = React.useReducer(reducer, initialState)
     return (
         <ActiveCourseContext.Provider value={{state, dispatch}}>
@@ -48,4 +48,4 @@ function ActiveTournamentContextProvider(props) {
 
 const ActiveTournamentContextConsumer = ActiveCourseContext.Consumer
 
-export {ActiveCourseContext, ActiveTournamentContextProvider, ActiveTournamentContextConsumer}
+export {ActiveCourseContext, ActiveCourseContextProvider, ActiveTournamentContextConsumer}

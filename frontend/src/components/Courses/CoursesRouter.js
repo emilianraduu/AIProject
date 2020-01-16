@@ -38,7 +38,6 @@ export default function CoursesRouter () {
               allowed={!!loggedIn}
               redirectTo='/login'
               component={route.component}
-              type='tournament'
             />
           )
           )

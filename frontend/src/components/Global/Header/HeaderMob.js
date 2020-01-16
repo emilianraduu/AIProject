@@ -4,13 +4,13 @@ import { PageImage } from '../../../styles/shared/background'
 import HeaderTopMob from './HeaderTopMob'
 import NavbarMob from '../Navbar/NavbarMob'
 import { CoursesContext } from '../../Courses/CoursesContext'
-import { StaffsContext } from '../../Timetable/StaffsContext'
+import { TimetableContext } from '../../Timetable/TimetableContext'
 import { clearTournamentsFilters, clearTournamentsSort } from '../../Courses/CoursesActions'
-import { clearStaffsFilters, clearStaffsSort } from '../../Timetable/StaffsActions'
+import { clearStaffsFilters, clearStaffsSort } from '../../Timetable/TimetableActions'
 
 export default function HeaderMob () {
   const tournamentsContext = useContext(CoursesContext)
-  const staffsContext = useContext(StaffsContext)
+  const staffsContext = useContext(TimetableContext)
 
   return (
     <HeaderWrapper>
