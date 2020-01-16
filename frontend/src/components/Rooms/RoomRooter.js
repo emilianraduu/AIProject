@@ -3,14 +3,14 @@ import {AuthContext} from '../Auth/AuthContext'
 
 import {Switch} from 'react-router-dom'
 import {PrivateRoute} from '../Global/PrivateRoute'
-import {getTournament} from './ActiveRoomActions'
+import {getRooms} from './ActiveRoomActions'
 import {ActiveRoomContext} from './ActiveRoomContext'
 
 export const roomRootes = [
     {
         name: 'Rooms',
         path: `/rooms/:id`,
-        component: lazy(() => import('./edit/RoomsCreate'))
+        component: lazy(() => import('./edit/RoomsEdit'))
     }
 ]
 

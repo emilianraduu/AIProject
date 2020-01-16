@@ -3,12 +3,13 @@ import Router from './config/Router'
 import './App.css'
 import 'react-toastify/dist/ReactToastify.css'
 import {CoursesContextProvider} from './components/Courses/CoursesContext'
-import {TimetableContext, TimetableContextProvider} from './components/Timetable/TimetableContext'
+import {TimetableContextProvider} from './components/Timetable/TimetableContext'
 import {AuthContextProvider} from './components/Auth/AuthContext'
 import {ToastContainer} from 'react-toastify'
 import 'react-datepicker/dist/react-datepicker.css'
 import {ActiveCourseContextProvider} from './components/Courses/ActiveCourseContext'
 import {RoomsContextProvider} from './components/Rooms/RoomsContext'
+import {ActiveRoomContextProvider} from "./components/Rooms/ActiveRoomContext";
 
 function App() {
     // return <TVScreen />
@@ -17,10 +18,12 @@ function App() {
             <CoursesContextProvider>
                 <ActiveCourseContextProvider>
                     <TimetableContextProvider>
-                        <RoomsContextProvider>
+                        <ActiveRoomContextProvider>
+                            <RoomsContextProvider>
                                 <ToastContainer/>
                                 <Router/>
-                        </RoomsContextProvider>
+                            </RoomsContextProvider>
+                        </ActiveRoomContextProvider>
                     </TimetableContextProvider>
                 </ActiveCourseContextProvider>
             </CoursesContextProvider>

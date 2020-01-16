@@ -38,3 +38,20 @@ export const deleteCourse = async ({id, authContext, coursesContext, history}) =
         history.push('/courses')
     }
 }
+
+
+export const updateCourse = async ({id, authContext, coursesContext, history, data}) => {
+    const response = await makeAuthRequest({
+        url: `${API_URL}/classes/update/${id}`,
+        method: 'put',
+        data
+    })
+    (authContext, true)
+    if (response) {
+        coursesContext && coursesContext.dispatch({
+            payload: id
+        })
+        showSuccess('Course updated')
+        history.push('/courses')
+    }
+}

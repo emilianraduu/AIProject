@@ -51,7 +51,7 @@ function CoursesListing({match}) {
     const {courses, loading} = coursesContext.state
     useEffect(() => {
         getCourses({authContext, coursesContext})
-    }, [])
+    }, [loading])
     return (
         <>
             <BrowserView>

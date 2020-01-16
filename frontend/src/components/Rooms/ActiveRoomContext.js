@@ -9,15 +9,12 @@ const reducer = (state, action) => {
         case FETCH_ROOM:
             return {
                 ...state,
-                currentTime: action.payload.currentTime,
                 loadingTournament: true
             }
         case FETCH_ROOM_SUCCESS:
             return {
                 ...state,
-                activeTournament: {
-                    ...action.payload.tournament,
-                },
+                room: action.payload,
                 loadingTournament: false
             }
 

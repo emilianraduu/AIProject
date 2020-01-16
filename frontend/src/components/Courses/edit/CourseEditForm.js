@@ -29,12 +29,10 @@ export default function CourseEditForm({course, onSubmit, type, history}) {
                 }
                 return errors
             }}
-            initialValues={{
-                name: course && course.name,
-            }
+            initialValues={course
             }
             render={({handleSubmit, pristine, invalid}) => (
-                course &&
+                course && course.name &&
                 <form onSubmit={handleSubmit}>
                     <StaffFormWrapper>
                         <div style={{display: 'flex', width: '100%', justifyContent: 'flex-end'}}>
@@ -66,8 +64,13 @@ export default function CourseEditForm({course, onSubmit, type, history}) {
                                             </FormItem>
 
                                             <FormItem>
+                                                <Label>Day of the week</Label>
+                                                <Field component={FieldInput} name='dayoftheweek'
+                                                       placeholder={'Select date'}/>
+                                            </FormItem>
+                                            <FormItem>
                                                 <Label>Available from</Label>
-                                                <Field component={FieldDateAndTimePicker} name='available_form'
+                                                <Field component={FieldInput} name='available_form'
                                                        placeholder={'Select date'}/>
                                             </FormItem>
                                             <FormItem>

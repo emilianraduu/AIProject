@@ -24,8 +24,8 @@ function CoursesListingWeb({courses}) {
                             _.map(courses, (course) => {
                                 const row = {
                                     name: course.name && course.name,
-                                    available_from: course && moment(course.available_from).format(DATE_FORMAT),
-                                    available_to: course && moment(course.available_to).format(DATE_FORMAT),
+                                    available_from: course && course.available_from,
+                                    available_to: course && course.available_to,
                                     duration: course.duration,
                                     no_courses: course && course.no_courses,
                                     no_seminars: course && course.no_seminars,
