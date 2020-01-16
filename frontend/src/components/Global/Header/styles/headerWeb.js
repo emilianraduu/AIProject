@@ -6,7 +6,6 @@ import {
   spacingX3,
   spacingX2, colorBlack16
 } from '../../../../styles/abstract/variables'
-import headerBG from '../../../../assets/headerBG.png'
 
 export const HeaderWrapper = styled.div`
   position: sticky;

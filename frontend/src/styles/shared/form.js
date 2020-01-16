@@ -31,6 +31,7 @@ export const Form = styled.form`
 export const StaffFormWrapper = styled.div`
   display: flex;
   flex-flow: column;
+  width: 100%;
 `
 
 export const StaffFormFooter = styled.div`

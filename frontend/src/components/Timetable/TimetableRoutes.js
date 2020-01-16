@@ -7,9 +7,8 @@ import { PrivateRoute } from '../Global/PrivateRoute'
 export const staffRoutes = [
   {
     name: 'Timetable',
-    exact:true,
     path: '/timetable/create',
-    component: lazy(() => import('../Courses/create/CourseCreate'))
+    component: lazy(() => import('./create/TimetableCreate'))
   },
   {
     name: 'Timetable',
@@ -36,3 +35,6 @@ export default function TimetableRoutes() {
     </Switch>
   )
 }
+
+
+

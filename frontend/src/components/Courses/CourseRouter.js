@@ -20,9 +20,9 @@ export default function CourseRouter ({ match }) {
   const { loggedIn } = authContext.state
   const tournamentsContext = useContext(ActiveCourseContext)
   const { courseId } = match.params
-  useEffect(() => {
-    loggedIn && getCourse(authContext, tournamentsContext, courseId)
-  }, [courseId])
+  // useEffect(() => {
+  //   loggedIn && getCourse(authContext, tournamentsContext, courseId)
+  // }, [courseId])
   return (
     <>
       <Switch>

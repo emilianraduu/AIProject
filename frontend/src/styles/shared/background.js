@@ -1,8 +1,5 @@
 import styled from 'styled-components'
-import headerBG from '../../assets/headerMob.png'
-import header from '../../assets/header.png'
 export const PageImage = styled.div`
-  background: url(${headerBG});
   background-size: cover;
   z-index: -1;
   background-repeat: no-repeat;
@@ -18,7 +15,6 @@ export const PageImage = styled.div`
 `
 
 export const LoginImage = styled.div`
-  background: url(${header});
   background-size: contain;
   z-index: -1;
   background-repeat: no-repeat;

@@ -7,11 +7,6 @@ import {
   radiusX0, radiusX2, secondaryTypeface, spacingO3, spacingO4, spacingX0,
   spacingX2, timeFast, spacingO1, spacingX1, colorBlack80, radiusX1
 } from '../../../../styles/abstract/variables'
-import pokerChip from '../../../../assets/poker-chip-material-design-icons.svg'
-import target from '../../../../assets/invalid-name.svg'
-import cards from '../../../../assets/cards-playing-outline-material-design-icons.svg'
-import time from '../../../../assets/time.svg'
-import profile from '../../../../assets/profile.svg'
 
 export const BoxWrapper = styled.div`
   background: ${colorWhite};
@@ -329,8 +324,4 @@ export const BlackBoxAvatarImage = styled.div`
     margin:${spacingX0};
     
   `}
-  ${({ chip }) => chip && `background-image:url(${pokerChip});`}
-  ${({ seat }) => seat && `background-image:url(${target});`}
-  ${({ hands }) => hands && `background-image:url(${cards});`}
-  ${({ gameTime }) => gameTime && `background-image:url(${time});`}
 `

@@ -1,12 +1,11 @@
 import React from 'react'
 import Infinity from 'react-infinite-scroll-component'
-import loaderMobile from '../../assets/loaderMobile.svg'
 import { LoaderImage, LoaderWrapper } from '../../styles/shared/wrapper'
 
 export function Loader () {
   return (
     <LoaderWrapper>
-      <LoaderImage src={loaderMobile} />
+      <LoaderImage  />
     </LoaderWrapper>
   )
 }

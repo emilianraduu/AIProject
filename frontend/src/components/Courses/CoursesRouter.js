@@ -4,7 +4,7 @@ import { AuthContext } from '../Auth/AuthContext'
 import { Switch } from 'react-router-dom'
 import { PrivateRoute } from '../Global/PrivateRoute'
 
-export const tournamentRoutes = [
+export const coursesRoutes = [
   {
     name: 'Courses',
     path: '/courses/create',
@@ -29,9 +29,8 @@ export default function CoursesRouter () {
   return (
     <>
       <Switch>
-
         {
-          tournamentRoutes.map((route, index) => (
+          coursesRoutes.map((route, index) => (
             <PrivateRoute
               key={index} path={route.path}
               exact={route.exact}

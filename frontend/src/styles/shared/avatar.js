@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import profile from '../../assets/profile.svg'
 
 import {
   boxShadow,
@@ -19,7 +18,6 @@ export const Avatar = styled.div`
   // cursor: pointer;
   align-self: center;
   border: 0.01px solid black;
-  background: url(${profile});
   border-radius: 50%;
   vertical-align: center;
   box-shadow: ${boxShadow};
@@ -36,7 +34,6 @@ export const IDPhoto = styled.div`
   // cursor: pointer;
   align-self: center;
   border: 0.01px solid black;
-  background: url(${profile});
   border-radius: 50%;
   vertical-align: center;
   box-shadow: ${boxShadow};

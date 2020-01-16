@@ -10,11 +10,13 @@ function CourseEdit({history, match}) {
     const authContext = useContext(AuthContext)
     const courseContext = useContext(ActiveCourseContext)
     const onSubmit = (values) => {
-        updateCourse({authContext, courseContext, data: values, id:match.params.id, history})
+        let data = {...values}
+        data.dayoftheweek = values.dayoftheweek.value
+        updateCourse({authContext, courseContext, data, id:match.params.id, history})
     }
     useEffect(() => {
         getCourse(authContext, courseContext, match.params.id)
-    }, [])
+    }, [match.params.id])
     const {activeCourse} = courseContext.state
     return (
         <>

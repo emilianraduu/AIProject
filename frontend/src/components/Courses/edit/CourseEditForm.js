@@ -10,11 +10,13 @@ import {FieldDateAndTimePicker} from "../../Global/DatePickers/FieldDateAndTimeP
 import {deleteCourse} from "../ActiveCourseActions";
 import {AuthContext} from "../../Auth/AuthContext";
 import {ActiveRoomContext} from "../../Rooms/ActiveRoomContext";
+import {FieldSelect} from "../../Global/Select/FieldSelect";
 
 export default function CourseEditForm({course, onSubmit, type, history}) {
     const authContext = useContext(AuthContext)
     const coursesContext = useContext(ActiveRoomContext)
     const {user} = authContext.state
+    console.log(course)
     return (
         <Form
             onSubmit={onSubmit}
@@ -29,10 +31,8 @@ export default function CourseEditForm({course, onSubmit, type, history}) {
                 }
                 return errors
             }}
-            initialValues={course
-            }
+            initialValues={course}
             render={({handleSubmit, pristine, invalid}) => (
-                course && course.name &&
                 <form onSubmit={handleSubmit}>
                     <StaffFormWrapper>
                         <div style={{display: 'flex', width: '100%', justifyContent: 'flex-end'}}>
@@ -65,12 +65,18 @@ export default function CourseEditForm({course, onSubmit, type, history}) {
 
                                             <FormItem>
                                                 <Label>Day of the week</Label>
-                                                <Field component={FieldInput} name='dayoftheweek'
+                                                <Field component={FieldSelect} options={[
+                                                    {value: 'monday', label: 'Monday'},
+                                                    {value: 'tuesday', label: 'Tuesday'},
+                                                    {value: 'wednesday', label: 'Wednesday'},
+                                                    {value: 'thursday', label: 'Thursday'},
+                                                    {value: 'friday', label: 'Friday'},
+                                                ]} name='dayoftheweek'
                                                        placeholder={'Select date'}/>
                                             </FormItem>
                                             <FormItem>
                                                 <Label>Available from</Label>
-                                                <Field component={FieldInput} name='available_form'
+                                                <Field component={FieldInput} name='available_from'
                                                        placeholder={'Select date'}/>
                                             </FormItem>
                                             <FormItem>
