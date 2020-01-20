@@ -30,7 +30,14 @@ export class ClassesService {
 
     async getByUser(id: number) {
         const user = await this.userRepository.findOne(id);
-        return this.classesRepository.find({where: {userId: user}});
+        return this.classesRepository.find({
+            join: {
+                alias: 'user',
+                leftJoinAndSelect: {
+                    profile: 'user.profile',
+                },
+            },
+        });
     }
 
     async getByName(name: string) {

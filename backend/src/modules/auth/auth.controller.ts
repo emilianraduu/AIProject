@@ -163,8 +163,9 @@ export class AuthController {
   @ApiResponse({ status: 200, description: 'Successful Response' })
   @ApiResponse({ status: 401, description: 'Unauthorized' })
   async getLoggedInUser(@Request() request): Promise<any> {
-    const classList = await this.classesService.getByUser(request.id)
+    const classList = await this.classesService.getByUser(request.user.id)
     request.user.classes = classList;
+    console.log(classList)
     return request.user;
   }
 
