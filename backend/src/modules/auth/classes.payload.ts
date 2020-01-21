@@ -19,5 +19,8 @@ export class ClassesPayload {
   @IsNotEmpty()
   type: string;
 
+  @IsNotEmpty()
+  noof_students: number;
+
   
 }
