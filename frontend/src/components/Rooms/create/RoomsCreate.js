@@ -11,11 +11,12 @@ import {RoomsContext} from "../RoomsContext";
 function RoomsCreate({history}) {
     const authContext = useContext(AuthContext)
     const roomsContext = useContext(RoomsContext)
-    const onSubmit = ({capacity, features, number}) => {
+    const onSubmit = ({capacity, features, number, type}) => {
         let data = {}
         data.capacity = Number(capacity)
-        data.features = features
+        data.features = features.value
         data.number = number
+        data.type = type.value
         createRoom({authContext,roomsContext, data, history})
     }
 

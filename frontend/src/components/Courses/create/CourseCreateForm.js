@@ -9,10 +9,14 @@ import {SecondaryButton} from '../../../styles/shared/button'
 import {FILE_ICON} from '../../../styles/abstract/variables'
 
 export default function CourseCreateForm({onSubmit, teachers}) {
+    const featuresOptions=[{value: 'Computers', label: 'Computers'},{value: 'Projector', label: 'Projector'}]
+    const typeOptions= [{value: 'Course', label: 'Course'},{value: 'Laboratory', label: 'Laboratory'}]
+    const yearOptions = [{value: 'Year1', label: 'Year 1'},{value: 'Year2', label: 'Year 2'},{value: 'Year3', label: 'Year 3'}]
     return (
+
         <Form
             onSubmit={onSubmit}
-            validate={({name, user}) => {
+            validate={({name, type, year, user,studentsNumber}) => {
                 const errors = {}
                 if (!name) {
                     errors.name = 'Insert course name'
@@ -20,6 +24,15 @@ export default function CourseCreateForm({onSubmit, teachers}) {
                     if (name.length < 5) {
                         errors.name = 'Course name should be >5'
                     }
+                }
+                if (!studentsNumber) {
+                    errors.studentsNumber = 'Insert students number'
+                }
+                if (!year) {
+                    errors.year = 'Select year'
+                }
+                if (!type) {
+                    errors.type = 'Select type'
                 }
                 if (!user) {
                     errors.user = 'Select teacher'
@@ -41,6 +54,25 @@ export default function CourseCreateForm({onSubmit, teachers}) {
                                     <FormItem>
                                         <Label>Course name</Label>
                                         <Field component={FieldInput} name='name' placeholder={'Type course name'}/>
+                                    </FormItem>
+                                    <FormItem>
+                                        <Label>Students number</Label>
+                                        <Field component={FieldInput} name='studentsNumber' placeholder={'Students number'}/>
+                                    </FormItem>
+                                    <FormItem>
+                                        <Label>Year</Label>
+                                        <Field component={FieldSelect} options={yearOptions} name='year'
+                                               placeholder={'Select Year'}/>
+                                    </FormItem>
+                                    <FormItem>
+                                        <Label>Type</Label>
+                                        <Field component={FieldSelect} options={typeOptions} name='type'
+                                               placeholder={'Type'}/>
+                                    </FormItem>
+                                    <FormItem>
+                                        <Label>Feature</Label>
+                                        <Field component={FieldSelect} options={featuresOptions} name='features'
+                                               placeholder={'Room feature'}/>
                                     </FormItem>
                                     <FormItem>
                                         <Label>Teacher</Label>
