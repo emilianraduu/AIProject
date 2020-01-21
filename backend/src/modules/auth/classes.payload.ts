@@ -16,5 +16,8 @@ export class ClassesPayload {
   @IsNotEmpty()
   year: string;
 
+  @IsNotEmpty()
+  type: string;
+
   
 }
