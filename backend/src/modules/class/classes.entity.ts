@@ -15,6 +15,9 @@ export class Classes {
     @Column({length: 255, nullable: true})
     description: string;
 
+    @Column({length: 255})
+    year: string;
+
     @Column({length: 255, nullable: true})
     necessities: string;
 
@@ -50,6 +53,7 @@ export class Classes {
 export class ClassesFillableFields {
     name: string;
     description: string;
+    year: string;
     necessities: string;
     dayoftheweek: string;
     available_from: number;

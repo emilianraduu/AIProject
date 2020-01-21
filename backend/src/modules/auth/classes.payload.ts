@@ -13,5 +13,8 @@ export class ClassesPayload {
   @IsNotEmpty()
   user: User;
 
+  @IsNotEmpty()
+  year: string;
+
   
 }
