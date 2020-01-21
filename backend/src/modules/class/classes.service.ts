@@ -1,10 +1,10 @@
-import {Injectable, NotAcceptableException} from '@nestjs/common';
-import {InjectRepository} from '@nestjs/typeorm';
-import {Repository} from 'typeorm';
+import { Injectable, NotAcceptableException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
-import {Classes} from './classes.entity';
-import {ClassesPayload} from 'modules/auth/classes.payload';
-import {User} from 'modules/user';
+import { Classes } from './classes.entity';
+import { ClassesPayload } from 'modules/auth/classes.payload';
+import { User } from 'modules/user';
 
 @Injectable()
 export class ClassesService {
@@ -30,14 +30,10 @@ export class ClassesService {
 
     async getByUser(id: number) {
         const user = await this.userRepository.findOne(id);
-        return this.classesRepository.find({
-            join: {
-                alias: 'user',
-                leftJoinAndSelect: {
-                    profile: 'user.profile',
-                },
-            },
-        });
+        return this.classesRepository.createQueryBuilder('classes')
+        .leftJoinAndSelect('classes.user', 'user')
+        .where("user.id = :id", { id: id })
+        .getMany()
     }
 
     async getByName(name: string) {
@@ -62,7 +58,7 @@ export class ClassesService {
         }
 
         const course = await this.classesRepository.create(payload);
-        const user = await this.userRepository.findOne({where: {id: payload.user}});
+        const user = await this.userRepository.findOne({ where: { id: payload.user } });
 
         course.user = user;
 
