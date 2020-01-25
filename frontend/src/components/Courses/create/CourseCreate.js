@@ -18,7 +18,7 @@ function CourseCreate({history}) {
             authContext,
             staffsContext,
             history,
-            data: {name: values.name, user: Number(values.user.value)}
+            data: {name: values.name, user: Number(values.user.value), year: values.year.value, type: values.type.value, noof_students: Number(values.studentsNumber), features: values.features.value}
         })
     }
     const {users} = authContext.state

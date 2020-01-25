@@ -9,10 +9,26 @@ import {SecondaryButton} from '../../../styles/shared/button'
 import {FILE_ICON} from '../../../styles/abstract/variables'
 
 export default function RoomsCreateForm({onSubmit, teachers}) {
+    const typeOptions= [{value: 'Course', label: 'Course'},{value: 'Laboratory', label: 'Laboratory'}]
+    const featuresOptions=[{value: 'Computers', label: 'Computers'},{value: 'Projector', label: 'Projector'}]
     return (
         <Form
             onSubmit={onSubmit}
-            validate={({name, user}) => {
+            validate={({number,capacity,type,features, user}) => {
+                const errors={}
+                if(!number){
+                    errors.number = 'Insert name'
+                }
+                if(!capacity){
+                    errors.capacity = 'Insert capacity'
+                }
+                if(!type){
+                    errors.type = 'Select type'
+                }
+                if(!features){
+                    errors.features = 'Select feature'
+                }
+                return errors
             }}
             render={({handleSubmit, pristine, invalid}) => (
                 <form onSubmit={handleSubmit}>
@@ -35,8 +51,14 @@ export default function RoomsCreateForm({onSubmit, teachers}) {
                                         <Field component={FieldInput} name='capacity' placeholder={'Type room capacity'}/>
                                     </FormItem>
                                     <FormItem>
-                                        <Label>Features</Label>
-                                        <Field component={FieldInput} name='features' placeholder={'Type room features'}/>
+                                        <Label>Type</Label>
+                                        <Field component={FieldSelect} options={typeOptions} name='type'
+                                               placeholder={'Type'}/>
+                                    </FormItem>
+                                    <FormItem>
+                                        <Label>Feature</Label>
+                                        <Field component={FieldSelect} options={featuresOptions} name='features'
+                                               placeholder={'Room feature'}/>
                                     </FormItem>
                                 </BoxContent>
                             </BoxWrapper>

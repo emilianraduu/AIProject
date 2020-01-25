@@ -3,6 +3,7 @@ import {Input, Textarea} from '../../../styles/shared/input'
 import {FieldError} from './styles'
 
 export const FieldInput = ({input, meta: {touched, error}, disabled, placeholder, autoComplete, onBlur}) => {
+    console.log(touched)
     return (
         <div>
             <Input
@@ -10,7 +11,6 @@ export const FieldInput = ({input, meta: {touched, error}, disabled, placeholder
                 disabled={disabled}
                 error={touched && error}
                 placeholder={placeholder}
-                onBlur={onBlur}
                 autoComplete={autoComplete}
             />
             {error && <FieldError>{error}</FieldError>}
