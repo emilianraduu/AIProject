@@ -2,6 +2,7 @@ import {Exclude} from 'class-transformer';
 import {BeforeInsert, Column, Entity, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
 import {PasswordTransformer} from './password.transformer';
 import {Classes} from '../class/classes.entity';
+import { Comments } from 'modules/comments';
 
 @Entity({
     name: 'users',
@@ -22,8 +23,11 @@ export class User {
     @Column({nullable: true})
     isAdmin: boolean;
 
-    @OneToMany(type => Classes, classes => classes.user) // note: we will create author property in the Photo class below
+    @OneToMany(type => Classes, classes => classes.user)
     classes: Classes[];
+
+    @OneToMany(type => Comments, comments => comments.user)
+    comments: Comments[];
 
     @Column({
         name: 'password',

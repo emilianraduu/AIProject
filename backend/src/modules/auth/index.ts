@@ -10,3 +10,5 @@ export * from '../timetable/timetable.controller';
 export * from './jwt-guard';
 export * from './classes.payload';
 export * from './rooms.payload';
+export * from './comments.payload';
+export * from './timetable.payload';
