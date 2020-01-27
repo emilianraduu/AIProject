@@ -1,6 +1,10 @@
-# Best Movie Search
+# Timetable configured
 
-  * Best Movie Search is arguably the best tool to use when you're looking for a movie but remember little about it.
+  * Interfață web pentru configurarea orarului.
+  
+  Fișa cerințelor poate fi accesată [aici](https://docs.google.com/document/d/1TyRxXVLbTt_B6FdEuDm4efVG_GshRjGz5qQErifN-x0/edit?copiedFromTrash)
+  Componentele proiectului și împărțirea lor pe echipe poate fi vizualizată [aici](https://docs.google.com/document/d/1poCj_TqRzKDyyeCXENtJrI7LdDNoxzUGo3STQt-k4vo/edit?copiedFromTrash)
+  
 ## About / Synopsis
 
 * Artificial Intelligence @ Faculty of Computer Science Iasi
@@ -8,19 +12,14 @@
 
 ## Table of contents
 
-> * [Best Movie Search](#best-movie-search)
+> * [Timetable configured](#timetable-configured)
 >   * [About / Synopsis](#about--synopsis)
 >   * [Table of contents](#table-of-contents)
 >   * [Usage](#usage)
 >   * [Requirements](#requirements)
->     * [Screenshots](#screenshots)
->     * [Features](#features)
 >     * [Content](#content)
 >     * [Deploy (how to install build product)](#deploy-how-to-install-build-product)
 >   * [Resources (Documentation and other links)](#resources-documentation-and-other-links)
->   * [Contributing](#contributing)
->   * [License](#license)
->   * [About Best Movie Search](#about-best-movie-search)
 
 ## Usage
 
@@ -28,41 +27,20 @@ Usage
 
 1. Clone the repo
 2. Open up the program
-3. Write a sentence about a movie you'd like to find
-4. Let our project do its magic
 
 
 ## Requirements
-* Selectarea unor filme ca recomandări pentru utilizator, folosind o descriere în limbaj natural a unui film căutat. Folosiți datele de la https://grouplens.org/datasets/movielens/ . Ca exemplu de mesaj a utilizatorului: “I am looking for an animated comedy movie made by Studio Ghibli”. Ca sugestii de rezolvare: indexați setul de date de antrenament și transformați mesajul user-ului într-un query sau aplicați un algoritm de machine learning pe datele de antrenament având titlul filmului ca și clasificare, ulterior clasificați instanța (mesajul) user-ului. + some more
+*  Administratorul configurează intervale orare și săli disponibile, precum și o listă de materii și numărul de cursuri și seminarii. Utilizatorii văd evenimentele asociate lor și configurează restricții pentru fiecare privind sala și intervalele orare, cu posibilitatea de a marca restricții (constrângeri hard și soft). Utilizatorii pot vedea conflictele create în urma constrângerilor lor (de exemplu, suprapunerea unui eveniment în aceeași sală la aceeași oră).
 
-### Screenshots
-
-* wip
-
-### Features
-
-* Search for movies you're not sure the title of
-* Narrow down results by using things you know about said movie
 
 ### Content
 
-* Modules and UML
-* One required database containing movie titles, ratings, genres, tags
-* One external database containing the same information
+* One required database containing course name, features, type, profs name, room name, features, type
+* One required database containing room name, features, type
+* One required database containing userName, password, type
 
 ## Resources (Documentation and other links)
 
-* https://grouplens.org/datasets/movielens/
-
-## Contributing
-
-Libraries and external APIs:
-
-* https://www.themoviedb.org
-
-## License
-
-[Licence Here](-)
-
-## About Best Movie Search
-More information is available at [wip](here).
+* https://legacy.yarnpkg.com/en/
+* https://reactjs.org/
+* https://www.w3schools.com/
