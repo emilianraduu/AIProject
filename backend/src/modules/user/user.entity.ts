@@ -26,9 +26,6 @@ export class User {
     @OneToMany(type => Classes, classes => classes.user)
     classes: Classes[];
 
-    @OneToMany(type => Comments, comments => comments.user)
-    comments: Comments[];
-
     @Column({
         name: 'password',
         length: 255,

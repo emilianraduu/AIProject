@@ -34,39 +34,5 @@ export class CommentsController {
   async getCommentsById(@Param('id') id): Promise<any> {
     return await this.commentsService.get(id);
   }
-
-  @ApiBearerAuth()
-  @UseGuards(AuthGuard())
-  @Post('comments/create')
-  @ApiResponse({ status: 200, description: 'Succesfully created' })
-  @ApiResponse({ status: 400, description: 'Bad Request' })
-  @ApiResponse({ status: 401, description: 'Unauthorized' })
-  async createComment(@Body() payload: CommentsFillableFields): Promise<any> {
-    return this.commentsService.create(payload);
-  }
-
-  @ApiBearerAuth()
-  @UseGuards(AuthGuard())
-  @Delete('comments/remove/:id')
-  @ApiResponse({ status: 201, description: 'Succesfully removed' })
-  @ApiResponse({ status: 400, description: 'Bad Request' })
-  @ApiResponse({ status: 401, description: 'Unauthorized' })
-  async removeComment(@Param('id') id): Promise<any> {
-    const newsomeclass = await this.commentsService.get(Number(id));
-    return await this.commentsService.remove(newsomeclass);
-  }
-
-
-  @ApiBearerAuth()
-  @UseGuards(AuthGuard())
-  @Put('comments/update/:id')
-  @ApiResponse({ status: 201, description: 'Succesfully updated' })
-  @ApiResponse({ status: 400, description: 'Bad Request' })
-  @ApiResponse({ status: 401, description: 'Unauthorized' })
-  async updateComment(@Param('id') id, @Body() payload: CommentsFillableFields): Promise<any> {
-    payload.id = Number(id);
-    return this.commentsService.update(payload);
-  }
-
   
 }

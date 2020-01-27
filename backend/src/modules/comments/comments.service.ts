@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { Comments, CommentsFillableFields } from './comments.entity';
 import { CommentsPayload } from 'modules/auth/comments.payload';
 import { User } from 'modules/user';
+import { Classes } from 'modules/class';
 
 @Injectable()
 export class CommentsService {
@@ -12,8 +13,7 @@ export class CommentsService {
     constructor(
         @InjectRepository(Comments)
         private readonly commentsRepository: Repository<Comments>,
-        @InjectRepository(User)
-        private readonly userRepository: Repository<User>,
+        
     ) {
     }
 
@@ -41,26 +41,6 @@ export class CommentsService {
         return this.commentsRepository.save(payload);
     }
 
-    async create(
-        payload: CommentsFillableFields,
-    ) {
-        const comments = await this.getCommentsById(payload.id);
-        if (comments) {
-            throw new NotAcceptableException(
-                'This comment has already been added.',
-            );
-        }
-
-        const comment = await this.commentsRepository.create(payload);
-        const user = await this.userRepository.findOne({ where: { id: payload.user } });
-
-        comment.user = user;
-
-        await this.commentsRepository.save(comment);
-
-        return comment;
-
-    }
 
     async remove(
         payload: CommentsFillableFields,
