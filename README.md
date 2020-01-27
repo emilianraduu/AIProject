@@ -35,9 +35,7 @@ Usage
 
 ### Content
 
-* One required database containing course name, features, type, profs name, room name, features, type
-* One required database containing room name, features, type
-* One required database containing userName, password, type
+* One required database containing CourseTable(course name, features, type, profs name, room name, features, type), RoomsTable(room name, features, type), UserTable(userName, password, type)
 
 ## Resources (Documentation and other links)
 
