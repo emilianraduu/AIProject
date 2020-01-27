@@ -8,7 +8,7 @@
 ## About / Synopsis
 
 * Artificial Intelligence @ Faculty of Computer Science Iasi
-* Project status: wip
+* Project status: Done, we hope.
 
 ## Table of contents
 
