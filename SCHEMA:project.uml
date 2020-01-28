@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>e6a56129-01ec-41dc-a1e7-abece4a8a964.SCHEMA:project</OriginalElement>
+  <nodes>
+    <node x="620.1666666666666" y="0.0">e6a56129-01ec-41dc-a1e7-abece4a8a964.TABLE:project.timetable</node>
+    <node x="195.16666666666663" y="0.0">e6a56129-01ec-41dc-a1e7-abece4a8a964.TABLE:project.users</node>
+    <node x="180.66666666666663" y="233.0">e6a56129-01ec-41dc-a1e7-abece4a8a964.TABLE:project.classes</node>
+    <node x="400.16666666666663" y="11.0">e6a56129-01ec-41dc-a1e7-abece4a8a964.TABLE:project.rooms</node>
+    <node x="30.16666666666663" y="44.0">e6a56129-01ec-41dc-a1e7-abece4a8a964.TABLE:project.comments</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="e6a56129-01ec-41dc-a1e7-abece4a8a964.TABLE:project.classes" target="e6a56129-01ec-41dc-a1e7-abece4a8a964.TABLE:project.users">
+      <point x="0.0" y="-201.5" />
+      <point x="0.0" y="91.5" />
+    </edge>
+    <edge source="e6a56129-01ec-41dc-a1e7-abece4a8a964.TABLE:project.classes" target="e6a56129-01ec-41dc-a1e7-abece4a8a964.TABLE:project.comments">
+      <point x="-71.33333333333331" y="-201.5" />
+      <point x="216.33333333333331" y="208.0" />
+      <point x="102.66666666666663" y="208.0" />
+      <point x="0.0" y="47.5" />
+    </edge>
+    <edge source="e6a56129-01ec-41dc-a1e7-abece4a8a964.TABLE:project.classes" target="e6a56129-01ec-41dc-a1e7-abece4a8a964.TABLE:project.rooms">
+      <point x="71.33333333333331" y="-201.5" />
+      <point x="358.99999999999994" y="208.0" />
+      <point x="487.66666666666663" y="208.0" />
+      <point x="0.0" y="80.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="434.0" y="318.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+

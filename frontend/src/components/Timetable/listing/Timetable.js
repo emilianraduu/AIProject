@@ -46,10 +46,9 @@ export default function Timetable({rooms}) {
                         )
                     }
                 </div>
-
                 <TimeTable>
                     {days.map((day, index) => {
-                            let spot = index * 12
+                            let spot = index * 11
                             return (
                                 <div>
                                     <WeekNames>
@@ -66,7 +65,8 @@ export default function Timetable({rooms}) {
                                             hours.map((hour, i2) => {
                                                 spot += 1
                                                 return (
-                                                    <Interval busy={assigned && assigned[0][spot] === rm.index}>
+                                                    <Interval
+                                                        busy={assigned && assigned[spot].map((sp) => sp !== null)[rm.index] === true}>
                                                         {hour}
                                                     </Interval>
                                                 )
