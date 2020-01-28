@@ -1,9 +1,8 @@
-
 import { Injectable, NotAcceptableException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { Rooms, RoomsFillableFields } from './rooms.entity';
+import { Rooms } from './rooms.entity';
 import { RoomsPayload } from 'modules/auth';
 
 @Injectable()
@@ -12,7 +11,8 @@ export class RoomsService {
   constructor(
     @InjectRepository(Rooms)
     private readonly roomsRepository: Repository<Rooms>,
-  ) { }
+  ) {
+  }
 
   async get(id: number) {
     return this.roomsRepository.findOne(id);
@@ -47,14 +47,14 @@ export class RoomsService {
 
   async update(payload: RoomsPayload) {
     return this.roomsRepository.save(payload);
-}
+  }
 
   async remove(
     payload: RoomsPayload,
   ) {
     const rooms = await this.getByNumber(payload.number);
 
-    if(!rooms) {
+    if (!rooms) {
       throw new NotAcceptableException(
         'This room does not exist. Cannot remove',
       );

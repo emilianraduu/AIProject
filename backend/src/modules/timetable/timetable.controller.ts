@@ -1,5 +1,5 @@
-import { Controller, Body, Post, UseGuards, Get, Request, Put, Delete, Param } from '@nestjs/common';
-import { ApiResponse, ApiUseTags, ApiBearerAuth } from '@nestjs/swagger';
+import { Body, Controller, Delete, Get, Param, Post, Put, Request, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiResponse, ApiUseTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { TimetableFillableFields, TimetableService } from 'modules/timetable';
 
@@ -7,9 +7,11 @@ import { TimetableFillableFields, TimetableService } from 'modules/timetable';
 @ApiUseTags('timetable')
 export class TimetableController {
   payload: any;
+
   constructor(
     private readonly timetableService: TimetableService,
-  ) { }
+  ) {
+  }
 
   @ApiBearerAuth()
   @UseGuards(AuthGuard())
@@ -53,5 +55,5 @@ export class TimetableController {
     const someclass = await this.timetableService.get(Number(id));
     return await this.timetableService.remove(someclass);
   }
-  
+
 }

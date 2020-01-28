@@ -1,18 +1,17 @@
-import { Controller, Body, Post, UseGuards, Get, Request, Put, Delete, Param } from '@nestjs/common';
-import { ApiResponse, ApiUseTags, ApiBearerAuth } from '@nestjs/swagger';
+import { Controller, Get, Param, Request, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiResponse, ApiUseTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
-import { CommentsPayload } from '../auth/comments.payload';
 import { CommentsService } from './comments.service';
-import { Comments, CommentsFillableFields } from 'modules/comments/comments.entity';
-import { ObjectID } from "typeorm";
 
 @Controller('api')
 @ApiUseTags('comments')
 export class CommentsController {
   payload: any;
+
   constructor(
     private readonly commentsService: CommentsService,
-  ) { }
+  ) {
+  }
 
   @ApiBearerAuth()
   @UseGuards(AuthGuard())
@@ -34,5 +33,5 @@ export class CommentsController {
   async getCommentsById(@Param('id') id): Promise<any> {
     return await this.commentsService.get(id);
   }
-  
+
 }

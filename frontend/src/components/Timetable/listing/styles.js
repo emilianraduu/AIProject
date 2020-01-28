@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { secondaryTypeface } from '../../../styles/abstract/variables'
+import {secondaryTypeface} from '../../../styles/abstract/variables'
 
 export const TimeTable = styled.div`
     display: flex;
@@ -9,6 +9,9 @@ export const TimeTable = styled.div`
 `
 export const WeekNames = styled.div`
     display:flex;
+    background: #D3D3D3;
+    padding: 10px;
+    border-radius: 5px;
     justify-content: space-between;
 `
 export const TimeInvterval = styled.div`
@@ -20,8 +23,14 @@ flex: 1;
 export const Interval = styled.div`
 display: flex;
 flex:1;
+padding: 35px;
+color: #f1f1f1;
+background: green;
+margin: 5px;
+border-radius: 5px;
 align-items: center;
 justify-content: center;
+${({busy}) => busy && 'background-color: red;'}
 `
 export const IntervalRow = styled.div`
 display: flex;
@@ -41,7 +50,7 @@ position: relative;
 height: 90px;
 align-items: center;
 justify-content: center;
-${({color})=>color && `background-color: ${color};border: 1px solid black;border-color: #C0C0C0;font-size: 20px;`}
+${({color}) => color && `background-color: ${color};border: 1px solid black;border-color: #C0C0C0;font-size: 20px;`}
 `
 export const OverlapBox = styled.div`
 position: absolute;

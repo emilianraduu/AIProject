@@ -1,5 +1,5 @@
-import { Controller, Body, Post, UseGuards, Get, Request, Put, Delete, Param } from '@nestjs/common';
-import { ApiResponse, ApiUseTags, ApiBearerAuth } from '@nestjs/swagger';
+import { Body, Controller, Delete, Get, Param, Post, Put, Request, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiResponse, ApiUseTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { RoomsPayload } from '../auth/rooms.payload';
 import { RoomsService } from './rooms.service';
@@ -9,9 +9,11 @@ import { RoomsFillableFields } from 'modules/room/rooms.entity';
 @ApiUseTags('rooms')
 export class RoomsController {
   payload: any;
+
   constructor(
     private readonly roomsService: RoomsService,
-  ) { }
+  ) {
+  }
 
   @ApiBearerAuth()
   @UseGuards(AuthGuard())

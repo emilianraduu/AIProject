@@ -1,5 +1,4 @@
-
-import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 
 @Entity({
@@ -18,7 +17,7 @@ export class Rooms {
   @Column({ length: 255 })
   number: string;
 
-  @Column({length: 255})
+  @Column({ length: 255 })
   type: string;
 
 }

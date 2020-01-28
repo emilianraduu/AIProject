@@ -1,6 +1,6 @@
 import { ApiModelProperty } from '@nestjs/swagger';
-import { IsEmail, IsNotEmpty, MinLength } from 'class-validator';
-import {User} from '../user';
+import { IsNotEmpty, MinLength } from 'class-validator';
+import { User } from '../user';
 
 export class ClassesPayload {
   @ApiModelProperty({
@@ -9,18 +9,18 @@ export class ClassesPayload {
   @IsNotEmpty()
   @MinLength(1)
   name: string;
-  
-  @IsNotEmpty()
-  user: User;
 
   @IsNotEmpty()
-  year: string;
+  user: User;
 
   @IsNotEmpty()
   type: string;
 
   @IsNotEmpty()
+  year: string;
+
+  @IsNotEmpty()
   noof_students: number;
 
-  
+
 }

@@ -12,13 +12,10 @@ function CourseEdit({history, match}) {
     const onSubmit = (values) => {
         let data = {...values}
         data.dayoftheweek = values.dayoftheweek && values.dayoftheweek.value
-        data.features= values.features && values.features.value
-        data.noof_students= Number(values.studentsNumber) 
-        data.no_seminars= Number(values.no_seminars)
+        data.noof_students= Number(values.studentsNumber)
         data.duration= Number(values.duration)
         data.available_from= Number(values.available_from)
         data.available_to= Number(values.available_to)
-        data.no_courses= Number(values.no_courses)
         data.description= values.description
         updateCourse({authContext, courseContext, data, id:match.params.id, history})
     }

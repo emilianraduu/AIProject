@@ -184,14 +184,15 @@ export const Icon = styled.div`
 `
 
 export const LoaderWrapper = styled.div`
- width: 100%;
+ width: 100vw;
+ height: 100vh;
+ z-index: 10000;
+ background-color: #fff;
+ top: 0;
+ left: 0;
+ position: absolute;
  display: flex;
  padding: ${spacingO4};
  justify-content: center;
  `
 
-export const LoaderImage = styled.img`
-  width: 30px;
-  height: 30px; 
-  align-self: center; 
-`

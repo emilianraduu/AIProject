@@ -52,7 +52,7 @@ export default function TimetableCreateForm({onSubmit, teachers}) {
                                                    placeholder={''}/>
                                         </FormItem>
                                         <FormItem>
-                                            <Label>Monday to</Label>
+                                            <Label>Tuesday to</Label>
                                             <Field component={FieldInput} name='tuesday_availability_to'
                                                    placeholder={''}/>
                                         </FormItem>
@@ -67,12 +67,12 @@ export default function TimetableCreateForm({onSubmit, teachers}) {
                                     </BoxHeader>
                                     <BoxContent>
                                         <FormItem>
-                                            <Label>Monday from</Label>
+                                            <Label>Wednesday from</Label>
                                             <Field component={FieldInput} name='wednesday_availability_from'
                                                    placeholder={''}/>
                                         </FormItem>
                                         <FormItem>
-                                            <Label>Monday to</Label>
+                                            <Label>Wednesday to</Label>
                                             <Field component={FieldInput} name='wednesday_availability_to'
                                                    placeholder={''}/>
                                         </FormItem>
@@ -82,17 +82,17 @@ export default function TimetableCreateForm({onSubmit, teachers}) {
                                     <BoxHeader>
                                         <HeaderWithIcon flex>
                                             <i className={FILE_ICON}/>
-                                            <BigPGreyBold>Tuesday</BigPGreyBold>
+                                            <BigPGreyBold>Thursday</BigPGreyBold>
                                         </HeaderWithIcon>
                                     </BoxHeader>
                                     <BoxContent>
                                         <FormItem>
-                                            <Label>Monday from</Label>
+                                            <Label>Thursday from</Label>
                                             <Field component={FieldInput} name='thursday_availability_from'
                                                    placeholder={''}/>
                                         </FormItem>
                                         <FormItem>
-                                            <Label>Monday to</Label>
+                                            <Label>Thursday to</Label>
                                             <Field component={FieldInput} name='thursday_availability_to'
                                                    placeholder={''}/>
                                         </FormItem>
@@ -102,17 +102,17 @@ export default function TimetableCreateForm({onSubmit, teachers}) {
                                     <BoxHeader>
                                         <HeaderWithIcon flex>
                                             <i className={FILE_ICON}/>
-                                            <BigPGreyBold>Tuesday</BigPGreyBold>
+                                            <BigPGreyBold>Friday</BigPGreyBold>
                                         </HeaderWithIcon>
                                     </BoxHeader>
                                     <BoxContent>
                                         <FormItem>
-                                            <Label>Monday from</Label>
+                                            <Label>Friday from</Label>
                                             <Field component={FieldInput} name='friday_availability_from'
                                                    placeholder={''}/>
                                         </FormItem>
                                         <FormItem>
-                                            <Label>Monday to</Label>
+                                            <Label>Friday to</Label>
                                             <Field component={FieldInput} name='friday_availability_to'
                                                    placeholder={''}/>
                                         </FormItem>

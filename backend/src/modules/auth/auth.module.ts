@@ -8,10 +8,10 @@ import { RoomsController } from '../room/rooms.controller';
 import { ClassesController } from '../class/classes.controller';
 import { TimetableController } from '../timetable/timetable.controller';
 
-import {ClassesModule} from '../class/classes.module';
-import {UserModule} from '../user';
-import {RoomsModule} from '../room/rooms.module';
-import {ConfigModule, ConfigService} from '../config';
+import { ClassesModule } from '../class/classes.module';
+import { UserModule } from '../user';
+import { RoomsModule } from '../room/rooms.module';
+import { ConfigModule, ConfigService } from '../config';
 import { TimetableModule } from 'modules/timetable';
 
 @Module({
@@ -59,4 +59,5 @@ import { TimetableModule } from 'modules/timetable';
     PassportModule.register({ defaultStrategy: 'jwt' }),
   ],
 })
-export class AuthModule { }
+export class AuthModule {
+}

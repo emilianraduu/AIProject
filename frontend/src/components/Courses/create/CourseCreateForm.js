@@ -70,11 +70,6 @@ export default function CourseCreateForm({onSubmit, teachers}) {
                                                placeholder={'Type'}/>
                                     </FormItem>
                                     <FormItem>
-                                        <Label>Feature</Label>
-                                        <Field component={FieldSelect} options={featuresOptions} name='features'
-                                               placeholder={'Room feature'}/>
-                                    </FormItem>
-                                    <FormItem>
                                         <Label>Teacher</Label>
                                         <Field component={FieldSelect} options={teachers && teachers.map((teacher) => ({
                                             value: teacher.id,

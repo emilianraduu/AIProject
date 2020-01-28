@@ -12,4 +12,5 @@ import { RoomsService } from './rooms.service';
     RoomsService,
   ],
 })
-export class RoomsModule { }
+export class RoomsModule {
+}

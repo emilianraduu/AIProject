@@ -1,7 +1,6 @@
 import { ApiModelProperty } from '@nestjs/swagger';
-import { IsEmail, IsNotEmpty, MinLength } from 'class-validator';
-import {User} from '../user';
-import {Comments} from '../comments';
+import { IsNotEmpty, MinLength } from 'class-validator';
+import { User } from '../user';
 import { Classes } from 'modules/class';
 
 export class CommentsPayload {
@@ -17,7 +16,6 @@ export class CommentsPayload {
 
   @IsNotEmpty()
   class: Classes;
-  
 
-  
+
 }

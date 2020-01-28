@@ -3,7 +3,6 @@ import {PageContent} from '../../../styles/shared/wrapper'
 import FiltersWeb from '../../Global/Filter/FiltersWeb'
 import {Loader} from '../../Global/InfiniteScroll'
 import EmptyData from "../../Global/EmptyData/EmptyData";
-import Timetable from 'react-timetable-events'
 import moment from 'moment-timezone'
 import {withRouter} from 'react-router-dom'
 import {FormItem, StaffFormFooter} from "../../../styles/shared/form";
@@ -16,24 +15,27 @@ import {getCourses} from "../../Courses/CoursesActions";
 import {getUsers} from "../../Auth/AuthActions";
 import {RoomsContext} from "../../Rooms/RoomsContext";
 import {getRooms} from "../../Rooms/RoomsActions";
+import {Calendar, momentLocalizer} from 'react-big-calendar'
+import Timetable from "./Timetable";
 
-function TimetableListingWeb({timetable, filters, filterFields, removeFilter, handleFilter, loading, history}) {
-    let events = {}
+function TimetableListingWeb({timetable, filters, filterFields, removeFilter, handleFilter, loading, history, scheduler}) {
     const authContext = useContext(AuthContext)
     const timetableContext = useContext(TimetableContext)
     const coursesContext = useContext(CoursesContext)
     const {courses} = coursesContext.state
+
+    const events = []
+    let ev = []
     const {users} = authContext.state
     const roomsContext = useContext(RoomsContext)
     const {rooms} = roomsContext.state
-    console.log(rooms)
     useEffect(() => {
         getCourses({authContext, coursesContext})
         getUsers({authContext})
-        getRooms({authContext,roomsContext})
+        getRooms({authContext, roomsContext})
     }, [])
     let times = []
-    let depts = { "Year 1": [], "Year 2": [], "Year 3":[]}
+    let depts = {"Year 1": [], "Year 2": [], "Year 3": []}
     if (timetable) {
         times = [
             {
@@ -57,7 +59,7 @@ function TimetableListingWeb({timetable, filters, filterFields, removeFilter, ha
                 time: `${timetable.friday_availability_from} ${timetable.friday_availability_to}`
             }
         ]
-        events = {
+        ev = {
             monday: [
                 {
                     id: 1,
@@ -76,45 +78,51 @@ function TimetableListingWeb({timetable, filters, filterFields, removeFilter, ha
                     endTime: moment().weekday(-7).set({hour: timetable.tuesday_availability_to, minutes: 0})
                 },
             ],
-            wednesday: [{
-                id: 3,
-                name: '',
-                type: '',
-                startTime: moment().weekday(-7).set({hour: timetable.wednesday_availability_from, minutes: 0}),
-                endTime: moment().weekday(-7).set({hour: timetable.wednesday_availability_to, minutes: 0})
-            },],
-            thursday: [{
-                id: 4,
-                name: '',
-                type: '',
-                startTime: moment().weekday(-7).set({hour: timetable.thursday_availability_from, minutes: 0}),
-                endTime: moment().weekday(-7).set({hour: timetable.thursday_availability_to, minutes: 0})
-            },],
-            friday: [{
-                id: 5,
-                name: '',
-                type: '',
-                startTime: moment().weekday(-7).set({hour: timetable.friday_availability_from, minutes: 0}),
-                endTime: moment().weekday(-7).set({hour: timetable.friday_availability_to, minutes: 0})
-            },]
+            wednesday: [
+                {
+                    id: 3,
+                    name: '',
+                    type: '',
+                    startTime: moment().weekday(-7).set({hour: timetable.wednesday_availability_from, minutes: 0}),
+                    endTime: moment().weekday(-7).set({hour: timetable.wednesday_availability_to, minutes: 0})
+                },
+            ],
+            thursday: [
+                {
+                    id: 4,
+                    name: '',
+                    type: '',
+                    startTime: moment().weekday(-7).set({hour: timetable.thursday_availability_from, minutes: 0}),
+                    endTime: moment().weekday(-7).set({hour: timetable.thursday_availability_to, minutes: 0})
+                },
+            ],
+            friday: [
+                {
+                    id: 5,
+                    name: '',
+                    type: '',
+                    startTime: moment().weekday(-7).set({hour: timetable.friday_availability_from, minutes: 0}),
+                    endTime: moment().weekday(-7).set({hour: timetable.friday_availability_to, minutes: 0})
+                },
+            ]
         }
     }
-    if(courses){
-        courses.forEach((course,index) =>{
-            if(index < (courses.length-1)/3){
+    if (courses) {
+        courses.forEach((course, index) => {
+            if (index < (courses.length - 1) / 3) {
                 depts['Year 1'].push(course)
             }
-            if(index > (courses.length-1)/3 && index<(courses.length-1)*2/3){
+            if (index > (courses.length - 1) / 3 && index < (courses.length - 1) * 2 / 3) {
                 depts['Year 2'].push(course)
 
             }
-            if(index>(courses.length-1)*2/3){
+            if (index > (courses.length - 1) * 2 / 3) {
                 depts['Year 3'].push(course)
 
             }
-            console.log(depts)
         })
     }
+    const localizer = momentLocalizer(moment)
     return (
         <>
             <PageContent type={'web'}>
@@ -134,7 +142,14 @@ function TimetableListingWeb({timetable, filters, filterFields, removeFilter, ha
                 }
                 {
                     timetable &&
-                    <Timetable events={events} hoursInterval={[7, 21]}/>
+                        <Timetable rooms={rooms}/>
+                    // <Calendar
+                    //     localizer={localizer}
+                    //     events={events}
+                    //     startAccessor="start"
+                    //     endAccessor="end"
+                    //     style={{height: 500}}
+                    // />
                 }
 
                 {
@@ -146,7 +161,7 @@ function TimetableListingWeb({timetable, filters, filterFields, removeFilter, ha
                         <FormItem style={{width: 'fit-content'}}>
                             <SecondaryButton filled onClick={() => {
                                 assignTimetable({
-                                    authContext, timetableContext, history, courses, users, events, times, depts, rooms
+                                    authContext, timetableContext, history, courses, users, events: ev, times, depts, rooms
                                 })
                             }}
                             >Create timetable</SecondaryButton>
@@ -157,5 +172,6 @@ function TimetableListingWeb({timetable, filters, filterFields, removeFilter, ha
         </>
     )
 }
+
 
 export default withRouter(TimetableListingWeb)

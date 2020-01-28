@@ -12,4 +12,5 @@ import { TimetableService } from './timetable.service';
     TimetableService,
   ],
 })
-export class TimetableModule { }
+export class TimetableModule {
+}

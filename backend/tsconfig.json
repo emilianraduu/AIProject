@@ -14,7 +14,8 @@
     "baseUrl": "./src"
   },
   "include": [
-    "src/**/*", "src/modules/auth/classes.payload/.ts"
+    "src/**/*",
+    "src/modules/auth/classes.payload/.ts"
   ],
   "exclude": [
     "node_modules",

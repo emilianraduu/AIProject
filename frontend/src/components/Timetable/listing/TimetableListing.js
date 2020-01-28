@@ -11,13 +11,14 @@ export default function StaffsListing() {
     useEffect(() => {
         getTimetable({authContext, timetableContext})
     }, [])
-    const {timetable, loading} = timetableContext.state
+    const {timetable, loading, scheduler} = timetableContext.state
     return (
         <>
             <BrowserView>
                 <TimetableListingWeb
                     timetable={timetable}
                     loading={loading}
+                    scheduler={scheduler}
                 />
             </BrowserView>
         </>

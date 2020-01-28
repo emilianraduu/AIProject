@@ -16,7 +16,6 @@ export default function CourseEditForm({course, onSubmit, type, history}) {
     const authContext = useContext(AuthContext)
     const coursesContext = useContext(ActiveRoomContext)
     const {user} = authContext.state
-    const featuresOptions=[{value: 'Computers', label: 'Computers'},{value: 'Projector', label: 'Projector'}]
     console.log(course)
     return (
         <Form
@@ -91,23 +90,9 @@ export default function CourseEditForm({course, onSubmit, type, history}) {
                                                        placeholder={'Specify the duration of the course'}/>
                                             </FormItem>
                                             <FormItem>
-                                                <Label>Courses Number</Label>
-                                                <Field component={FieldInput} name='no_courses'
-                                                       placeholder={'Insert courses number'}/>
-                                            </FormItem>
-                                            <FormItem>
-                                                <Label>Seminars Number</Label>
-                                                <Field component={FieldInput} name='no_seminars'
-                                                       placeholder={'Insert seminars number'}/>
-                                            </FormItem>
-                                            <FormItem>
                                                 <Label>Students number</Label>
-                                                <Field component={FieldInput} name='studentsNumber' placeholder={'Students number'}/>
-                                            </FormItem>
-                                            <FormItem>
-                                                <Label>Feature</Label>
-                                                <Field component={FieldSelect} options={featuresOptions} name='features'
-                                                    placeholder={'Room feature'}/>
+                                                <Field component={FieldInput} name='studentsNumber'
+                                                       placeholder={'Students number'}/>
                                             </FormItem>
                                         </>
                                     }

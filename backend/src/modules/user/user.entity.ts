@@ -1,46 +1,45 @@
-import {Exclude} from 'class-transformer';
-import {BeforeInsert, Column, Entity, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
-import {PasswordTransformer} from './password.transformer';
-import {Classes} from '../class/classes.entity';
-import { Comments } from 'modules/comments';
+import { Exclude } from 'class-transformer';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { PasswordTransformer } from './password.transformer';
+import { Classes } from '../class/classes.entity';
 
 @Entity({
-    name: 'users',
+  name: 'users',
 })
 export class User {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column({length: 255})
-    firstName: string;
+  @Column({ length: 255 })
+  firstName: string;
 
-    @Column({length: 255})
-    lastName: string;
+  @Column({ length: 255 })
+  lastName: string;
 
-    @Column({length: 255})
-    email: string;
+  @Column({ length: 255 })
+  email: string;
 
-    @Column({nullable: true})
-    isAdmin: boolean;
+  @Column({ nullable: true })
+  isAdmin: boolean;
 
-    @OneToMany(type => Classes, classes => classes.user)
-    classes: Classes[];
+  @OneToMany(type => Classes, classes => classes.user)
+  classes: Classes[];
 
-    @Column({
-        name: 'password',
-        length: 255,
-        transformer: new PasswordTransformer(),
-    })
+  @Column({
+    name: 'password',
+    length: 255,
+    transformer: new PasswordTransformer(),
+  })
 
-    @Exclude()
-    password: string;
+  @Exclude()
+  password: string;
 
 }
 
 export class UserFillableFields {
-    email: string;
-    firstName: string;
-    lastName: string;
-    password: string;
-    isAdmin: boolean;
+  email: string;
+  firstName: string;
+  lastName: string;
+  password: string;
+  isAdmin: boolean;
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import Router from './config/Router'
 import './App.css'
 import 'react-toastify/dist/ReactToastify.css'
+import 'react-big-calendar/lib/sass/styles.scss'
 import {CoursesContextProvider} from './components/Courses/CoursesContext'
 import {TimetableContextProvider} from './components/Timetable/TimetableContext'
 import {AuthContextProvider} from './components/Auth/AuthContext'
@@ -12,7 +13,6 @@ import {RoomsContextProvider} from './components/Rooms/RoomsContext'
 import {ActiveRoomContextProvider} from "./components/Rooms/ActiveRoomContext";
 
 function App() {
-    // return <TVScreen />
     return (
         <AuthContextProvider>
             <CoursesContextProvider>

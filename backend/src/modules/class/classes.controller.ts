@@ -1,17 +1,19 @@
-import { Controller, Body, Post, UseGuards, Get, Request, Put, Delete, Param } from '@nestjs/common';
-import { ApiResponse, ApiUseTags, ApiBearerAuth } from '@nestjs/swagger';
+import { Body, Controller, Delete, Get, Param, Post, Put, Request, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiResponse, ApiUseTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { ClassesPayload } from '../auth/classes.payload';
 import { ClassesService } from './classes.service';
-import { Classes, ClassesFillableFields } from 'modules/class/classes.entity';
+import { ClassesFillableFields } from 'modules/class/classes.entity';
 
 @Controller('api')
 @ApiUseTags('classes')
 export class ClassesController {
   payload: any;
+
   constructor(
     private readonly classesService: ClassesService,
-  ) { }
+  ) {
+  }
 
   @ApiBearerAuth()
   @UseGuards(AuthGuard())
@@ -67,5 +69,5 @@ export class ClassesController {
     return this.classesService.update(payload);
   }
 
-  
+
 }
