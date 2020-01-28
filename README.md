@@ -3,7 +3,7 @@
   * Interfață web pentru configurarea orarului.
   
   * Fișa cerințelor poate fi accesată [aici](https://docs.google.com/document/d/1TyRxXVLbTt_B6FdEuDm4efVG_GshRjGz5qQErifN-x0/edit?copiedFromTrash)
-  * Componentele proiectului și împărțirea lor pe echipe poate fi vizualizată [aici](https://docs.google.com/document/d/1poCj_TqRzKDyyeCXENtJrI7LdDNoxzUGo3STQt-k4vo/edit?copiedFromTrash)
+  * Componentele proiectului pot fi vizualizate [aici](https://docs.google.com/document/d/1poCj_TqRzKDyyeCXENtJrI7LdDNoxzUGo3STQt-k4vo/edit?copiedFromTrash)
   
 ## About / Synopsis
 
