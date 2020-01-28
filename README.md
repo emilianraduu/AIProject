@@ -37,6 +37,10 @@ Usage
 
 * One required database containing CourseTable(course name, features, type, profs name, room name, features, type), RoomsTable(room name, features, type), UserTable(userName, password, type)
 
+### Deploy (how to install build product)
+* Nodejs for frontend
+* Yarn for backend
+
 ## Resources (Documentation and other links)
 
 * https://legacy.yarnpkg.com/en/
